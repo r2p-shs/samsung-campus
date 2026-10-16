@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "openings": [
+    {
+      "id": "right-stair-lobby",
+      "prefix": "accepted_camera_lobby_end_1",
+      "yMin": -10.0,
+      "yMax": -6.6,
+      "zMin": 0,
+      "zMax": 2.5,
+      "basis": "User-described direct 1F right stair to lobby connection; exact opening dimensions assumed"
+    }
+  ]
+}

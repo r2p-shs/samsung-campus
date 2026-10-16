@@ -8,11 +8,19 @@ data=json.loads((ROOT/'models/walk-layout.json').read_text(encoding='utf8'))
 building=json.loads((ROOT/'models/building-walk.json').read_text(encoding='utf8'))
 scene=trimesh.load(ROOT/'models/f_tower_walk.glb',force='scene')
 doors=[d['id'] for d in building['walk']['doors']]
+openings=json.loads((ROOT/'models/evac-openings.json').read_text(encoding='utf8'))['openings']
 meshes=[]
 for name in scene.graph.nodes_geometry:
     if name.startswith(('stairs_','accepted_camera_rotor_leaf_','accepted_camera_rotor_stile_')) or any(name.startswith('accepted_'+d+'_') for d in doors):continue
     transform,geom=scene.graph[name]
-    m=scene.geometry[geom].copy();m.apply_transform(transform);meshes.append(m)
+    m=scene.geometry[geom].copy();m.apply_transform(transform)
+    opening=next((o for o in openings if name.startswith(o['prefix'])),None)
+    if opening:
+        lo,hi=m.bounds
+        for ymin,ymax,zmin,zmax in [(lo[1],opening['yMin'],lo[2],hi[2]),(opening['yMax'],hi[1],lo[2],hi[2]),(opening['yMin'],opening['yMax'],opening['zMax'],hi[2])]:
+            if ymax>ymin and zmax>zmin:
+                part=trimesh.creation.box(extents=[hi[0]-lo[0],ymax-ymin,zmax-zmin]);part.apply_translation([(lo[0]+hi[0])/2,(ymin+ymax)/2,(zmin+zmax)/2]);meshes.append(part)
+    else:meshes.append(m)
 mesh=trimesh.util.concatenate(meshes)
 nodes=[];edges=[];routes=[];floor_nodes={};spacing=.8;radius=.24
 
@@ -134,5 +142,5 @@ while todo:
 counts={str(f['level']):sum(i in seen for i in floor_nodes[f['level']]) for f in data['floors']}
 print('EXIT CONNECTIVITY',counts, 'entries',[(k,a in seen,len(adj[a])) for k,a in entries.items()],flush=True)
 assert all(v>20 for v in counts.values()),'Missing floor-to-exterior route; do not invent connection'
-result={'version':2,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
+result={'version':3,'openings':openings,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
 (ROOT/'models/evac-graph.json').write_text(json.dumps(result,separators=(',',':')),encoding='utf8')
