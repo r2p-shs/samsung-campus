@@ -1,0 +1,5 @@
+우면동 지형 quantized-mesh (R3, DEM v2.4 — 하도 하강 2단 + 도로 밑 굴다리)
+- 입력: 서울특별시 S-Map 오픈랩 · 국토지리정보원 1:1000 수치지형도 등고선(공개제한 레이어), 서울시 OA-22241 등고선·표고점,
+  Copernicus GLO-30 (© DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA).
+- 국가공간정보 보안관리규정(plan §3.5): 1:1000 등고선 파생 지형 → 로컬·비공개 호스팅 전용. 공개 배포 전 해석 재확인.
+- 결정: docs/decisions/ADR-0008-terrain-dem-v1.md

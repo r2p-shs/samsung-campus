@@ -1,0 +1,1714 @@
+{
+ "rule_version": "2026-10-08.1",
+ "facade_rule_version": "2026-10-08.b2.1",
+ "typologies": [
+  {
+   "id": "apartment",
+   "floor_h": 2.85,
+   "ground_floor_h": 2.85,
+   "parapet_h": 1.2,
+   "window": {
+    "w": 1.8,
+    "h": 1.4,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.55,
+   "band_every": 0
+  },
+  {
+   "id": "office_rnd",
+   "floor_h": 3.9,
+   "ground_floor_h": 4.5,
+   "parapet_h": 1.0,
+   "window": {
+    "w": 1.5,
+    "h": 2.6,
+    "sill": 0.3,
+    "bay_w": 1.5
+   },
+   "emissive_p": 0.35,
+   "band_every": 1
+  },
+  {
+   "id": "office",
+   "floor_h": 3.6,
+   "ground_floor_h": 4.2,
+   "parapet_h": 1.0,
+   "window": {
+    "w": 1.5,
+    "h": 2.0,
+    "sill": 0.8,
+    "bay_w": 2.0
+   },
+   "emissive_p": 0.35,
+   "band_every": 0
+  },
+  {
+   "id": "villa",
+   "floor_h": 2.9,
+   "ground_floor_h": 2.9,
+   "parapet_h": 1.0,
+   "window": {
+    "w": 1.5,
+    "h": 1.3,
+    "sill": 0.9,
+    "bay_w": 3.2
+   },
+   "emissive_p": 0.5,
+   "band_every": 0
+  },
+  {
+   "id": "detached",
+   "floor_h": 3.0,
+   "ground_floor_h": 3.0,
+   "parapet_h": 0.0,
+   "window": {
+    "w": 1.2,
+    "h": 1.2,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.45,
+   "band_every": 0
+  },
+  {
+   "id": "retail",
+   "floor_h": 3.3,
+   "ground_floor_h": 4.0,
+   "parapet_h": 1.0,
+   "window": {
+    "w": 2.0,
+    "h": 1.6,
+    "sill": 0.8,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.6,
+   "band_every": 0
+  },
+  {
+   "id": "school",
+   "floor_h": 3.6,
+   "ground_floor_h": 3.6,
+   "parapet_h": 1.0,
+   "window": {
+    "w": 2.4,
+    "h": 1.8,
+    "sill": 0.9,
+    "bay_w": 3.6
+   },
+   "emissive_p": 0.1,
+   "band_every": 1
+  },
+  {
+   "id": "public",
+   "floor_h": 3.6,
+   "ground_floor_h": 4.0,
+   "parapet_h": 1.0,
+   "window": {
+    "w": 1.6,
+    "h": 1.8,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.2,
+   "band_every": 0
+  },
+  {
+   "id": "religious",
+   "floor_h": 4.5,
+   "ground_floor_h": 4.5,
+   "parapet_h": 0.0,
+   "window": {
+    "w": 1.2,
+    "h": 2.4,
+    "sill": 1.0,
+    "bay_w": 3.5
+   },
+   "emissive_p": 0.2,
+   "band_every": 0
+  },
+  {
+   "id": "cultural",
+   "floor_h": 4.5,
+   "ground_floor_h": 5.0,
+   "parapet_h": 1.0,
+   "window": {
+    "w": 2.0,
+    "h": 3.0,
+    "sill": 0.5,
+    "bay_w": 4.0
+   },
+   "emissive_p": 0.3,
+   "band_every": 0
+  },
+  {
+   "id": "industrial",
+   "floor_h": 5.0,
+   "ground_floor_h": 6.0,
+   "parapet_h": 0.5,
+   "window": {
+    "w": 2.0,
+    "h": 1.0,
+    "sill": 2.5,
+    "bay_w": 6.0
+   },
+   "emissive_p": 0.1,
+   "band_every": 0
+  },
+  {
+   "id": "greenhouse",
+   "floor_h": 3.5,
+   "ground_floor_h": 3.5,
+   "parapet_h": 0.0,
+   "window": {
+    "w": 0.0,
+    "h": 0.0,
+    "sill": 0.0,
+    "bay_w": 0.0
+   },
+   "emissive_p": 0.0,
+   "band_every": 0
+  },
+  {
+   "id": "canopy",
+   "floor_h": 4.0,
+   "ground_floor_h": 4.0,
+   "parapet_h": 0.0,
+   "window": {
+    "w": 0.0,
+    "h": 0.0,
+    "sill": 0.0,
+    "bay_w": 0.0
+   },
+   "emissive_p": 0.0,
+   "band_every": 0
+  },
+  {
+   "id": "temporary",
+   "floor_h": 3.0,
+   "ground_floor_h": 3.0,
+   "parapet_h": 0.0,
+   "window": {
+    "w": 1.0,
+    "h": 1.0,
+    "sill": 1.0,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.1,
+   "band_every": 0
+  },
+  {
+   "id": "construction",
+   "floor_h": 3.0,
+   "ground_floor_h": 3.0,
+   "parapet_h": 0.0,
+   "window": {
+    "w": 0.0,
+    "h": 0.0,
+    "sill": 0.0,
+    "bay_w": 0.0
+   },
+   "emissive_p": 0.0,
+   "band_every": 0
+  },
+  {
+   "id": "other",
+   "floor_h": 3.2,
+   "ground_floor_h": 3.5,
+   "parapet_h": 0.8,
+   "window": {
+    "w": 1.5,
+    "h": 1.5,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.3,
+   "band_every": 0
+  }
+ ],
+ "palettes": [
+  {
+   "pattern": "balcony",
+   "texture": "none",
+   "wall": [
+    0.87,
+    0.83,
+    0.74
+   ],
+   "band": [
+    0.5,
+    0.29,
+    0.25
+   ],
+   "roof": [
+    0.37,
+    0.52,
+    0.42
+   ],
+   "roof_alt": [
+    0.63,
+    0.63,
+    0.61
+   ],
+   "glass": [
+    0.26,
+    0.31,
+    0.35
+   ],
+   "frame": [
+    0.84,
+    0.84,
+    0.82
+   ],
+   "window": {
+    "w": 2.5,
+    "h": 1.5,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "id": "apt_beige_band",
+   "typology": "apartment",
+   "emissive_p": 0.55,
+   "band_every": 0,
+   "v2": {
+    "material": "plaster_paint",
+    "ground_material": "none",
+    "accent": [
+     0.5,
+     0.29,
+     0.25
+    ],
+    "roof_coat_p": 0.85
+   }
+  },
+  {
+   "pattern": "balcony_glass",
+   "texture": "none",
+   "wall": [
+    0.89,
+    0.89,
+    0.87
+   ],
+   "band": [
+    0.36,
+    0.38,
+    0.4
+   ],
+   "roof": [
+    0.6,
+    0.61,
+    0.62
+   ],
+   "roof_alt": [
+    0.37,
+    0.52,
+    0.42
+   ],
+   "glass": [
+    0.27,
+    0.34,
+    0.4
+   ],
+   "frame": [
+    0.3,
+    0.32,
+    0.34
+   ],
+   "window": {
+    "w": 2.6,
+    "h": 2.1,
+    "sill": 0.25,
+    "bay_w": 3.0
+   },
+   "id": "apt_grey_glass",
+   "typology": "apartment",
+   "emissive_p": 0.55,
+   "band_every": 0,
+   "v2": {
+    "material": "plaster_paint",
+    "ground_material": "none",
+    "accent": [
+     0.36,
+     0.38,
+     0.4
+    ],
+    "roof_coat_p": 0.4
+   }
+  },
+  {
+   "pattern": "curtain",
+   "texture": "none",
+   "wall": [
+    0.4,
+    0.47,
+    0.55
+   ],
+   "band": [
+    0.3,
+    0.33,
+    0.36
+   ],
+   "roof": [
+    0.56,
+    0.57,
+    0.58
+   ],
+   "roof_alt": [
+    0.5,
+    0.51,
+    0.52
+   ],
+   "glass": [
+    0.27,
+    0.36,
+    0.46
+   ],
+   "frame": [
+    0.25,
+    0.28,
+    0.31
+   ],
+   "id": "rnd_bluegrey_curtain",
+   "typology": "office_rnd",
+   "window": {
+    "w": 1.5,
+    "h": 2.6,
+    "sill": 0.3,
+    "bay_w": 1.5
+   },
+   "emissive_p": 0.35,
+   "band_every": 1,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.2
+   }
+  },
+  {
+   "pattern": "ribbon",
+   "texture": "none",
+   "wall": [
+    0.71,
+    0.71,
+    0.69
+   ],
+   "band": [
+    0.56,
+    0.56,
+    0.55
+   ],
+   "roof": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "roof_alt": [
+    0.52,
+    0.52,
+    0.51
+   ],
+   "glass": [
+    0.28,
+    0.34,
+    0.4
+   ],
+   "frame": [
+    0.45,
+    0.46,
+    0.47
+   ],
+   "id": "rnd_concrete",
+   "typology": "office_rnd",
+   "window": {
+    "w": 1.5,
+    "h": 2.6,
+    "sill": 0.3,
+    "bay_w": 1.5
+   },
+   "emissive_p": 0.35,
+   "band_every": 1,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.3
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "stone",
+   "wall": [
+    0.75,
+    0.72,
+    0.67
+   ],
+   "band": [
+    0.55,
+    0.53,
+    0.5
+   ],
+   "roof": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "roof_alt": [
+    0.52,
+    0.52,
+    0.51
+   ],
+   "glass": [
+    0.28,
+    0.34,
+    0.4
+   ],
+   "frame": [
+    0.35,
+    0.36,
+    0.37
+   ],
+   "id": "office_stone",
+   "typology": "office",
+   "window": {
+    "w": 1.5,
+    "h": 2.0,
+    "sill": 0.8,
+    "bay_w": 2.0
+   },
+   "emissive_p": 0.35,
+   "band_every": 0,
+   "v2": {
+    "material": "granite",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.3
+   }
+  },
+  {
+   "pattern": "curtain",
+   "texture": "none",
+   "wall": [
+    0.46,
+    0.53,
+    0.59
+   ],
+   "band": [
+    0.34,
+    0.37,
+    0.4
+   ],
+   "roof": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "roof_alt": [
+    0.52,
+    0.52,
+    0.51
+   ],
+   "glass": [
+    0.29,
+    0.37,
+    0.45
+   ],
+   "frame": [
+    0.3,
+    0.32,
+    0.34
+   ],
+   "id": "office_glass",
+   "typology": "office",
+   "window": {
+    "w": 1.5,
+    "h": 2.0,
+    "sill": 0.8,
+    "bay_w": 2.0
+   },
+   "emissive_p": 0.35,
+   "band_every": 0,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.2
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "brick",
+   "wall": [
+    0.58,
+    0.33,
+    0.27
+   ],
+   "band": [
+    0.83,
+    0.81,
+    0.77
+   ],
+   "roof": [
+    0.37,
+    0.52,
+    0.42
+   ],
+   "roof_alt": [
+    0.56,
+    0.56,
+    0.55
+   ],
+   "glass": [
+    0.26,
+    0.31,
+    0.35
+   ],
+   "frame": [
+    0.85,
+    0.85,
+    0.83
+   ],
+   "id": "villa_redbrick",
+   "typology": "villa",
+   "window": {
+    "w": 1.5,
+    "h": 1.3,
+    "sill": 0.9,
+    "bay_w": 3.2
+   },
+   "emissive_p": 0.5,
+   "band_every": 0,
+   "v2": {
+    "material": "brick_red",
+    "ground_material": "granite",
+    "accent": null,
+    "roof_coat_p": 0.85
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "stone",
+   "wall": [
+    0.8,
+    0.77,
+    0.74
+   ],
+   "band": [
+    0.48,
+    0.46,
+    0.44
+   ],
+   "roof": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "roof_alt": [
+    0.37,
+    0.52,
+    0.42
+   ],
+   "glass": [
+    0.27,
+    0.32,
+    0.36
+   ],
+   "frame": [
+    0.32,
+    0.33,
+    0.34
+   ],
+   "id": "villa_granite",
+   "typology": "villa",
+   "window": {
+    "w": 1.5,
+    "h": 1.3,
+    "sill": 0.9,
+    "bay_w": 3.2
+   },
+   "emissive_p": 0.5,
+   "band_every": 0,
+   "v2": {
+    "material": "granite",
+    "ground_material": "granite",
+    "accent": null,
+    "roof_coat_p": 0.85
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "none",
+   "wall": [
+    0.83,
+    0.77,
+    0.67
+   ],
+   "band": [
+    0.52,
+    0.34,
+    0.27
+   ],
+   "roof": [
+    0.31,
+    0.33,
+    0.37
+   ],
+   "roof_alt": [
+    0.47,
+    0.29,
+    0.23
+   ],
+   "glass": [
+    0.26,
+    0.31,
+    0.35
+   ],
+   "frame": [
+    0.86,
+    0.86,
+    0.84
+   ],
+   "id": "detached_tile_roof",
+   "typology": "detached",
+   "window": {
+    "w": 1.2,
+    "h": 1.2,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.45,
+   "band_every": 0,
+   "v2": {
+    "material": "plaster_paint",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.6
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "none",
+   "wall": [
+    0.88,
+    0.87,
+    0.85
+   ],
+   "band": [
+    0.4,
+    0.4,
+    0.4
+   ],
+   "roof": [
+    0.42,
+    0.43,
+    0.44
+   ],
+   "roof_alt": [
+    0.63,
+    0.63,
+    0.61
+   ],
+   "glass": [
+    0.26,
+    0.31,
+    0.35
+   ],
+   "frame": [
+    0.3,
+    0.31,
+    0.32
+   ],
+   "id": "detached_modern",
+   "typology": "detached",
+   "window": {
+    "w": 1.2,
+    "h": 1.2,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.45,
+   "band_every": 0,
+   "v2": {
+    "material": "plaster_paint",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.3
+   }
+  },
+  {
+   "pattern": "storefront",
+   "texture": "tile",
+   "wall": [
+    0.79,
+    0.75,
+    0.69
+   ],
+   "band": [
+    0.36,
+    0.36,
+    0.36
+   ],
+   "roof": [
+    0.57,
+    0.57,
+    0.56
+   ],
+   "roof_alt": [
+    0.37,
+    0.52,
+    0.42
+   ],
+   "glass": [
+    0.27,
+    0.33,
+    0.38
+   ],
+   "frame": [
+    0.3,
+    0.31,
+    0.32
+   ],
+   "id": "retail_tile",
+   "typology": "retail",
+   "window": {
+    "w": 2.0,
+    "h": 1.6,
+    "sill": 0.8,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.6,
+   "band_every": 0,
+   "v2": {
+    "material": "tile_wall",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.5
+   }
+  },
+  {
+   "pattern": "storefront",
+   "texture": "none",
+   "wall": [
+    0.73,
+    0.75,
+    0.77
+   ],
+   "band": [
+    0.3,
+    0.31,
+    0.33
+   ],
+   "roof": [
+    0.57,
+    0.57,
+    0.56
+   ],
+   "roof_alt": [
+    0.5,
+    0.51,
+    0.52
+   ],
+   "glass": [
+    0.27,
+    0.33,
+    0.38
+   ],
+   "frame": [
+    0.28,
+    0.29,
+    0.3
+   ],
+   "id": "retail_panel",
+   "typology": "retail",
+   "window": {
+    "w": 2.0,
+    "h": 1.6,
+    "sill": 0.8,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.6,
+   "band_every": 0,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.3
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "brick",
+   "wall": [
+    0.71,
+    0.47,
+    0.37
+   ],
+   "band": [
+    0.87,
+    0.86,
+    0.83
+   ],
+   "roof": [
+    0.37,
+    0.52,
+    0.42
+   ],
+   "roof_alt": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "glass": [
+    0.28,
+    0.34,
+    0.39
+   ],
+   "frame": [
+    0.87,
+    0.87,
+    0.85
+   ],
+   "id": "school_brick",
+   "typology": "school",
+   "window": {
+    "w": 2.4,
+    "h": 1.8,
+    "sill": 0.9,
+    "bay_w": 3.6
+   },
+   "emissive_p": 0.1,
+   "band_every": 1,
+   "v2": {
+    "material": "brick_red",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.7
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "none",
+   "wall": [
+    0.85,
+    0.81,
+    0.73
+   ],
+   "band": [
+    0.38,
+    0.54,
+    0.65
+   ],
+   "roof": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "roof_alt": [
+    0.37,
+    0.52,
+    0.42
+   ],
+   "glass": [
+    0.28,
+    0.34,
+    0.39
+   ],
+   "frame": [
+    0.4,
+    0.42,
+    0.44
+   ],
+   "id": "school_panel",
+   "typology": "school",
+   "window": {
+    "w": 2.4,
+    "h": 1.8,
+    "sill": 0.9,
+    "bay_w": 3.6
+   },
+   "emissive_p": 0.1,
+   "band_every": 1,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.6
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "stone",
+   "wall": [
+    0.74,
+    0.72,
+    0.68
+   ],
+   "band": [
+    0.52,
+    0.52,
+    0.51
+   ],
+   "roof": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "roof_alt": [
+    0.37,
+    0.52,
+    0.42
+   ],
+   "glass": [
+    0.28,
+    0.34,
+    0.4
+   ],
+   "frame": [
+    0.35,
+    0.36,
+    0.37
+   ],
+   "id": "public_stone",
+   "typology": "public",
+   "window": {
+    "w": 1.6,
+    "h": 1.8,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.2,
+   "band_every": 0,
+   "v2": {
+    "material": "granite",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.5
+   }
+  },
+  {
+   "pattern": "curtain",
+   "texture": "none",
+   "wall": [
+    0.55,
+    0.6,
+    0.64
+   ],
+   "band": [
+    0.4,
+    0.42,
+    0.44
+   ],
+   "roof": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "roof_alt": [
+    0.52,
+    0.52,
+    0.51
+   ],
+   "glass": [
+    0.3,
+    0.38,
+    0.45
+   ],
+   "frame": [
+    0.32,
+    0.34,
+    0.36
+   ],
+   "id": "public_glass",
+   "typology": "public",
+   "window": {
+    "w": 1.6,
+    "h": 1.8,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.2,
+   "band_every": 0,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.3
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "none",
+   "wall": [
+    0.78,
+    0.74,
+    0.66
+   ],
+   "band": [
+    0.42,
+    0.26,
+    0.2
+   ],
+   "roof": [
+    0.3,
+    0.31,
+    0.33
+   ],
+   "roof_alt": [
+    0.33,
+    0.34,
+    0.36
+   ],
+   "glass": [
+    0.3,
+    0.26,
+    0.22
+   ],
+   "frame": [
+    0.42,
+    0.26,
+    0.2
+   ],
+   "id": "religious_traditional",
+   "typology": "religious",
+   "window": {
+    "w": 1.2,
+    "h": 2.4,
+    "sill": 1.0,
+    "bay_w": 3.5
+   },
+   "emissive_p": 0.2,
+   "band_every": 0,
+   "v2": {
+    "material": "plaster_paint",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.0
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "stone",
+   "wall": [
+    0.82,
+    0.8,
+    0.76
+   ],
+   "band": [
+    0.5,
+    0.45,
+    0.4
+   ],
+   "roof": [
+    0.45,
+    0.46,
+    0.47
+   ],
+   "roof_alt": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "glass": [
+    0.3,
+    0.32,
+    0.34
+   ],
+   "frame": [
+    0.4,
+    0.4,
+    0.4
+   ],
+   "id": "religious_modern",
+   "typology": "religious",
+   "window": {
+    "w": 1.2,
+    "h": 2.4,
+    "sill": 1.0,
+    "bay_w": 3.5
+   },
+   "emissive_p": 0.2,
+   "band_every": 0,
+   "v2": {
+    "material": "stone_clad",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.3
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "stone",
+   "wall": [
+    0.85,
+    0.83,
+    0.78
+   ],
+   "band": [
+    0.62,
+    0.62,
+    0.6
+   ],
+   "roof": [
+    0.6,
+    0.6,
+    0.59
+   ],
+   "roof_alt": [
+    0.55,
+    0.56,
+    0.56
+   ],
+   "glass": [
+    0.28,
+    0.33,
+    0.38
+   ],
+   "frame": [
+    0.45,
+    0.45,
+    0.45
+   ],
+   "id": "cultural_stone",
+   "typology": "cultural",
+   "window": {
+    "w": 2.0,
+    "h": 3.0,
+    "sill": 0.5,
+    "bay_w": 4.0
+   },
+   "emissive_p": 0.3,
+   "band_every": 0,
+   "v2": {
+    "material": "stone_clad",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.2
+   }
+  },
+  {
+   "pattern": "curtain",
+   "texture": "none",
+   "wall": [
+    0.62,
+    0.66,
+    0.68
+   ],
+   "band": [
+    0.45,
+    0.46,
+    0.47
+   ],
+   "roof": [
+    0.6,
+    0.6,
+    0.59
+   ],
+   "roof_alt": [
+    0.55,
+    0.56,
+    0.56
+   ],
+   "glass": [
+    0.3,
+    0.37,
+    0.44
+   ],
+   "frame": [
+    0.35,
+    0.36,
+    0.37
+   ],
+   "id": "cultural_glass",
+   "typology": "cultural",
+   "window": {
+    "w": 2.0,
+    "h": 3.0,
+    "sill": 0.5,
+    "bay_w": 4.0
+   },
+   "emissive_p": 0.3,
+   "band_every": 0,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.2
+   }
+  },
+  {
+   "pattern": "panel",
+   "texture": "none",
+   "wall": [
+    0.72,
+    0.74,
+    0.76
+   ],
+   "band": [
+    0.33,
+    0.45,
+    0.62
+   ],
+   "roof": [
+    0.55,
+    0.57,
+    0.6
+   ],
+   "roof_alt": [
+    0.35,
+    0.47,
+    0.62
+   ],
+   "glass": [
+    0.3,
+    0.35,
+    0.4
+   ],
+   "frame": [
+    0.4,
+    0.42,
+    0.44
+   ],
+   "id": "industrial_panel",
+   "typology": "industrial",
+   "window": {
+    "w": 2.0,
+    "h": 1.0,
+    "sill": 2.5,
+    "bay_w": 6.0
+   },
+   "emissive_p": 0.1,
+   "band_every": 0,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.1
+   }
+  },
+  {
+   "pattern": "ribs",
+   "texture": "none",
+   "wall": [
+    0.86,
+    0.89,
+    0.88
+   ],
+   "band": [
+    0.7,
+    0.72,
+    0.72
+   ],
+   "roof": [
+    0.88,
+    0.9,
+    0.89
+   ],
+   "roof_alt": [
+    0.82,
+    0.85,
+    0.84
+   ],
+   "glass": [
+    0.8,
+    0.84,
+    0.83
+   ],
+   "frame": [
+    0.62,
+    0.64,
+    0.64
+   ],
+   "id": "greenhouse_vinyl",
+   "typology": "greenhouse",
+   "window": {
+    "w": 0.0,
+    "h": 0.0,
+    "sill": 0.0,
+    "bay_w": 0.0
+   },
+   "emissive_p": 0.0,
+   "band_every": 0,
+   "v2": {
+    "material": "none",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.0
+   }
+  },
+  {
+   "pattern": "plain",
+   "texture": "none",
+   "wall": [
+    0.62,
+    0.63,
+    0.64
+   ],
+   "band": [
+    0.5,
+    0.51,
+    0.52
+   ],
+   "roof": [
+    0.58,
+    0.6,
+    0.62
+   ],
+   "roof_alt": [
+    0.4,
+    0.52,
+    0.64
+   ],
+   "glass": [
+    0.3,
+    0.3,
+    0.3
+   ],
+   "frame": [
+    0.5,
+    0.51,
+    0.52
+   ],
+   "id": "canopy_metal",
+   "typology": "canopy",
+   "window": {
+    "w": 0.0,
+    "h": 0.0,
+    "sill": 0.0,
+    "bay_w": 0.0
+   },
+   "emissive_p": 0.0,
+   "band_every": 0,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.0
+   }
+  },
+  {
+   "pattern": "panel",
+   "texture": "none",
+   "wall": [
+    0.74,
+    0.76,
+    0.78
+   ],
+   "band": [
+    0.35,
+    0.48,
+    0.66
+   ],
+   "roof": [
+    0.62,
+    0.64,
+    0.66
+   ],
+   "roof_alt": [
+    0.4,
+    0.52,
+    0.66
+   ],
+   "glass": [
+    0.3,
+    0.35,
+    0.4
+   ],
+   "frame": [
+    0.4,
+    0.42,
+    0.44
+   ],
+   "id": "temporary_panel",
+   "typology": "temporary",
+   "window": {
+    "w": 1.0,
+    "h": 1.0,
+    "sill": 1.0,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.1,
+   "band_every": 0,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.0
+   }
+  },
+  {
+   "pattern": "plain",
+   "texture": "none",
+   "wall": [
+    0.56,
+    0.56,
+    0.55
+   ],
+   "band": [
+    0.7,
+    0.62,
+    0.3
+   ],
+   "roof": [
+    0.52,
+    0.52,
+    0.51
+   ],
+   "roof_alt": [
+    0.52,
+    0.52,
+    0.51
+   ],
+   "glass": [
+    0.3,
+    0.3,
+    0.3
+   ],
+   "frame": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "id": "construction",
+   "typology": "construction",
+   "window": {
+    "w": 0.0,
+    "h": 0.0,
+    "sill": 0.0,
+    "bay_w": 0.0
+   },
+   "emissive_p": 0.0,
+   "band_every": 0,
+   "v2": {
+    "material": "concrete_panel",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.0
+   }
+  },
+  {
+   "pattern": "punched",
+   "texture": "none",
+   "wall": [
+    0.74,
+    0.73,
+    0.7
+   ],
+   "band": [
+    0.52,
+    0.52,
+    0.51
+   ],
+   "roof": [
+    0.58,
+    0.58,
+    0.57
+   ],
+   "roof_alt": [
+    0.37,
+    0.52,
+    0.42
+   ],
+   "glass": [
+    0.28,
+    0.33,
+    0.38
+   ],
+   "frame": [
+    0.45,
+    0.45,
+    0.45
+   ],
+   "id": "other_plain",
+   "typology": "other",
+   "window": {
+    "w": 1.5,
+    "h": 1.5,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.3,
+   "band_every": 0,
+   "v2": {
+    "material": "plaster_paint",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.4
+   }
+  },
+  {
+   "typology": "detached",
+   "pattern": "punched",
+   "texture": "brick",
+   "wall": [
+    0.6,
+    0.34,
+    0.27
+   ],
+   "band": [
+    0.83,
+    0.81,
+    0.77
+   ],
+   "roof": [
+    0.31,
+    0.33,
+    0.37
+   ],
+   "roof_alt": [
+    0.47,
+    0.29,
+    0.23
+   ],
+   "glass": [
+    0.26,
+    0.31,
+    0.35
+   ],
+   "frame": [
+    0.85,
+    0.85,
+    0.83
+   ],
+   "id": "detached_redbrick",
+   "window": {
+    "w": 1.2,
+    "h": 1.2,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.45,
+   "band_every": 0,
+   "v2": {
+    "material": "brick_red",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.7
+   }
+  },
+  {
+   "typology": "detached",
+   "pattern": "punched",
+   "texture": "stone",
+   "wall": [
+    0.78,
+    0.74,
+    0.66
+   ],
+   "band": [
+    0.55,
+    0.52,
+    0.48
+   ],
+   "roof": [
+    0.31,
+    0.33,
+    0.37
+   ],
+   "roof_alt": [
+    0.42,
+    0.43,
+    0.44
+   ],
+   "glass": [
+    0.26,
+    0.31,
+    0.35
+   ],
+   "frame": [
+    0.35,
+    0.36,
+    0.37
+   ],
+   "id": "detached_stone",
+   "window": {
+    "w": 1.2,
+    "h": 1.2,
+    "sill": 0.9,
+    "bay_w": 3.0
+   },
+   "emissive_p": 0.45,
+   "band_every": 0,
+   "v2": {
+    "material": "stone_clad",
+    "ground_material": "none",
+    "accent": null,
+    "roof_coat_p": 0.5
+   }
+  }
+ ],
+ "materials": [
+  {
+   "key": "brick_red",
+   "tile_m": 1.6,
+   "tile_v": 1.07,
+   "cell": 0,
+   "rough_mean": 0.837,
+   "normal": 1.0
+  },
+  {
+   "key": "plaster_paint",
+   "tile_m": 2.5,
+   "tile_v": 2.5,
+   "cell": 1,
+   "rough_mean": 0.885,
+   "normal": 0.25
+  },
+  {
+   "key": "concrete_panel",
+   "tile_m": 3.0,
+   "tile_v": 3.0,
+   "cell": 2,
+   "rough_mean": 0.786,
+   "normal": 0.5
+  },
+  {
+   "key": "granite",
+   "tile_m": 1.2,
+   "tile_v": 1.2,
+   "cell": 3,
+   "rough_mean": 0.601,
+   "normal": 0.6
+  },
+  {
+   "key": "roof_tile",
+   "tile_m": 2.4,
+   "tile_v": 2.4,
+   "cell": 4,
+   "rough_mean": 0.763,
+   "normal": 0.6
+  },
+  {
+   "key": "roof_coat",
+   "tile_m": 3.0,
+   "tile_v": 3.0,
+   "cell": 5,
+   "rough_mean": 0.746,
+   "normal": 0.5
+  },
+  {
+   "key": "stone_clad",
+   "tile_m": 1.5,
+   "tile_v": 1.5,
+   "cell": 6,
+   "rough_mean": 0.624,
+   "normal": 0.5
+  },
+  {
+   "key": "tile_wall",
+   "tile_m": 2.0,
+   "tile_v": 2.0,
+   "cell": 7,
+   "rough_mean": 0.168,
+   "normal": 0.8
+  },
+  {
+   "key": "curtain_glass",
+   "tile_m": 3.0,
+   "tile_v": 3.0,
+   "cell": 8,
+   "rough_mean": 0.085,
+   "normal": 0.3
+  }
+ ]
+}

@@ -1,0 +1,250 @@
+{
+ "batch": "A(점: 전주·정류장·거리 소품) + B(선: 담장·대문·가림막) + C(옥상 설비·온실)",
+ "instances": 67405,
+ "rooftop": {
+  "buildings": 1124,
+  "skipped_landmark": 11,
+  "skipped_pitched": 0,
+  "skipped_no_footprint": 0,
+  "placed_buildings": 1013,
+  "requested": {
+   "ac_unit_1": 769,
+   "water_tank_v": 449,
+   "ac_unit_4": 1238,
+   "water_tank_h": 335,
+   "solar_row": 2071
+  },
+  "placed": {
+   "water_tank_v": 440,
+   "ac_unit_1": 764,
+   "ac_unit_4": 1082,
+   "water_tank_h": 318,
+   "solar_row": 1192
+  },
+  "missed": {
+   "water_tank_v": 9,
+   "water_tank_h": 13,
+   "solar_row": 122,
+   "ac_unit_4": 90,
+   "ac_unit_1": 5
+  }
+ },
+ "greenhouse": {
+  "greenhouses": 1540,
+  "skipped_small": 67,
+  "near_modules": 46152,
+  "ends": 48,
+  "far_chunks": 1985
+ },
+ "greenhouse_tiers": {
+  "cell_m": 125.0,
+  "switch_m": 150.0,
+  "far_chunk_m": 40.0
+ },
+ "by_group": {
+  "greenhouse": 46200,
+  "wall": 9617,
+  "rooftop": 3796,
+  "hoarding": 2567,
+  "greenhouse_far": 1985,
+  "small": 1975,
+  "large": 1265
+ },
+ "by_model": {
+  "greenhouse_vinyl_1m_lite": 41990,
+  "wall_concrete_1m": 7153,
+  "greenhouse_vinyl_end_lite": 3330,
+  "hoarding_1m": 2567,
+  "wall_brick_1m": 2107,
+  "greenhouse_vinyl_far": 1955,
+  "solar_row": 1192,
+  "tree_grate": 1169,
+  "utility_pole": 1099,
+  "ac_unit_4": 1082,
+  "greenhouse_glass_1m": 832,
+  "ac_unit_1": 764,
+  "bollard_stone": 554,
+  "water_tank_v": 440,
+  "water_tank_h": 318,
+  "gate_concrete_1m": 229,
+  "bollard_steel": 130,
+  "utility_pole_tr": 116,
+  "bench": 72,
+  "gate_brick_1m": 61,
+  "trash_bin": 50,
+  "greenhouse_glass_end": 48,
+  "gate_concrete_3m": 37,
+  "gate_brick_3m": 30,
+  "greenhouse_glass_far": 30,
+  "bus_shelter": 29,
+  "bus_stop_sign": 21
+ },
+ "tris_per_model": {
+  "ac_unit_1": 28,
+  "ac_unit_4": 112,
+  "bench": 96,
+  "bollard_steel": 108,
+  "bollard_stone": 58,
+  "bus_shelter": 164,
+  "bus_stop_sign": 46,
+  "gate_brick_1m": 72,
+  "gate_brick_3m": 160,
+  "gate_concrete_1m": 72,
+  "gate_concrete_3m": 160,
+  "greenhouse_glass_1m": 96,
+  "greenhouse_glass_end": 61,
+  "greenhouse_glass_far": 12,
+  "greenhouse_vinyl_1m_lite": 58,
+  "greenhouse_vinyl_end_lite": 37,
+  "greenhouse_vinyl_far": 12,
+  "hoarding_1m": 46,
+  "solar_row": 112,
+  "trash_bin": 68,
+  "tree_grate": 34,
+  "utility_pole": 176,
+  "utility_pole_tr": 332,
+  "wall_brick_1m": 20,
+  "wall_concrete_1m": 20,
+  "water_tank_h": 226,
+  "water_tank_v": 332
+ },
+ "tris_total": 3828048,
+ "wires": {
+  "polylines": 9375,
+  "points": 112500,
+  "by_kind": {
+   "고압 22.9 kV 배전선": 3294,
+   "저압·중성선": 2196,
+   "통신 케이블 다발": 3294,
+   "인입선": 591
+  },
+  "building_cross": {
+   "line": {
+    "kept": 1098,
+    "dropped": 75
+   },
+   "service_drop": {
+    "kept": 591,
+    "dropped": 46
+   },
+   "rule": "경간 도체를 2 m 간격으로 나눠 레지스트리 건물 상자(footprint × ground_z − 0.5 ~ ground_z + 높이, 다동은 조각) 안 점이 하나라도 있으면 경간째 뺌(인입선은 대상 동 처마 끝 1 m 제외)"
+  }
+ },
+ "groups": {
+  "large": {
+   "parent_m": 1000.0,
+   "leaf_m": 250.0,
+   "switch_m": 400.0
+  },
+  "small": {
+   "parent_m": 500.0,
+   "leaf_m": 125.0,
+   "switch_m": 220.0
+  },
+  "wall": {
+   "parent_m": 125.0,
+   "leaf_m": 125.0,
+   "switch_m": 150.0
+  },
+  "hoarding": {
+   "parent_m": 1000.0,
+   "leaf_m": 250.0,
+   "switch_m": 600.0
+  },
+  "rooftop": {
+   "parent_m": 500.0,
+   "leaf_m": 125.0,
+   "switch_m": 200.0
+  }
+ },
+ "tiles": 804,
+ "bytes": 13091868,
+ "max_tile_bytes": 231184,
+ "max_tile_instances": 1785,
+ "hidden_buildings": {
+  "shelter_canopy": 13,
+  "greenhouse": 1540
+ },
+ "shelter_pairs_to_sign": 4,
+ "total_bytes": 15596780,
+ "height_check": {
+  "bottom_minus_ground_m": {
+   "wall": {
+    "n": 9260,
+    "max": -0.484,
+    "p99": -0.5,
+    "p50": -0.501,
+    "min": -0.972
+   },
+   "gate": {
+    "n": 357,
+    "max": -0.043,
+    "p99": -0.05,
+    "p50": -0.217,
+    "min": -0.652
+   },
+   "hoarding": {
+    "n": 2567,
+    "max": -0.481,
+    "p99": -0.489,
+    "p50": -0.501,
+    "min": -1.073
+   }
+  },
+  "float_over_0.05": 0,
+  "sz": {
+   "wall": {
+    "n": 9260,
+    "max": 1.6,
+    "p99": 1.362,
+    "p50": 1.285,
+    "min": 1.269
+   },
+   "hoarding": {
+    "n": 2567,
+    "max": 1.568,
+    "p99": 1.494,
+    "p50": 1.261,
+    "min": 1.172
+   }
+  },
+  "wall_top_step_m": {
+   "n": 8661,
+   "max": 0.412,
+   "p99": 0.156,
+   "p50": 0.034,
+   "min": 0.0,
+   "over_0.15": 91
+  },
+  "hoarding_top_step_m": {
+   "n": 2548,
+   "max": 0.273,
+   "p99": 0.226,
+   "p50": 0.08,
+   "min": 0.0,
+   "over_0.15": 291
+  },
+  "gate_top_minus_wall_top_m": {
+   "n": 353,
+   "max": 0.3,
+   "p99": 0.3,
+   "p50": 0.3,
+   "min": 0.056,
+   "gates_with_neighbors": 353,
+   "over_0.3": 0
+  }
+ },
+ "ground": {
+  "mesh": "data/tiles/terrain_v2",
+  "level": 16,
+  "fingerprint": "de1207c622f9fd62",
+  "fallback": "DEM v2(data/processed/dem_v2.tif) → v1"
+ },
+ "validator": {
+  "numErrors": 0,
+  "numWarnings": 0,
+  "numInfos": 804,
+  "exit": 0
+ },
+ "seconds": 22.0
+}

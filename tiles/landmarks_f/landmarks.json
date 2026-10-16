@@ -1,0 +1,99 @@
+{
+ "version": 1,
+ "notes": [
+  "[samsung] 레지스트리 entity 5개 → glb 5개(D·E는 한 폴리곤이라 한 glb). building_part 행 없음 — 동 분해는 레시피(sites/samsung.py PLAN)에서.",
+  "[samsung] C동 glb가 유리 회랑 f485430e를 포함(covers) — 뷰어는 f485430e LOD도 숨겨야 함.",
+  "[samsung] Commons에 캠퍼스 사진 없음 → 외관은 정사영상 기반 일반형(흰 멀리언 격자 유리 커튼월 + 흰 파라펫).",
+  "[lg] 정사영상에서 124 m 타워 지붕이 격자 (−13.5, −11) m 밀려 찍힘(기복 변위) — 지붕 판독값을 되돌려 footprint와 맞춤.",
+  "[lg] Commons에 사진 없음 → 외관은 정사영상 기반 일반형(청색 유리 커튼월 + 흰 루버 왕관).",
+  "[kt] KT 연구개발센터: 대장 heit·GIS hg가 0이라 높이 근거가 레지스트리 층수 추정(21.1 m)뿐 — 실측(N13 임장 등) 후보.",
+  "[gugak] 9b Q1: 국악원은 AOI 안 1동(59a66f89 = 우면당)만. 예악당·국악박물관·국악누리동은 backlog 'AOI 밖 후보'.",
+  "[gugak] 서초동 740-4 대장 표제부는 in_aoi=False — 레지스트리 이름·높이가 대장과 어긋남(레지스트리 후속은 9b → -86).",
+  "[tunnel] 터널 갱구는 structure_id 키로 manifest에만(9b Q2). 북측 갱구는 AOI 밖 → backlog.",
+  "[tunnel] 축선 방향은 두 관 갱구 구간 방향의 평균(격자 기준 ≈ 112°).",
+  "[sac] 서초동 700 건축물대장(오페라하우스·음악당·한가람미술관)은 레지스트리와 매칭됐지만(층수·이름·연면적 = 대장) heit가 층당 5 m 상한(typology.valid_height)에 걸려 버려짐(9.4·7.7·5.8 m/층) → 레지스트리 높이는 층수×유형 추정(24.0/19.5/19.5 m). 히어로는 대장 heit(46.9/30.709/23.3 m) 사용. 정정 후보는 registry_corrections.md(DB 수정은 Phase 5 뒤 -86).",
+  "[gwanmun] 관문사: 레지스트리 높이 31.5 m(층수 추정)는 대장 heit 43.0 m(용마루)와 다름 — 레지스트리 후속은 9b → -86.",
+  "[bridges] 교량은 structure_id 키로 manifest에만(9b Q2) — landmark_override 행 없음. 뷰어는 같은 자리 도로·교량 LOD를 숨길 필요 없음(교량 LOD 없음).",
+  "[bridges] DEM v1은 하도를 얕게 표현(우면교 아래 17.9 m) — 교각은 DEM − 1 m까지 내려 지형에 묻는다."
+ ],
+ "updated": "2026-10-12T03:01:35+00:00",
+ "items": {
+  "892b8321-d85d-5bdd-acf4-47fcd984f67d": {
+   "kind": "building",
+   "name": "삼성전자 서울R&D캠퍼스 F동",
+   "site": "samsung",
+   "glb": "samsung/892b8321-d85d-5bdd-acf4-47fcd984f67d.glb",
+   "origin": {
+    "x": 202045.2,
+    "y": 540790.3,
+    "ground_z": 30.22,
+    "crs": "EPSG:5186",
+    "z_datum": "KR_INCHEON(≈EGM2008)",
+    "lon": 127.023118776,
+    "lat": 37.466535866,
+    "geoid_n": 23.251,
+    "h_ell": 53.471,
+    "yaw": 0.01406
+   },
+   "yaw": 0.01406,
+   "tris": 588,
+   "verts": 1148,
+   "bytes": 1115324,
+   "bounds_yup": [
+    [
+     67.241,
+     -1.22,
+     2.359
+    ],
+    [
+     139.799,
+     50.86,
+     72.053
+    ]
+   ],
+   "covers": [],
+   "height_source": "bldrgst_heit",
+   "height_used": 51.08,
+   "height_registry": 40.6,
+   "floors": {
+    "above": 10,
+    "below": 5
+   },
+   "refs_license": [
+    {
+     "title": "NGII 2025 정사영상 25 cm",
+     "url": "data/raw/ngii/ortho",
+     "license": "공공누리(이용허락 제한 없음, data.go.kr 15059919)",
+     "used_for": "동 분해(타워·저층 날개·연결부), 옥상 설비 마당·정원·태양광 위치, 흰 파라펫"
+    },
+    {
+     "title": "건축물대장 표제부(우면동 678·679·689)",
+     "url": "data/interim/bldrgst_title.parquet",
+     "license": "공공누리(국토교통부 건축HUB)",
+     "used_for": "heit 50.33/53.38/51.08 m, 지상 10층·지하 5층, 철근콘크리트"
+    },
+    {
+     "title": "OpenStreetMap 'Samsung Seoul R&D Campus' A,B·C·D,E·F동",
+     "url": "https://www.openstreetmap.org/way/459488207",
+     "license": "ODbL-1.0",
+     "used_for": "동 이름 대조(A,B / C / D,E / F)·height 교차 확인(50/53/51)"
+    }
+   ],
+   "textures": [
+    "Concrete034",
+    "Facade001",
+    "Facade006",
+    "Grass004",
+    "Plaster001"
+   ],
+   "texture_license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "model_source": "대장 heit + 정사영상(타워 42×60 m · 옥상 정원 · 남동 태양광)",
+   "notes": [
+    "대장 F동 heit 51.08 m(설비 차폐벽 꼭대기로 둠), 층고 ≈ 4.59 m(추정)",
+    "옥상 태양광 줄 2.4 m 간격(정사영상 판독)"
+   ],
+   "built_at": "2026-10-08T02:50:58+0900"
+  }
+ },
+ "note_campus": "F동만 따로(철거 전/후 토글)"
+}

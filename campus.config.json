@@ -1,0 +1,204 @@
+{
+ "_doc": "캠퍼스 뷰어 설정(한 곳). 앱은 모든 데이터를 /tiles/… 로 읽는다. 배포 = dist 내용 + tiles/ 폴더를 같은 곳에 두고 정적 서버 하나. 개발 서버(npm run dev)는 dev_mounts로 /tiles 아래를 디스크 폴더에 연결한다(긴 접두어 먼저). Tile·Data 세션 산출이 나오면 dev_mounts와 layers 경로만 바꾼다.",
+ "dev_mounts": {
+  "/tiles/imagery_after": "../exports/campus_imagery/after",
+  "/tiles/f_site.geojson": "../exports/campus_imagery/f_site.geojson",
+  "/tiles/tex": "../data/tiles/tex",
+  "/tiles": "../exports/campus",
+  "/models": "./public/models"
+ },
+ "layers": {
+  "terrain": "/tiles/terrain/",
+  "imagery_before": {
+   "url": "/tiles/imagery_before/{z}/{x}/{y}.webp",
+   "minzoom": 12,
+   "maxzoom": 19
+  },
+  "imagery_after": {
+   "url": "/tiles/imagery_after/{z}/{x}/{y}.webp",
+   "minzoom": 12,
+   "maxzoom": 19
+  },
+  "buildings": "/tiles/buildings_lod2b/tileset.json",
+  "landmarks": "/tiles/landmarks/tileset.json",
+  "landmarks_f": "/tiles/landmarks_f/tileset.json",
+  "trees": "/tiles/trees2",
+  "props": {
+   "url": "/tiles/props_r7/tileset.json",
+   "hidden_url": "/tiles/props_r7/hidden.json",
+   "wires_url": "/tiles/props_r7/wires"
+  },
+  "vehicles": {
+   "url": "/tiles/traffic_r8/tileset.json",
+   "palette_url": "/tiles/traffic_r8/palette.json"
+  },
+  "roads": "/tiles/roads/tileset.json",
+  "f_site": "/tiles/f_site.geojson",
+  "f_tower": "/models/f_tower.glb",
+  "imagery_rect": [
+   127.02034622414082,
+   37.46346887198826,
+   127.02712992610023,
+   37.467975290843995
+  ]
+ },
+ "bbox": {
+  "crs": "EPSG:5186",
+  "x": [
+   201800,
+   202400
+  ],
+  "y": [
+   540450,
+   540950
+  ],
+  "wgs84": [
+   127.02034622414082,
+   37.46346887198826,
+   127.02712992610023,
+   37.467975290843995
+  ]
+ },
+ "f": {
+  "entity_id": "892b8321-d85d-5bdd-acf4-47fcd984f67d",
+  "name": "삼성전자 서울R&D캠퍼스 F동",
+  "center": {
+   "x": 202148.71,
+   "y": 540753.09,
+   "lon": 127.0242888,
+   "lat": 37.4662004,
+   "ground_z": 30.0,
+   "geoid_n": 23.251,
+   "h_ell": 53.251,
+   "_ground": "DEM v2.4(2 m, KR_INCHEON) 발자국 중심 표본 30.0 m + 지오이드고 23.251 m"
+  },
+  "yaw_deg": 0.014,
+  "size_m": [
+   59.8,
+   41.0
+  ],
+  "height_m": 51.08,
+  "footprint": [
+   [
+    127.0238788,
+    37.4662434
+   ],
+   [
+    127.0243274,
+    37.4659215
+   ],
+   [
+    127.0243851,
+    37.4658864
+   ],
+   [
+    127.0244145,
+    37.4659054
+   ],
+   [
+    127.0246989,
+    37.4661579
+   ],
+   [
+    127.0242505,
+    37.4664784
+   ],
+   [
+    127.0241924,
+    37.4665144
+   ],
+   [
+    127.0241627,
+    37.4664953
+   ]
+  ],
+  "tower_box_height_m": 51.08,
+  "_yaw": "EPSG:5186 도북 → 진북 자오선 수렴각(랜드마크 manifest yaw와 같은 값, 도). 모델은 5186 격자 축(+X 동 · −Z 북)으로 만든다",
+  "orientation_deg": 42.1,
+  "footprint_area_m2": 2493.6,
+  "_source": "exports/campus/campus.json f_building(Tile 세션) — f_site.geojson이 오면 그 값을 우선",
+  "hide_ids": [
+   "892b8321-d85d-5bdd-acf4-47fcd984f67d"
+  ]
+ },
+ "time": {
+  "date": "2026-10-15",
+  "hour": 14
+ },
+ "fog_density": 0.0009,
+ "presets": {
+  "default": "campus",
+  "list": {
+   "campus": {
+    "label": "캠퍼스 전체(남서 조감)",
+    "lon": 127.0232,
+    "lat": 37.4664,
+    "heading": 35,
+    "pitch": -32,
+    "range": 750
+   },
+   "f_site": {
+    "label": "F동 부지(가까이)",
+    "lon": 127.0242888,
+    "lat": 37.4662004,
+    "heading": 20,
+    "pitch": -35,
+    "range": 260
+   },
+   "f_north": {
+    "label": "F동 북쪽에서",
+    "lon": 127.0242888,
+    "lat": 37.4662004,
+    "heading": 185,
+    "pitch": -25,
+    "range": 320
+   },
+   "top": {
+    "label": "위에서",
+    "lon": 127.0236,
+    "lat": 37.4664,
+    "heading": 0,
+    "pitch": -89,
+    "range": 900
+   },
+   "eye": {
+    "label": "캠퍼스 앞 눈높이",
+    "lon": 127.0236,
+    "lat": 37.4652,
+    "heading": 20,
+    "pitch": -2,
+    "eye": 1.6
+   },
+   "f_eye": {
+    "label": "F동 정면(눈높이)",
+    "lon": 127.024345,
+    "lat": 37.465705,
+    "heading": 355,
+    "pitch": 12,
+    "eye": 1.6
+   },
+   "f_top": {
+    "label": "F동 상공(수직)",
+    "lon": 127.0242888,
+    "lat": 37.4662004,
+    "heading": 0,
+    "pitch": -89.5,
+    "range": 300
+   },
+   "f_west_eye": {
+    "label": "F동 서남서 눈높이(D·E동과 B동 사이)",
+    "lon": 127.0234576,
+    "lat": 37.4656798,
+    "heading": 52,
+    "pitch": 6,
+    "eye": 1.6
+   }
+  }
+ },
+ "_dev_mounts_full_aoi": {
+  "/tiles": "../data/tiles",
+  "_doc": "Tile 산출 전처럼 우면동 전체 타일로 돌리려면 dev_mounts의 /tiles를 이것으로, layers는 terrain_v2 · imagery · landmarks(landmarks_f null)로"
+ },
+ "haze_color": "#c6d0d8",
+ "_haze": "원경: 지구본은 imagery_rect(캠퍼스 범위) 안에서만 그리고 바깥은 haze_color 배경 + Cesium 안개(fog_density). 건물 · 랜드마크 · 수목 · 도로 타일도 범위 밖을 잘라낸다"
+}

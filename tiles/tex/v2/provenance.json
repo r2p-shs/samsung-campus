@@ -1,0 +1,196 @@
+{
+ "generated_at": "2026-10-08T07:48:42+00:00",
+ "cell": 512,
+ "pad": 32,
+ "atlas": "normal_atlas.png",
+ "atlas_sha256": "d0b09cf0c36031b580a5dceff604782a56c2acadddd37534801ba655c9d8dda7",
+ "gpu_bytes": 53673981,
+ "gpu_mb": 51.2,
+ "samplers": 10,
+ "materials": {
+  "brick_red": {
+   "asset": "Bricks059",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Bricks059_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "source_files": {
+    "Color": {
+     "name": "Bricks059_1K-JPG_Color.jpg",
+     "sha256": "22b53ec9143b348ae26ed958cdfaa8977195c8daf534dc219f72dd10f2728e7a"
+    },
+    "NormalGL": {
+     "name": "Bricks059_1K-JPG_NormalGL.jpg",
+     "sha256": "0f313dae999ac33be4322b8e80a6877d455b4793bea3e9a83732a071bd92c436"
+    },
+    "Roughness": {
+     "name": "Bricks059_1K-JPG_Roughness.jpg",
+     "sha256": "58b905709e5d42451ab5aede42b386ceb442a21f979bb308eff77336db712b84"
+    }
+   },
+   "zip_sha256": "847dd2e4932563bbb67fdc2bad3cc08db72d74b3e81d242f31b663d8a3ea744b",
+   "file": "brick_red.png",
+   "res": 1024,
+   "var_cap": 0.35,
+   "stored_mean": 0.5,
+   "stored_p01_p99": [
+    0.429,
+    0.675
+   ],
+   "rough_mean": 0.837,
+   "sha256": "fbfb50df3951140af81bc18952674a1486517a6a4c316109f73d9d570e54787a",
+   "atlas_cell": 0
+  },
+  "plaster_paint": {
+   "asset": "Plaster001",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Plaster001_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "source_files": null,
+   "zip_sha256": null,
+   "file": "plaster_paint.png",
+   "res": 1024,
+   "var_cap": 0.15,
+   "stored_mean": 0.5001,
+   "stored_p01_p99": [
+    0.472,
+    0.528
+   ],
+   "rough_mean": 0.885,
+   "sha256": "bfe1620e73668355d349af6950556f909fa2154e4c30f5338b2ae3a12cd399dc",
+   "atlas_cell": 1
+  },
+  "concrete_panel": {
+   "asset": "Concrete034",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Concrete034_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "source_files": null,
+   "zip_sha256": null,
+   "file": "concrete_panel.png",
+   "res": 1024,
+   "var_cap": 0.2,
+   "stored_mean": 0.5005,
+   "stored_p01_p99": [
+    0.459,
+    0.532
+   ],
+   "rough_mean": 0.786,
+   "sha256": "fbaf3c056f1d439e848a6625e15d6a249fc7690433097bd78d3c5db1bba88c57",
+   "atlas_cell": 2
+  },
+  "granite": {
+   "asset": "Granite002A",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Granite002A_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "source_files": null,
+   "zip_sha256": null,
+   "file": "granite.png",
+   "res": 1024,
+   "var_cap": 0.2,
+   "stored_mean": 0.4999,
+   "stored_p01_p99": [
+    0.4,
+    0.567
+   ],
+   "rough_mean": 0.601,
+   "sha256": "d9347e066d54f6398aa8bcde3d2a125344b2e7ecb3593101b0c4dde1f9dbecd0",
+   "atlas_cell": 3
+  },
+  "roof_tile": {
+   "asset": "RoofingTiles009",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=RoofingTiles009_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "source_files": null,
+   "zip_sha256": null,
+   "file": "roof_tile.png",
+   "res": 1024,
+   "var_cap": 0.35,
+   "stored_mean": 0.4999,
+   "stored_p01_p99": [
+    0.379,
+    0.676
+   ],
+   "rough_mean": 0.763,
+   "sha256": "422450adacf09510d2ecbe382ea766ebdc8c132e38ef203e418b996f417ca2a1",
+   "atlas_cell": 4
+  },
+  "roof_coat": {
+   "asset": "Concrete044A",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Concrete044A_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "source_files": null,
+   "zip_sha256": null,
+   "file": "roof_coat.png",
+   "res": 1024,
+   "var_cap": 0.15,
+   "stored_mean": 0.4999,
+   "stored_p01_p99": [
+    0.427,
+    0.562
+   ],
+   "rough_mean": 0.746,
+   "sha256": "fc4f8cb0895374c1f36e9536ad8ce3b60b67de51ab18a8ae1a51b0725444067d",
+   "atlas_cell": 5
+  },
+  "stone_clad": {
+   "asset": "Travertine009",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Travertine009_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "source_files": null,
+   "zip_sha256": null,
+   "file": "stone_clad.png",
+   "res": 512,
+   "var_cap": 0.2,
+   "stored_mean": 0.5,
+   "stored_p01_p99": [
+    0.457,
+    0.548
+   ],
+   "rough_mean": 0.624,
+   "sha256": "d2846c9d1de4f0010ba7891e19eefe0db16831cdbe1caf693e2ccc20f10155d7",
+   "atlas_cell": 6
+  },
+  "tile_wall": {
+   "asset": "Tiles107",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Tiles107_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "source_files": null,
+   "zip_sha256": null,
+   "file": "tile_wall.png",
+   "res": 512,
+   "var_cap": 0.2,
+   "stored_mean": 0.4995,
+   "stored_p01_p99": [
+    0.399,
+    0.512
+   ],
+   "rough_mean": 0.168,
+   "sha256": "30612a7a04f724d7f40cdff464f60c13345dbc7e596617efe4c351b108bc6840",
+   "atlas_cell": 7
+  },
+  "curtain_glass": {
+   "asset": "glass_waviness",
+   "source": "procedural",
+   "url": null,
+   "license": "생성(이 저장소 코드, seed 고정)",
+   "source_files": {},
+   "zip_sha256": null,
+   "file": "curtain_glass.png",
+   "res": 512,
+   "var_cap": 0.0,
+   "stored_mean": 0.5,
+   "stored_p01_p99": [
+    0.5,
+    0.5
+   ],
+   "rough_mean": 0.085,
+   "sha256": "3c315c080c7c1d5b52de6d0599c0d8ddb3d4fe3012e99992eee8b805bffcfd25",
+   "atlas_cell": 8
+  }
+ }
+}

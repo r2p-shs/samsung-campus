@@ -1,0 +1,375 @@
+{
+ "generated_at": "2026-10-16T16:12:36+0900",
+ "aoi": "samsung_campus",
+ "layers": [
+  {
+   "id": "terrain",
+   "group": "base",
+   "type": "terrain",
+   "visible": true,
+   "sources": [
+    {
+     "source_id": "smap_openlab",
+     "name": "S-Map 오픈랩 → 1:1000 수치지형도 Ver2.0 11레이어 (3D 자산 없음)",
+     "license": "S-Map 오픈랩 약관 제11조 출처표시"
+    },
+    {
+     "source_id": "seoul_contour",
+     "name": "서울시 등고선·경사도 SHP (OA-22241) — 지형 1차",
+     "license": "공공누리 1유형"
+    },
+    {
+     "source_id": "glo30",
+     "name": "Copernicus GLO-30 DSM",
+     "license": "Copernicus DEM 라이선스 (출처표기)"
+    }
+   ],
+   "private": true,
+   "credit": "지형: S-Map 오픈랩·국토지리정보원 1:1000 등고선(비공개 파생) · 서울시 등고선(OA-22241) · Copernicus DEM GLO-30 © DLR/Airbus, EU/ESA",
+   "note": "1:1000 등고선 파생 → 로컬·비공개 전용(NOTICE.txt). 등고선 자체는 표출하지 않는다",
+   "title": "지형 (DEM v2.4 · 양재천·우면천 하도)",
+   "v1": {
+    "url": "/tiles/terrain/",
+    "files": 1190,
+    "bytes": 4556974
+   },
+   "url": "/tiles/terrain/",
+   "files": 167,
+   "bytes": 1108732
+  },
+  {
+   "id": "imagery_before",
+   "title": "정사영상(철거 전, 공개판)",
+   "group": "base",
+   "type": "imagery",
+   "extent": {
+    "west": 127.02034622414082,
+    "south": 37.46346887198826,
+    "east": 127.02712992610023,
+    "north": 37.467975290843995,
+    "minzoom": 12,
+    "maxzoom": 19,
+    "format": "webp",
+    "scheme": "xyz",
+    "attribution": "국토지리정보원 정사영상(2025)",
+    "note": "imagery_public 잘라낸 판(철거 전) — bbox 5186 [201800.0, 540450.0, 202400.0, 540950.0]"
+   },
+   "visible": true,
+   "sources": [
+    {
+     "source_id": "ngii_ortho",
+     "name": "NGII 정사영상 (12/25 cm, 1:5000 도엽 TIF)",
+     "license": "제한 없음 + 보안규정(공개 배포 ≤ 25 cm)"
+    }
+   ],
+   "credit": "영상: 국토지리정보원 정사영상(2025)",
+   "note": "기본은 원본(imagery_raw), ?imagery=inpaint는 캐노피 채움본(imagery)",
+   "url": "/tiles/imagery_before/{z}/{x}/{y}.webp",
+   "files": 156,
+   "bytes": 1764391
+  },
+  {
+   "id": "buildings",
+   "title": "건물 LOD1 (레지스트리)",
+   "group": "3d",
+   "type": "3dtiles",
+   "visible": true,
+   "private": true,
+   "sources": [
+    {
+     "source_id": "smap_openlab",
+     "name": "S-Map 오픈랩 → 1:1000 수치지형도 Ver2.0 11레이어 (3D 자산 없음)",
+     "license": "S-Map 오픈랩 약관 제11조 출처표시"
+    },
+    {
+     "source_id": "vworld_gis_building",
+     "name": "GIS건물통합정보 (AL_D010, 1차 footprint·높이)",
+     "license": "CC BY (공공누리 1유형)"
+    },
+    {
+     "source_id": "vworld_ned_bldgis",
+     "name": "GIS건물통합정보·건물일반정보 WFS (VWorld NED dt_d010/dt_d162)",
+     "license": "이용허락범위 제한 없음 / VWorld 약관 제19조"
+    },
+    {
+     "source_id": "bldrgst",
+     "name": "건축HUB 건축물대장 (표제부·총괄표제부·층별개요)",
+     "license": "이용허락범위 제한 없음"
+    },
+    {
+     "source_id": "kapt",
+     "name": "K-apt 공동주택 단지 목록·기본·상세 (15057332/15058453)",
+     "license": "제한 없음"
+    },
+    {
+     "source_id": "osm",
+     "name": "OpenStreetMap (Geofabrik south-korea + AOI 추출)",
+     "license": "ODbL 1.0"
+    }
+   ],
+   "credit": "건물: 서울특별시 S-Map 오픈랩(1:1000 수치지형도) · 국토교통부 GIS건물통합정보·건축물대장 · K-apt · © OpenStreetMap contributors · 텍스처 ambientCG(CC0)",
+   "note": "공개 footprint·공개 높이 파생 LOD1 — 공개 배포 전 해석 확인(plan §3.5), 지금은 로컬 전용",
+   "hidden": [
+    {
+     "entity_id": "e5fe4ca9-f6a4-53aa-a94a-70a302f405e3",
+     "reason": "DEM v2.4 회랑 안 소형 canopy(6 m², 바우뫼로 보도 옆), ground_z v2.3 — 지형 약 3.5 m 아래",
+     "since": "2026-10-11 terrain v2.4 (de1207c622f9fd62)"
+    }
+   ],
+   "url": "/tiles/buildings_lod2b/tileset.json",
+   "lod1_url": "/tiles/buildings/tileset.json",
+   "files": 24,
+   "bytes": 12801575
+  },
+  {
+   "id": "landmarks",
+   "title": "삼성 R&D 캠퍼스 A·B·C·D·E동",
+   "group": "3d",
+   "type": "3dtiles",
+   "visible": true,
+   "private": true,
+   "sources": [
+    {
+     "source_id": "bldrgst",
+     "name": "건축HUB 건축물대장 (표제부·총괄표제부·층별개요)",
+     "license": "이용허락범위 제한 없음"
+    },
+    {
+     "source_id": "osm",
+     "name": "OpenStreetMap (Geofabrik south-korea + AOI 추출)",
+     "license": "ODbL 1.0"
+    }
+   ],
+   "credit": "랜드마크: 자체 모델(Blender, 평면 NGII 정사영상 공공누리 · 높이 건축물대장) · 텍스처 ambientCG(CC0)",
+   "note": "켜면 해당 LOD1 동(landmarks.json 키 + covers)을 숨긴다. 바닥 ground_z는 DEM v1 파생 → 로컬 전용. 외관은 열람 참고 사진의 파라미터만",
+   "url": "/tiles/landmarks/tileset.json",
+   "manifest_url": "/tiles/landmarks/landmarks.json",
+   "files": 6,
+   "bytes": 3335639
+  },
+  {
+   "id": "landmarks_f",
+   "title": "삼성 R&D 캠퍼스 F동(철거 대상)",
+   "group": "3d",
+   "type": "3dtiles",
+   "visible": true,
+   "private": true,
+   "sources": [
+    {
+     "source_id": "bldrgst",
+     "name": "건축HUB 건축물대장 (표제부·총괄표제부·층별개요)",
+     "license": "이용허락범위 제한 없음"
+    },
+    {
+     "source_id": "osm",
+     "name": "OpenStreetMap (Geofabrik south-korea + AOI 추출)",
+     "license": "ODbL 1.0"
+    }
+   ],
+   "credit": "랜드마크: 자체 모델(Blender, 평면 NGII 정사영상 공공누리 · 높이 건축물대장) · 텍스처 ambientCG(CC0)",
+   "note": "켜면 해당 LOD1 동(landmarks.json 키 + covers)을 숨긴다. 바닥 ground_z는 DEM v1 파생 → 로컬 전용. 외관은 열람 참고 사진의 파라미터만",
+   "url": "/tiles/landmarks_f/tileset.json",
+   "manifest_url": "/tiles/landmarks_f/landmarks.json",
+   "toggle": true,
+   "entity_id": "892b8321-d85d-5bdd-acf4-47fcd984f67d",
+   "files": 3,
+   "bytes": 1121238
+  },
+  {
+   "id": "trees",
+   "group": "3d",
+   "type": "3dtiles",
+   "visible": true,
+   "private": true,
+   "note": "임상도(공공누리 3유형) 파라미터 파생 배치 → 로컬·비공개 전용. 켜면 바닥 영상은 캐노피 채움(inpaint) 판",
+   "title": "수목 (임상도 2025 · 비오톱 · 캐노피 · 가로수·공원수 추정)",
+   "sources": [
+    {
+     "source_id": "fgis_forest_type",
+     "name": "산림청 임상도 1:5000 (2025판·2013판, 서초구·과천시)",
+     "license": "공공누리 3유형(변경금지) — 분석 입력만, 가공 재배포 금지"
+    },
+    {
+     "source_id": "seoul_biotope",
+     "name": "서울 도시생태현황도 10종 (현존식생도·토지이용·불투수·비오톱)",
+     "license": "공공누리 1유형"
+    },
+    {
+     "source_id": "worldcover",
+     "name": "ESA WorldCover 10 m (2021 v200)",
+     "license": "CC BY 4.0"
+    },
+    {
+     "source_id": "osm",
+     "name": "OpenStreetMap (Geofabrik south-korea + AOI 추출)",
+     "license": "ODbL 1.0"
+    },
+    {
+     "source_id": "meta_canopy",
+     "name": "Meta·WRI 1 m 캐노피 높이 지도 (High Resolution Canopy Height Maps, Tolan et al. 2024) — AOI bbox + 500 m",
+     "license": "CC BY 4.0 (Meta·WRI 2024, 원 영상 © Maxar) — 출처표기"
+    },
+    {
+     "source_id": "smap_openlab",
+     "name": "S-Map 오픈랩 → 1:1000 수치지형도 Ver2.0 11레이어 (3D 자산 없음)",
+     "license": "S-Map 오픈랩 약관 제11조 출처표시"
+    }
+   ],
+   "credit": "수목: 산림청 임상도(2025, 파라미터만) · 서울시 도시생태현황도 · ESA WorldCover · © OpenStreetMap contributors · 모델 자체 제작(trees_v2) · 잎·수피 텍스처 ambientCG(CC0) · 가로수·공원수 위치는 추정(절차 배치: S-Map 오픈랩 보도·도로, © OpenStreetMap contributors 교량·터널, 서울 비오톱) · 원경 숲 위치: ESA WorldCover 2021(CC BY 4.0)",
+   "street_estimated": 3309,
+   "v1": {
+    "url": "/tiles/trees/tileset.json",
+    "count": 186928,
+    "files": 741,
+    "bytes": 39139604,
+    "credit": "수목: 산림청 임상도(2025, 파라미터만) · 서울시 도시생태현황도 · ESA WorldCover · © OpenStreetMap contributors · 모델 Kenney(CC0)"
+   },
+   "url": "/tiles/trees2/tileset.json",
+   "files": 1650,
+   "bytes": 36291014
+  },
+  {
+   "id": "props",
+   "title": "소품 (전주·전선·정류장·담장·옥상 설비·온실 등, R7 · 위치 추정)",
+   "group": "3d",
+   "type": "3dtiles",
+   "visible": true,
+   "private": true,
+   "credit": "소품: 거리 가구·소품·옥상 설비·온실 모델 자체 제작(절차 생성) · 텍스처 ambientCG(CC0) · 위치는 추정(S-Map 오픈랩 · © OpenStreetMap contributors · 서울 열린데이터광장 버스정류소 · VWorld 용도지역 · 건축물대장 용도 · 국토지리정보원 정사영상(2025) 판독)",
+   "note": "배치는 전부 규칙 추정(-data). 켜면 온실 소품이 대체한 레지스트리 온실 동·정류장 쉘터 상자를 숨긴다(hidden.json). S-Map 1:1000·OSM 파생 → 로컬·비공개",
+   "url": "/tiles/props_r7/tileset.json",
+   "wires_url": "/tiles/props_r7/wires",
+   "hidden_url": "/tiles/props_r7/hidden.json",
+   "files": 137,
+   "bytes": 2241623
+  },
+  {
+   "id": "traffic",
+   "title": "차량·보행자 (주차·주행·보행, R8 · 위치 추정)",
+   "group": "3d",
+   "type": "3dtiles",
+   "visible": true,
+   "private": true,
+   "credit": "차량·보행자: 모델 자체 제작(절차 생성) · 위치는 추정(서울시 TOPIS 소통 정보 · 서울 열린데이터광장 교통량 · S-Map 오픈랩 · © OpenStreetMap contributors · 국토지리정보원 정사영상(2025) 판독)",
+   "note": "주행 차는 지금 시각에 가까운 시간대(8·14·21시) 하나만 보인다. 버스는 2026-10-09 그 시각 실제 위치(TOPIS, 차도에 붙임). 그 밖 배치는 규칙 추정(-data) → 로컬·비공개",
+   "url": "/tiles/traffic_r8/tileset.json",
+   "palette_url": "/tiles/traffic_r8/palette.json",
+   "files": 97,
+   "bytes": 3350715
+  },
+  {
+   "id": "road_mesh",
+   "title": "도로 3D (노면·보도·표시·교량·신호등, R4)",
+   "group": "3d",
+   "type": "3dtiles",
+   "visible": true,
+   "private": true,
+   "sse": 4,
+   "replaces": [
+    "roads",
+    "sidewalks",
+    "crossings"
+   ],
+   "credit": "도로 3D: S-Map 오픈랩 · 국토지리정보원 1:1000 · © OpenStreetMap contributors(ODbL) · 서울특별시 신호등 공공데이터 · 텍스처 ambientCG(CC0) · 차선·정지선·가로등 위치는 규칙 추정",
+   "note": "S-Map 1:1000 파생 + OSM 파생 데이터베이스(ODbL) → 로컬·비공개. 지형 v2.2 위에 만든 판(v1에선 ±0.1~1 m 어긋남)",
+   "url": "/tiles/roads/tileset.json",
+   "files": 71,
+   "bytes": 5513120
+  },
+  {
+   "id": "streetlights",
+   "title": "가로등 (추정 위치 · 밤에만)",
+   "group": "3d",
+   "type": "lights",
+   "visible": true,
+   "features": 2435,
+   "by_class": {
+    "residential": 878,
+    "service": 524,
+    "tertiary": 386,
+    "trunk": 286,
+    "primary": 209,
+    "trunk_link": 53,
+    "secondary": 33,
+    "primary_link": 26,
+    "unclassified": 23,
+    "tertiary_link": 11,
+    "busway": 5,
+    "living_street": 1
+   },
+   "sources": [
+    {
+     "source_id": "osm",
+     "name": "OpenStreetMap (Geofabrik south-korea + AOI 추출)",
+     "license": "ODbL 1.0"
+    }
+   ],
+   "credit": "가로등: 위치 추정 — © OpenStreetMap contributors 도로 중심선에서 등급별 간격 배치(실측 아님)",
+   "note": "실측 가로등·보안등 자료가 아직 없어 도로 등급별 간격(28~40 m)·옆 거리로 추정했다. 태양 고도 1° 아래에서 켜진다",
+   "url": "/tiles/vectors/streetlights.geojson",
+   "count": 293
+  },
+  {
+   "id": "water_v2",
+   "title": "물 (양재천·우면천 저수로, R3)",
+   "group": "ground",
+   "type": "geojson",
+   "style": "flow_water",
+   "visible": true,
+   "private": true,
+   "filter": {
+    "kind": "surface"
+   },
+   "sources": [
+    {
+     "source_id": "vworld_wfs_river",
+     "name": "하천망 WFS lt_c_wkmstrm",
+     "license": "공공누리 1유형"
+    },
+    {
+     "source_id": "osm",
+     "name": "OpenStreetMap (Geofabrik south-korea + AOI 추출)",
+     "license": "ODbL 1.0"
+    }
+   ],
+   "credit": "물(R3): VWorld 실폭하천(공공누리 1유형) · © OpenStreetMap contributors",
+   "note": "하상(bed_z)·둔치(bank_z)·수면(surface_h) 높이는 DEM 1:1000 파생 → 로컬 전용. 물 면은 구간마다 평평한 수면(지형 메시 기준 높이)",
+   "url": "/tiles/vectors/water_v2.geojson",
+   "count": 0
+  },
+  {
+   "id": "water",
+   "title": "수계 (양재천·수면, 하천망 면)",
+   "group": "ground",
+   "type": "geojson",
+   "style": "water",
+   "visible": false,
+   "private": true,
+   "features": 5,
+   "sources": [
+    {
+     "source_id": "vworld_wfs_river",
+     "name": "하천망 WFS lt_c_wkmstrm",
+     "license": "공공누리 1유형"
+    },
+    {
+     "source_id": "osm",
+     "name": "OpenStreetMap (Geofabrik south-korea + AOI 추출)",
+     "license": "ODbL 1.0"
+    }
+   ],
+   "credit": "수계: VWorld 하천망(공공누리 1유형) · © OpenStreetMap contributors",
+   "url": "/tiles/vectors/water.geojson",
+   "count": 2
+  },
+  {
+   "id": "ground_cover",
+   "title": "지면 피복(0.5 m 분류 · R4b)",
+   "group": "base",
+   "type": "raster_class",
+   "url": "/tiles/vectors/ground_class_05m",
+   "geojson_url": "/tiles/vectors/ground_cover.geojson",
+   "visible": true
+  }
+ ]
+}

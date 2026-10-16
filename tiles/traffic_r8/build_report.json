@@ -1,0 +1,131 @@
+{
+ "instances": 4989,
+ "by_cat": {
+  "person": 2492,
+  "moving": 2409,
+  "parked": 88
+ },
+ "moving_by_hour": {
+  "8": 805,
+  "14": 962,
+  "21": 642
+ },
+ "visible_max": 3542,
+ "by_model": {
+  "sedan": 858,
+  "adult_f_walk": 744,
+  "suv": 690,
+  "adult_m_walk": 672,
+  "adult_f_stand": 385,
+  "adult_m_stand": 346,
+  "child_walk": 225,
+  "taxi": 214,
+  "compact": 204,
+  "hatchback": 179,
+  "truck_1t_box": 135,
+  "elder_stand": 120,
+  "delivery_van": 101,
+  "truck_1t_flat": 96,
+  "village_bus": 13,
+  "city_bus": 7
+ },
+ "colors": 50,
+ "tris_per_model": {
+  "adult_f_stand_lod0": 516,
+  "adult_f_stand_lod1": 178,
+  "adult_f_walk_lod0": 516,
+  "adult_f_walk_lod1": 178,
+  "adult_m_stand_lod0": 474,
+  "adult_m_stand_lod1": 166,
+  "adult_m_walk_lod0": 494,
+  "adult_m_walk_lod1": 178,
+  "child_walk_lod0": 486,
+  "child_walk_lod1": 178,
+  "city_bus_lod0": 1194,
+  "city_bus_lod1": 240,
+  "compact_lod0": 1060,
+  "compact_lod1": 198,
+  "delivery_van_lod0": 878,
+  "delivery_van_lod1": 188,
+  "elder_stand_lod0": 482,
+  "elder_stand_lod1": 174,
+  "hatchback_lod0": 1108,
+  "hatchback_lod1": 208,
+  "sedan_lod0": 1132,
+  "sedan_lod1": 218,
+  "suv_lod0": 1108,
+  "suv_lod1": 218,
+  "taxi_lod0": 1142,
+  "taxi_lod1": 228,
+  "truck_1t_box_lod0": 698,
+  "truck_1t_box_lod1": 160,
+  "truck_1t_flat_lod0": 728,
+  "truck_1t_flat_lod1": 200,
+  "village_bus_lod0": 1046,
+  "village_bus_lod1": 224
+ },
+ "groups": {
+  "car": {
+   "cell_m": 250.0,
+   "hide_m": 400.0,
+   "lod1_to_lod0_m": 80.0
+  },
+  "person": {
+   "cell_m": 125.0,
+   "hide_m": 200.0,
+   "lod1_to_lod0_m": 60.0
+  }
+ },
+ "heights": {
+  "on_road_mesh": 4814,
+  "on_terrain": 175,
+  "under_deck_to_terrain": 52
+ },
+ "fit_moving": {
+  "moving_in": 4798,
+  "shifted_half": 44,
+  "shifted_center": 12,
+  "dropped_off_mesh": 2389
+ },
+ "fit_people": {
+  "persons_in": 2497,
+  "queues": 370,
+  "queued": 652,
+  "road_snapped": 57,
+  "road_dropped": 5,
+  "spread": 103,
+  "overlap_dropped": 0,
+  "persons_out": 2492,
+  "pairs_lt_gap": 0,
+  "on_roadway_out": 0
+ },
+ "tiles": 376,
+ "bytes": 7368520,
+ "max_tile_bytes": 110152,
+ "max_tile_instances": 244,
+ "bus": {
+  "day": "2026-10-09",
+  "window": {
+   "start": "2026-10-08T19:29:00Z",
+   "end": "2026-10-09T14:59:00Z",
+   "hours": 19.5
+  },
+  "vehicles": 41,
+  "samples": 4074,
+  "routes": 5,
+  "errors": [],
+  "snapshot": {
+   "candidates": 41,
+   "snapped": 23,
+   "far_from_road": 18
+  }
+ },
+ "total_bytes": 8810548,
+ "validator": {
+  "numErrors": 0,
+  "numWarnings": 0,
+  "numInfos": 376,
+  "exit": 0
+ },
+ "seconds": 6.3
+}

@@ -1,0 +1,93 @@
+{
+ "site": "삼성전자 서울R&D캠퍼스",
+ "bbox_5186": [
+  201800.0,
+  540450.0,
+  202400.0,
+  540950.0
+ ],
+ "bbox_ll": [
+  127.02034622414082,
+  37.46346887198826,
+  127.02712992610023,
+  37.467975290843995
+ ],
+ "origin_5186": [
+  202045.2,
+  540790.3
+ ],
+ "f_building": {
+  "entity_id": "892b8321-d85d-5bdd-acf4-47fcd984f67d",
+  "name": "삼성전자 서울R&D캠퍼스 F동",
+  "glb": "landmarks_f/samsung/892b8321-d85d-5bdd-acf4-47fcd984f67d.glb",
+  "footprint_center": {
+   "x": 202148.71,
+   "y": 540753.09,
+   "crs": "EPSG:5186",
+   "lon": 127.0242888,
+   "lat": 37.4662004
+  },
+  "footprint_hull_5186": [
+   [
+    202112.44,
+    540757.86
+   ],
+   [
+    202152.14,
+    540722.14
+   ],
+   [
+    202157.24,
+    540718.25
+   ],
+   [
+    202157.25,
+    540718.25
+   ],
+   [
+    202159.84,
+    540720.36
+   ],
+   [
+    202185.0,
+    540748.39
+   ],
+   [
+    202145.32,
+    540783.95
+   ],
+   [
+    202140.18,
+    540787.94
+   ],
+   [
+    202140.18,
+    540787.94
+   ],
+   [
+    202137.55,
+    540785.82
+   ]
+  ],
+  "footprint_area_m2": 2493.6,
+  "height_m": 51.08,
+  "height_mesh_m": 52.08,
+  "ground_z": 30.22,
+  "z_datum": "KR_INCHEON(≈EGM2008)",
+  "ellipsoid_top_m": 104.33,
+  "ellipsoid_bottom_m": 52.25,
+  "floors": {
+   "above": 10,
+   "below": 5
+  },
+  "covers": [],
+  "hide_when_removed": [
+   "892b8321-d85d-5bdd-acf4-47fcd984f67d"
+  ],
+  "note": "철거 후 = landmarks_f 끄기 + buildings_lod2b/buildings 의 같은 entity_id 숨김(hide_when_removed)"
+ },
+ "layers": "/tiles/layers.json",
+ "presets": "/tiles/presets.json",
+ "generated_at": "2026-10-16T16:12:53+0900",
+ "generator": "umyeon.export.campus"
+}

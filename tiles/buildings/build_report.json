@@ -1,0 +1,75 @@
+{
+ "source": "registry",
+ "inputs_fingerprint": "6a3263788d3069b1",
+ "inputs": {
+  "dem_v1_sha256": "f219ba8312f6b603",
+  "dem_source_sha256": "af2dd6b5fb101fa4",
+  "registry_fingerprint": "fe65ea9fe01bab9f",
+  "class": "bd754ffd9026",
+  "code": "lod1.2",
+  "tiler": "mago-3d-tiler-1.16.3.jar"
+ },
+ "input": {
+  "entities": 5033,
+  "features": 5104,
+  "entities_in_input": 5033,
+  "entities_with_parts": 42,
+  "parts": 113,
+  "typology": {
+   "canopy": 1659,
+   "greenhouse": 1475,
+   "detached": 463,
+   "retail": 435,
+   "villa": 246,
+   "temporary": 206,
+   "apartment": 154,
+   "other": 143,
+   "industrial": 56,
+   "office_rnd": 54,
+   "school": 33,
+   "office": 30,
+   "public": 29,
+   "cultural": 28,
+   "religious": 19,
+   "construction": 3
+  },
+  "aoi": "edfb23f5f9bd"
+ },
+ "tile_features": 5104,
+ "distinct_entity_in_tiles": 5033,
+ "missing_in_tiles": [],
+ "missing_count": 0,
+ "metadata": {
+  "glb_files": 106,
+  "features": 5104,
+  "bytes_before": 10989932,
+  "bytes_after": 10031992
+ },
+ "facade_attributes": {
+  "files": 106,
+  "primitives": 106,
+  "vertices": 226746,
+  "walls_vertices": 151164,
+  "height_check_max_err_m": 0.018
+ },
+ "validator": {
+  "numErrors": 0,
+  "numWarnings": 0,
+  "numInfos": 106,
+  "exit": 0
+ },
+ "placement": {
+  "features": 5104,
+  "roof_abs_max_m": 0.084,
+  "roof_abs_median_m": 0.081,
+  "base_abs_max_m": 0.084,
+  "tol_m": 0.3,
+  "pass": true
+ },
+ "files": 108,
+ "glb_files": 106,
+ "total_bytes": 13619692,
+ "max_tile_bytes": 778444,
+ "db_buildings": 5033,
+ "db_equals_tiles": true
+}

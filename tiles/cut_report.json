@@ -1,0 +1,250 @@
+{
+ "bbox_5186": [
+  201800.0,
+  540450.0,
+  202400.0,
+  540950.0
+ ],
+ "bbox_ll": [
+  127.02034622414082,
+  37.46346887198826,
+  127.02712992610023,
+  37.467975290843995
+ ],
+ "terrain": {
+  "src": "data/tiles/terrain_v2",
+  "tiles": 165,
+  "missing_in_available": 0,
+  "levels": 17,
+  "max_level": 16
+ },
+ "imagery_before": {
+  "src": "data/tiles/imagery_public",
+  "tiles": 153,
+  "per_zoom": {
+   "12": 1,
+   "13": 1,
+   "14": 2,
+   "15": 4,
+   "16": 4,
+   "17": 12,
+   "18": 30,
+   "19": 99
+  }
+ },
+ "buildings_lod2b": {
+  "src": "data/tiles/buildings_lod2b",
+  "ok": true,
+  "content_tiles": 22,
+  "tilesets": 1,
+  "sidecars": [
+   "build_report.json"
+  ]
+ },
+ "buildings": {
+  "src": "data/tiles/buildings",
+  "ok": true,
+  "content_tiles": 11,
+  "tilesets": 1,
+  "sidecars": [
+   "build_report.json"
+  ]
+ },
+ "landmarks": {
+  "landmarks": {
+   "items": [
+    "삼성전자 서울R&D캠퍼스 A동",
+    "삼성전자 서울R&D캠퍼스 B동",
+    "삼성전자 서울R&D캠퍼스 C동",
+    "삼성전자 서울R&D캠퍼스 D·E동"
+   ],
+   "content_tiles": 4
+  },
+  "landmarks_f": {
+   "items": [
+    "삼성전자 서울R&D캠퍼스 F동"
+   ],
+   "content_tiles": 1
+  }
+ },
+ "trees2": {
+  "src": "data/tiles/trees2",
+  "ok": true,
+  "content_tiles": 1604,
+  "tilesets": 21,
+  "sidecars": [
+   "NOTICE.txt",
+   "build_report.json",
+   "schema.json",
+   "tint.json"
+  ]
+ },
+ "props_r7": {
+  "src": "data/tiles/props_r7",
+  "ok": true,
+  "content_tiles": 124,
+  "tilesets": 1,
+  "sidecars": [
+   "NOTICE.txt",
+   "build_report.json",
+   "hidden.json",
+   "schema.json",
+   "wires.bin",
+   "wires.json"
+  ],
+  "wires": {
+   "polylines": 1336,
+   "of": 9375
+  }
+ },
+ "traffic_r8": {
+  "src": "data/tiles/traffic_r8",
+  "ok": true,
+  "content_tiles": 90,
+  "tilesets": 1,
+  "sidecars": [
+   "NOTICE.txt",
+   "build_report.json",
+   "palette.json",
+   "schema.json"
+  ]
+ },
+ "roads": {
+  "src": "data/tiles/roads",
+  "ok": true,
+  "content_tiles": 50,
+  "tilesets": 6,
+  "sidecars": [
+   "build_report.json"
+  ]
+ },
+ "vectors": {
+  "streetlights": {
+   "src": "data/tiles/vectors/streetlights.geojson",
+   "features": 293
+  },
+  "ground_cover": {
+   "src": "data/tiles/vectors/ground_cover.geojson",
+   "features": 96
+  },
+  "water_v2": {
+   "src": "data/tiles/vectors/water_v2.geojson",
+   "features": 0
+  },
+  "water": {
+   "src": "data/tiles/vectors/water.geojson",
+   "features": 2
+  },
+  "ground_class_05m": {
+   "src": "data/tiles/vectors/ground_class_05m",
+   "size": [
+    1200,
+    1000
+   ],
+   "bounds_5186": [
+    201800.0,
+    540450.0,
+    202400.0,
+    540950.0
+   ]
+  }
+ },
+ "validator": {
+  "buildings/tileset.json": {
+   "numErrors": 0,
+   "numWarnings": 0,
+   "numInfos": 11,
+   "exit": 0
+  },
+  "buildings_lod2b/tileset.json": {
+   "numErrors": 0,
+   "numWarnings": 0,
+   "numInfos": 22,
+   "exit": 0
+  },
+  "landmarks/tileset.json": {
+   "numErrors": 0,
+   "numWarnings": 0,
+   "numInfos": 4,
+   "exit": 0
+  },
+  "landmarks_f/tileset.json": {
+   "numErrors": 0,
+   "numWarnings": 0,
+   "numInfos": 1,
+   "exit": 0
+  },
+  "props_r7/tileset.json": {
+   "numErrors": 0,
+   "numWarnings": 0,
+   "numInfos": 124,
+   "exit": 0
+  },
+  "roads/tileset.json": {
+   "numErrors": 0,
+   "numWarnings": 0,
+   "numInfos": 5,
+   "exit": 0
+  },
+  "traffic_r8/tileset.json": {
+   "numErrors": 0,
+   "numWarnings": 0,
+   "numInfos": 90,
+   "exit": 0
+  },
+  "trees2/tileset.json": {
+   "numErrors": 0,
+   "numWarnings": 0,
+   "numInfos": 33,
+   "exit": 0
+  }
+ },
+ "sizes": {
+  "buildings": {
+   "files": 13,
+   "bytes": 3854384
+  },
+  "buildings_lod2b": {
+   "files": 24,
+   "bytes": 12801575
+  },
+  "imagery_before": {
+   "files": 156,
+   "bytes": 1764391
+  },
+  "landmarks": {
+   "files": 6,
+   "bytes": 3335639
+  },
+  "landmarks_f": {
+   "files": 3,
+   "bytes": 1121238
+  },
+  "props_r7": {
+   "files": 137,
+   "bytes": 2241623
+  },
+  "roads": {
+   "files": 71,
+   "bytes": 5513120
+  },
+  "terrain": {
+   "files": 167,
+   "bytes": 1108732
+  },
+  "traffic_r8": {
+   "files": 97,
+   "bytes": 3350715
+  },
+  "trees2": {
+   "files": 1650,
+   "bytes": 36291014
+  },
+  "vectors": {
+   "files": 6,
+   "bytes": 376607
+  }
+ },
+ "total_bytes": 71779413,
+ "seconds": 17.2
+}

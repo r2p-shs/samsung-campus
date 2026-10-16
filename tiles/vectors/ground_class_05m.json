@@ -1,0 +1,187 @@
+{
+ "crs": "EPSG:5186",
+ "res_m": 0.5,
+ "width": 1200,
+ "height": 1000,
+ "bounds": [
+  201800.0,
+  540450.0,
+  202400.0,
+  540950.0
+ ],
+ "corners_lonlat": {
+  "nw": [
+   127.02034745,
+   37.46797529
+  ],
+  "ne": [
+   127.02712993,
+   37.46797393
+  ],
+  "se": [
+   127.0271283,
+   37.46346887
+  ],
+  "sw": [
+   127.02034622,
+   37.46347023
+  ]
+ },
+ "ids": {
+  "0": "grass",
+  "1": "litter",
+  "2": "soil",
+  "3": "plaza",
+  "4": "asphalt",
+  "5": "gravel",
+  "6": "under_deck",
+  "255": "none"
+ },
+ "rule_version": "2026-10-12.2",
+ "counts": {
+  "grass": 434696,
+  "litter": 225521,
+  "soil": 9289,
+  "plaza": 43236,
+  "asphalt": 17567,
+  "gravel": 21283,
+  "under_deck": 0,
+  "none": 448408
+ },
+ "row0": "north",
+ "png": "8-bit grayscale (mode L), no alpha, no colour chunks",
+ "area_m2": {
+  "grass": 2651412,
+  "litter": 3851780,
+  "soil": 471520,
+  "plaza": 207376,
+  "asphalt": 107102,
+  "gravel": 67206,
+  "under_deck": 56074,
+  "none": 6351530
+ },
+ "rule": {
+  "key_to_material": {
+   "grass": "grass",
+   "grass_soil": "grass",
+   "riverbank_grass": "grass",
+   "artificial_turf": "grass",
+   "forest_litter": "litter",
+   "soil": "soil",
+   "farm_soil": "soil",
+   "paddy": "soil",
+   "soil_grass": "grass",
+   "masato": "gravel",
+   "block_paver": "plaza",
+   "concrete": "plaza",
+   "court_hard": "plaza",
+   "asphalt": "asphalt",
+   "marsh": "grass"
+  },
+  "key_default": "grass",
+  "refine_by_color": [
+   "mixed_yard",
+   "other",
+   "bare_soil",
+   "field",
+   "paddy"
+  ],
+  "color": "1 m 원본 정사영상: 수관(canopy v1) > 그늘 Y<0.13 > 식생 ExG>0.05 → grass > 회색 sat<0.12·Y≥0.25 → plaza > 갈색 r≥g≥b·sat≥0.12 → soil; 수관·그늘·기타는 피처 기본값",
+  "under_deck": "bridges deck_mode=deck 폭/2 평평한 끝 버퍼(폭 없음 8 m, 최소 4 m) ∩ AOI − water_v2 river, 최우선",
+  "decks": 52
+ },
+ "inputs": {
+  "ground_cover.geojson": "9a5786f0e9c81e02",
+  "bridges.geojson": {
+   "git": "1d9e3c1",
+   "sha": "d16dbe1decfedd10"
+  },
+  "water_v2.geojson": "36c4d0f901d600b2",
+  "mosaic_5186.tif": "bacc3834cbf1bcdc",
+  "canopy_mask_1m.tif": "755ae5efd82cfe44"
+ },
+ "design_check": {
+  "tol": 0.05,
+  "pass": true,
+  "by_material": {
+   "litter": {
+    "m2": 3851780,
+    "design_m2": 3763017,
+    "diff": 0.0236,
+    "pass": true
+   },
+   "grass": {
+    "m2": 2651412,
+    "design_m2": 2625050,
+    "diff": 0.01,
+    "pass": true
+   },
+   "soil": {
+    "m2": 471520,
+    "design_m2": 472546,
+    "diff": -0.0022,
+    "pass": true
+   },
+   "plaza": {
+    "m2": 207376,
+    "design_m2": 204658,
+    "diff": 0.0133,
+    "pass": true
+   },
+   "asphalt": {
+    "m2": 107102,
+    "design_m2": 107254,
+    "diff": -0.0014,
+    "pass": true
+   },
+   "gravel": {
+    "m2": 67206,
+    "design_m2": 67212,
+    "diff": -0.0001,
+    "pass": true
+   },
+   "under_deck": {
+    "m2": 56074,
+    "design_m2": 56076,
+    "diff": -0.0,
+    "pass": true
+   }
+  }
+ },
+ "png_bytes": 937477,
+ "defects": {
+  "D01": {
+   "cam": "127.024,37.463,1.6,0.0,-2",
+   "materials": {
+    "grass": 32,
+    "none": 4
+   },
+   "data_classes": {
+    "mixed_yard": 12,
+    "lawn": 20,
+    "None": 4
+   }
+  },
+  "D04": {
+   "cam": "127.026582,37.460477,1.6,275.0,-2",
+   "materials": {
+    "grass": 36
+   },
+   "data_classes": {
+    "paddy": 36
+   }
+  },
+  "D12": {
+   "cam": "127.020584,37.456177,1.6,205.7,-2",
+   "materials": {
+    "under_deck": 36
+   },
+   "data_classes": {
+    "riverbank": 5,
+    "None": 15,
+    "other": 16
+   }
+  }
+ },
+ "note_campus": "bbox 5186 [201800.0, 540450.0, 202400.0, 540950.0] 로 자름(원본 7440×7400)"
+}

@@ -1,0 +1,30 @@
+{
+ "plaster": {
+  "asset": "Plaster001",
+  "url": "https://ambientcg.com/get?file=Plaster001_1K-JPG.zip",
+  "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+  "source_sha256": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4",
+  "file": "plaster.jpg"
+ },
+ "concrete": {
+  "asset": "Concrete034",
+  "url": "https://ambientcg.com/get?file=Concrete034_1K-JPG.zip",
+  "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+  "source_sha256": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa",
+  "file": "concrete.jpg"
+ },
+ "roof_concrete": {
+  "asset": "Concrete044A",
+  "url": "https://ambientcg.com/get?file=Concrete044A_1K-JPG.zip",
+  "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+  "source_sha256": "0701ff588bdde811b20ab8428cd5d15a9d7dbf3e74d9c3634131ae18b03c9c36",
+  "file": "roof_concrete.jpg"
+ },
+ "roof_tile": {
+  "asset": "RoofingTiles009",
+  "url": "https://ambientcg.com/get?file=RoofingTiles009_1K-JPG.zip",
+  "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+  "source_sha256": "60253b3195c62d4776bf0785ccb4cb2a32366ce773e72728ca0a4335c28d09e0",
+  "file": "roof_tile.jpg"
+ }
+}

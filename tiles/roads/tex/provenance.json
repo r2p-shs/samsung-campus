@@ -1,0 +1,339 @@
+{
+ "generated_at": "2026-10-12T04:05:11+00:00",
+ "materials": {
+  "asphalt": {
+   "asset": "Asphalt031",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Asphalt031_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "zip_sha256": "f98114b8fb083fc65925c3b4568b131e37c9a23357d432a16e59676dbc69f964",
+   "files": {
+    "color": {
+     "file": "asphalt_color.jpg",
+     "sha256": "20d71aeed379e67707f4d618b6fdc8d1020d2cf101faef245327d4002af58867"
+    },
+    "normal": {
+     "file": "asphalt_normal.jpg",
+     "sha256": "ee02039c1aeebb9bd95383a74ca8bf29710bc0b0dd32aa951d5cb0a94135a1e4"
+    },
+    "orm": {
+     "file": "asphalt_orm.jpg",
+     "sha256": "6389639b12fea35db6fe19c7735aa8d00d9cecbb60894d58ac76083e89d7f8e7"
+    }
+   },
+   "res": 1024,
+   "tile_m": 4.0,
+   "rough_range": [
+    0.75,
+    0.95
+   ],
+   "mean_linear": [
+    0.2203,
+    0.2202,
+    0.2201
+   ],
+   "mean_lum": 0.2202,
+   "candidates_lum": {
+    "Asphalt025C": 0.0243,
+    "Asphalt026C": 0.0315,
+    "Asphalt031": 0.19
+   },
+   "gain": 1.159,
+   "target_lum": 0.1694,
+   "view_gain": 1.3,
+   "note": "AOI 차도 정사영상 중앙값 p50 0.1694에 가장 가까운 Asphalt031를 그 p50 × 뷰어 조명 보정 1.30 = 0.2202에 맞춰 선형 ×1.159",
+   "mean_linear_saved": [
+    0.2202,
+    0.2202,
+    0.2202
+   ]
+  },
+  "paving_block": {
+   "asset": "PavingStones070",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=PavingStones070_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "zip_sha256": "84be05ad935c2a8ea0dd3b82dd18c9e1faf7eeae222b85d96beb14ed16276132",
+   "files": {
+    "color": {
+     "file": "paving_block_color.jpg",
+     "sha256": "5c4eb20e5654149e5c8a3c3457aeb9ef97694d6defb34a42a02fe9ca40c3411a"
+    },
+    "normal": {
+     "file": "paving_block_normal.jpg",
+     "sha256": "3cb6858da9f7815e73e904609d1cf6aee4f9edde200356c63a0c1ac1790f1957"
+    },
+    "orm": {
+     "file": "paving_block_orm.jpg",
+     "sha256": "4f66a4c8fdc2ec882ca590f6c5350dcece820a55e99d5790c6ffe4b6558a70b4"
+    }
+   },
+   "res": 1024,
+   "tile_m": 2.0,
+   "rough_range": [
+    0.7,
+    0.9
+   ],
+   "mean_linear": [
+    0.2688,
+    0.2607,
+    0.237
+   ],
+   "mean_lum": 0.2607,
+   "candidates_lum": {
+    "PavingStones070": 0.2607
+   },
+   "gain": 1.0,
+   "mean_linear_saved": [
+    0.2688,
+    0.2606,
+    0.2368
+   ]
+  },
+  "concrete": {
+   "asset": "Concrete034",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Concrete034_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "zip_sha256": null,
+   "files": {
+    "color": {
+     "file": "concrete_color.jpg",
+     "sha256": "1e0e5326ae0f7c0faed59d17b54bc63b1abd4cf4c9d2ee4abe636d7feb1defaf"
+    },
+    "normal": {
+     "file": "concrete_normal.jpg",
+     "sha256": "077c5f9d7aa5ff519497a1bbbe79ac267f4d9b3efdd412e06a737cf93fc1f235"
+    },
+    "orm": {
+     "file": "concrete_orm.jpg",
+     "sha256": "f576c4735e739a26b45efa69e71ef5c35f6c32a717f0e1e9e3acc64d4dda44cf"
+    }
+   },
+   "res": 512,
+   "tile_m": 2.0,
+   "rough_range": [
+    0.75,
+    0.92
+   ],
+   "mean_linear": [
+    0.4816,
+    0.4816,
+    0.4816
+   ],
+   "mean_lum": 0.4816,
+   "candidates_lum": {
+    "Concrete034": 0.4816
+   },
+   "gain": 1.0,
+   "mean_linear_saved": [
+    0.4817,
+    0.4817,
+    0.4817
+   ]
+  },
+  "gravel": {
+   "asset": "Gravel023",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Gravel023_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "zip_sha256": "a00e7fd6246db4ae228473aac14f1bc427bd93f228ebe347a5d6390dd838b0a8",
+   "files": {
+    "color": {
+     "file": "gravel_color.jpg",
+     "sha256": "887a93d99e9364e2fbd437f4d5474a57480f26b3aec2d67c8795d27dd3b353d2"
+    },
+    "normal": {
+     "file": "gravel_normal.jpg",
+     "sha256": "eda04e69ab0d4227d2d4ff7b26c92a8451cc496ffdb96f38421874325f284bc5"
+    },
+    "orm": {
+     "file": "gravel_orm.jpg",
+     "sha256": "91d1382a42dd8138db24372251251c439ce7326ee35c68030377e12ab66ef5de"
+    }
+   },
+   "res": 512,
+   "tile_m": 3.0,
+   "rough_range": [
+    0.85,
+    1.0
+   ],
+   "mean_linear": [
+    0.7043,
+    0.6781,
+    0.6245
+   ],
+   "mean_lum": 0.6798,
+   "candidates_lum": {
+    "Gravel023": 0.6798
+   },
+   "gain": 1.0,
+   "mean_linear_saved": [
+    0.7039,
+    0.6786,
+    0.6237
+   ]
+  },
+  "asphalt_red": {
+   "base": "asphalt",
+   "color_lin": [
+    0.2582,
+    0.1981,
+    0.1329
+   ],
+   "file": "asphalt_red_color.jpg",
+   "sha256": "557841146562852a7150912d319694fcce7d7461d11eddc4c3bb2a3d82ff69eb",
+   "from_ortho": true
+  }
+ },
+ "plain": {
+  "paint_white": {
+   "factor": [
+    0.5333,
+    0.5841,
+    0.5149,
+    1.0
+   ],
+   "rough": 0.65,
+   "metal": 0.0,
+   "blend": false,
+   "double": false,
+   "normal_texture": "asphalt_normal.jpg",
+   "tile_m": 4.0
+  },
+  "paint_yellow": {
+   "factor": [
+    0.2542,
+    0.1878,
+    0.0529,
+    1.0
+   ],
+   "rough": 0.65,
+   "metal": 0.0,
+   "blend": false,
+   "double": false,
+   "normal_texture": "asphalt_normal.jpg",
+   "tile_m": 4.0
+  },
+  "steel": {
+   "factor": [
+    0.35,
+    0.36,
+    0.37,
+    1.0
+   ],
+   "rough": 0.45,
+   "metal": 0.8,
+   "blend": false,
+   "double": false
+  },
+  "signal_head": {
+   "factor": [
+    0.04,
+    0.04,
+    0.04,
+    1.0
+   ],
+   "rough": 0.5,
+   "metal": 0.0,
+   "blend": false,
+   "double": false
+  },
+  "lamp_head": {
+   "factor": [
+    0.55,
+    0.56,
+    0.58,
+    1.0
+   ],
+   "rough": 0.4,
+   "metal": 0.5,
+   "blend": false,
+   "double": false
+  },
+  "planter": {
+   "factor": [
+    0.18,
+    0.3,
+    0.1,
+    1.0
+   ],
+   "rough": 0.95,
+   "metal": 0.0,
+   "blend": false,
+   "double": false
+  },
+  "plastic_barrier": {
+   "factor": [
+    0.75,
+    0.72,
+    0.65,
+    1.0
+   ],
+   "rough": 0.6,
+   "metal": 0.0,
+   "blend": false,
+   "double": false
+  },
+  "panel_clear": {
+   "factor": [
+    0.55,
+    0.65,
+    0.68,
+    0.35
+   ],
+   "rough": 0.15,
+   "metal": 0.0,
+   "blend": true,
+   "double": true
+  },
+  "panel_opaque": {
+   "factor": [
+    0.4,
+    0.45,
+    0.43,
+    1.0
+   ],
+   "rough": 0.55,
+   "metal": 0.3,
+   "blend": false,
+   "double": true
+  },
+  "concrete_ds": {
+   "textures": {
+    "color": "concrete_color.jpg",
+    "normal": "concrete_normal.jpg",
+    "orm": "concrete_orm.jpg"
+   },
+   "tile_m": 2.0,
+   "factor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "rough": 1.0,
+   "metal": 1.0,
+   "mean_linear": [
+    0.4817,
+    0.4817,
+    0.4817
+   ],
+   "double": true
+  }
+ },
+ "gpu_bytes": 25165820,
+ "gpu_mb": 24.0,
+ "paint_from_ortho": {
+  "paint_white": [
+   0.5333,
+   0.5841,
+   0.5149
+  ],
+  "paint_yellow": [
+   0.2542,
+   0.1878,
+   0.0529
+  ]
+ }
+}

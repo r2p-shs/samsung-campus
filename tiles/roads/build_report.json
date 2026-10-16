@@ -1,0 +1,3147 @@
+{
+ "code": "roads.1",
+ "layer_id": "road_mesh",
+ "area": "AOI",
+ "out": "/home/hyeonsik/Desktop/project/umyeon_world_model_claude/data/tiles/roads",
+ "terrain_dir": "/home/hyeonsik/Desktop/project/umyeon_world_model_claude/data/tiles/terrain_v2",
+ "tint": "none",
+ "features": {
+  "roadway": {
+   "roadway": 1466,
+   "bridge_deck": 69,
+   "approach_ramp": 7
+  },
+  "tier2": 283,
+  "tier2_forest_removed": [
+   {
+    "link_id": "osm:418153839:0:6",
+    "osm_way_id": 418153839,
+    "name": "능선길",
+    "rank": "service",
+    "width_m": 0.0,
+    "area_m2": 151.6,
+    "forest_share": 1.0,
+    "ortho_veg": 0.982,
+    "ortho_paved": 0.0
+   },
+   {
+    "link_id": "osm:418153840:0:3",
+    "osm_way_id": 418153840,
+    "name": null,
+    "rank": "service",
+    "width_m": 0.0,
+    "area_m2": 272.2,
+    "forest_share": 1.0,
+    "ortho_veg": 0.916,
+    "ortho_paved": 0.003
+   },
+   {
+    "link_id": "osm:615168133:0:3",
+    "osm_way_id": 615168133,
+    "name": null,
+    "rank": "service",
+    "width_m": 0.0,
+    "area_m2": 402.1,
+    "forest_share": 1.0,
+    "ortho_veg": 0.948,
+    "ortho_paved": 0.01
+   },
+   {
+    "link_id": "osm:1370775973:0:0",
+    "osm_way_id": 1370775973,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 245.3,
+    "forest_share": 1.0,
+    "ortho_veg": 0.97,
+    "ortho_paved": 0.003
+   },
+   {
+    "link_id": "osm:370150185:0:0",
+    "osm_way_id": 370150185,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 1144.1,
+    "forest_share": 0.62,
+    "ortho_veg": 0.8,
+    "ortho_paved": 0.137
+   },
+   {
+    "link_id": "osm:418153839:0:0",
+    "osm_way_id": 418153839,
+    "name": "능선길",
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 49.1,
+    "forest_share": 0.668,
+    "ortho_veg": 0.861,
+    "ortho_paved": 0.034
+   },
+   {
+    "link_id": "osm:418153839:0:1",
+    "osm_way_id": 418153839,
+    "name": "능선길",
+    "rank": "service",
+    "width_m": 4.6,
+    "area_m2": 3296.5,
+    "forest_share": 0.99,
+    "ortho_veg": 0.919,
+    "ortho_paved": 0.005
+   },
+   {
+    "link_id": "osm:418153839:0:2",
+    "osm_way_id": 418153839,
+    "name": "능선길",
+    "rank": "service",
+    "width_m": 4.6,
+    "area_m2": 3004.2,
+    "forest_share": 0.979,
+    "ortho_veg": 0.951,
+    "ortho_paved": 0.006
+   },
+   {
+    "link_id": "osm:418153839:0:3",
+    "osm_way_id": 418153839,
+    "name": "능선길",
+    "rank": "service",
+    "width_m": 4.6,
+    "area_m2": 72.8,
+    "forest_share": 1.0,
+    "ortho_veg": 1.0,
+    "ortho_paved": 0.0
+   },
+   {
+    "link_id": "osm:418153839:0:4",
+    "osm_way_id": 418153839,
+    "name": "능선길",
+    "rank": "service",
+    "width_m": 4.6,
+    "area_m2": 342.9,
+    "forest_share": 1.0,
+    "ortho_veg": 0.996,
+    "ortho_paved": 0.003
+   },
+   {
+    "link_id": "osm:418153839:0:5",
+    "osm_way_id": 418153839,
+    "name": "능선길",
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 527.9,
+    "forest_share": 1.0,
+    "ortho_veg": 0.937,
+    "ortho_paved": 0.005
+   },
+   {
+    "link_id": "osm:418153839:0:6",
+    "osm_way_id": 418153839,
+    "name": "능선길",
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 151.6,
+    "forest_share": 1.0,
+    "ortho_veg": 0.982,
+    "ortho_paved": 0.0
+   },
+   {
+    "link_id": "osm:418153840:0:0",
+    "osm_way_id": 418153840,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 1032.4,
+    "forest_share": 1.0,
+    "ortho_veg": 0.987,
+    "ortho_paved": 0.0
+   },
+   {
+    "link_id": "osm:418153840:0:1",
+    "osm_way_id": 418153840,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 2124.1,
+    "forest_share": 1.0,
+    "ortho_veg": 0.961,
+    "ortho_paved": 0.002
+   },
+   {
+    "link_id": "osm:418153840:0:2",
+    "osm_way_id": 418153840,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 431.5,
+    "forest_share": 1.0,
+    "ortho_veg": 0.834,
+    "ortho_paved": 0.018
+   },
+   {
+    "link_id": "osm:418153840:0:3",
+    "osm_way_id": 418153840,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 272.2,
+    "forest_share": 1.0,
+    "ortho_veg": 0.916,
+    "ortho_paved": 0.003
+   },
+   {
+    "link_id": "osm:418153841:0:0",
+    "osm_way_id": 418153841,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 294.3,
+    "forest_share": 1.0,
+    "ortho_veg": 0.86,
+    "ortho_paved": 0.003
+   },
+   {
+    "link_id": "osm:418153841:0:1",
+    "osm_way_id": 418153841,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 390.0,
+    "forest_share": 1.0,
+    "ortho_veg": 0.98,
+    "ortho_paved": 0.001
+   },
+   {
+    "link_id": "osm:418153841:0:2",
+    "osm_way_id": 418153841,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 848.9,
+    "forest_share": 1.0,
+    "ortho_veg": 0.992,
+    "ortho_paved": 0.001
+   },
+   {
+    "link_id": "osm:615168132:0:0",
+    "osm_way_id": 615168132,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 481.1,
+    "forest_share": 1.0,
+    "ortho_veg": 0.981,
+    "ortho_paved": 0.002
+   },
+   {
+    "link_id": "osm:615168132:0:1",
+    "osm_way_id": 615168132,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 773.9,
+    "forest_share": 1.0,
+    "ortho_veg": 0.936,
+    "ortho_paved": 0.001
+   },
+   {
+    "link_id": "osm:615168133:0:0",
+    "osm_way_id": 615168133,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 1241.8,
+    "forest_share": 1.0,
+    "ortho_veg": 0.975,
+    "ortho_paved": 0.001
+   },
+   {
+    "link_id": "osm:615168133:0:1",
+    "osm_way_id": 615168133,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 853.5,
+    "forest_share": 1.0,
+    "ortho_veg": 0.985,
+    "ortho_paved": 0.001
+   },
+   {
+    "link_id": "osm:615168133:0:2",
+    "osm_way_id": 615168133,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 924.7,
+    "forest_share": 1.0,
+    "ortho_veg": 0.838,
+    "ortho_paved": 0.042
+   },
+   {
+    "link_id": "osm:615168133:0:3",
+    "osm_way_id": 615168133,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 402.1,
+    "forest_share": 1.0,
+    "ortho_veg": 0.948,
+    "ortho_paved": 0.01
+   }
+  ],
+  "tier2_forest_kept": [
+   {
+    "link_id": "osm:929676174:0:1",
+    "osm_way_id": 929676174,
+    "name": null,
+    "rank": "residential",
+    "width_m": 0.0,
+    "area_m2": 2058.4,
+    "forest_share": 0.549,
+    "ortho_veg": 0.502,
+    "ortho_paved": 0.236
+   },
+   {
+    "link_id": "osm:1046584823:0:0",
+    "osm_way_id": 1046584823,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 214.9,
+    "forest_share": 0.588,
+    "ortho_veg": 0.277,
+    "ortho_paved": 0.464
+   },
+   {
+    "link_id": "osm:1287404878:0:1",
+    "osm_way_id": 1287404878,
+    "name": null,
+    "rank": "service",
+    "width_m": 1.2,
+    "area_m2": 92.0,
+    "forest_share": 0.863,
+    "ortho_veg": 0.695,
+    "ortho_paved": 0.146
+   },
+   {
+    "link_id": "osm:1287404879:0:0",
+    "osm_way_id": 1287404879,
+    "name": null,
+    "rank": "service",
+    "width_m": 6.5,
+    "area_m2": 27.1,
+    "forest_share": 0.824,
+    "ortho_veg": 0.39,
+    "ortho_paved": 0.398
+   },
+   {
+    "link_id": "osm:745543566:0:0",
+    "osm_way_id": 745543566,
+    "name": "능선길",
+    "rank": "service",
+    "width_m": 4.8,
+    "area_m2": 639.7,
+    "forest_share": 0.803,
+    "ortho_veg": 0.51,
+    "ortho_paved": 0.282
+   },
+   {
+    "link_id": "osm:798288369:0:0",
+    "osm_way_id": 798288369,
+    "name": null,
+    "rank": "residential",
+    "width_m": 6.5,
+    "area_m2": 279.0,
+    "forest_share": 1.0,
+    "ortho_veg": 0.279,
+    "ortho_paved": 0.465
+   },
+   {
+    "link_id": "osm:798288369:0:1",
+    "osm_way_id": 798288369,
+    "name": null,
+    "rank": "residential",
+    "width_m": 4.2,
+    "area_m2": 406.3,
+    "forest_share": 1.0,
+    "ortho_veg": 0.135,
+    "ortho_paved": 0.706
+   },
+   {
+    "link_id": "osm:798288369:0:2",
+    "osm_way_id": 798288369,
+    "name": null,
+    "rank": "residential",
+    "width_m": 6.5,
+    "area_m2": 557.2,
+    "forest_share": 1.0,
+    "ortho_veg": 0.526,
+    "ortho_paved": 0.321
+   },
+   {
+    "link_id": "osm:798288369:0:3",
+    "osm_way_id": 798288369,
+    "name": null,
+    "rank": "residential",
+    "width_m": 4.7,
+    "area_m2": 395.8,
+    "forest_share": 0.951,
+    "ortho_veg": 0.189,
+    "ortho_paved": 0.385
+   }
+  ],
+  "tier2_tunnel_gw_skipped": 3,
+  "tier2_material_exceptions": [
+   {
+    "link_id": "osm:1046584820:0:0",
+    "material": "concrete",
+    "area_m2": 41.2,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:1046584820:0:1",
+    "material": "concrete",
+    "area_m2": 346.4,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:1046584820:0:2",
+    "material": "concrete",
+    "area_m2": 35.5,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:1046584821:0:0",
+    "material": "concrete",
+    "area_m2": 88.3,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:1046584821:0:1",
+    "material": "concrete",
+    "area_m2": 380.3,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:1046584821:0:2",
+    "material": "concrete",
+    "area_m2": 670.8,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:1046584821:0:3",
+    "material": "concrete",
+    "area_m2": 352.4,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:1046584822:0:0",
+    "material": "concrete",
+    "area_m2": 255.5,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:1046584824:0:0",
+    "material": "concrete",
+    "area_m2": 114.2,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:1495048736:0:0",
+    "material": "concrete",
+    "area_m2": 127.8,
+    "lum_scale": 0.59
+   },
+   {
+    "link_id": "osm:701101169:0:0",
+    "material": "concrete",
+    "area_m2": 202.8,
+    "lum_scale": 1.0
+   },
+   {
+    "link_id": "osm:701115104:0:0",
+    "material": "concrete",
+    "area_m2": 90.3,
+    "lum_scale": 0.88
+   }
+  ],
+  "juso_rw": {
+   "juso_rw": 0
+  },
+  "deck_duplicates_removed_m2": 4099.8,
+  "material_unified": [
+   {
+    "ufid": "1000377090168A00110000000000000202",
+    "kind": "bridge_deck",
+    "link_id": "osm:701271870:0:0",
+    "from": "concrete",
+    "to": "asphalt",
+    "area_m2": 1179.0
+   }
+  ],
+  "deck_groups_split": [
+   [
+    438357280,
+    701271870,
+    0.67
+   ],
+   [
+    701271870,
+    767762444,
+    1.06
+   ],
+   [
+    71105507,
+    723914142,
+    0.62
+   ],
+   [
+    723914142,
+    723914143,
+    0.01
+   ],
+   [
+    1073516673,
+    1073516685,
+    0.25
+   ],
+   [
+    428769843,
+    550118883,
+    0.75
+   ],
+   [
+    428769843,
+    1073516685,
+    0.27
+   ],
+   [
+    428769843,
+    428769849,
+    5.65
+   ],
+   [
+    428769843,
+    550118882,
+    5.6
+   ],
+   [
+    428769843,
+    428769844,
+    13.04
+   ],
+   [
+    550118882,
+    550118883,
+    0.01
+   ],
+   [
+    428769849,
+    550118885,
+    2.52
+   ],
+   [
+    428769849,
+    550118882,
+    1.07
+   ],
+   [
+    428769849,
+    885780859,
+    2.97
+   ],
+   [
+    428769849,
+    550118886,
+    2.96
+   ],
+   [
+    550118885,
+    769538134,
+    8.41
+   ],
+   [
+    550118885,
+    428769844,
+    12.27
+   ],
+   [
+    550118885,
+    1424033408,
+    7.93
+   ],
+   [
+    550118882,
+    769538137,
+    5.0
+   ],
+   [
+    550118882,
+    885780859,
+    4.08
+   ]
+  ],
+  "water_ped_excluded_m2": 227.8,
+  "bike_stream_crossing_excluded_m2": 51.5,
+  "bike_water_surface_excluded_m2": 120.2,
+  "verge": {
+   "verge": 204,
+   "verge_m2": 2196.6,
+   "by_material": {
+    "asphalt": 2038.4,
+    "concrete": 116.1,
+    "gravel": 4.9,
+    "paving_block": 37.2
+   }
+  },
+  "tier2_estimated": 52,
+  "sidewalk": {
+   "sidewalk": 300,
+   "curb": 299
+  },
+  "bikeway": 73,
+  "markings": {
+   "crosswalk": 245,
+   "stop_line": 358,
+   "center_line": 83,
+   "lane_line": 226,
+   "edge_line": 121
+  },
+  "structures": {
+   "median": 35,
+   "noise_tunnel": 14,
+   "bridge_side": 36,
+   "pier": {
+    "piers": 17,
+    "columns": 126,
+    "stations": 118,
+    "skipped_low": 19,
+    "skipped_blocked": 17,
+    "shifted": 16,
+    "clear_min_m": 3.04,
+    "height_max_m": 15.35
+   },
+   "soundwall": {
+    "csv": "soundwalls_seoul.csv",
+    "rows": 0,
+    "missing_cols": [],
+    "built": 0,
+    "note": "AOI 방음벽 공개 위치 자료 없음(서울시 자료는 올림픽대로만) → 만들지 않음",
+    "r4d": [
+     {
+      "id": "W1b",
+      "kind": "soundwall",
+      "length_m": 370.1,
+      "height_m": 7.0,
+      "moved_share": 0.632,
+      "deck_m": 28.0,
+      "ground_on_road_m": 0.0,
+      "deck_base_dev_max_m": 0.0,
+      "gap_over_road_m": 18.0,
+      "gaps_m": [
+       [
+        128.0,
+        140.0
+       ],
+       [
+        154.0,
+        160.0
+       ]
+      ],
+      "inside_edge_share": 0.009,
+      "inside_mid_depth_max_m": 0.905,
+      "base_dev_max_m": 0.0,
+      "on_deck_share": 0.129
+     },
+     {
+      "id": "W3",
+      "kind": "soundwall_tunnel",
+      "length_m": 73.0,
+      "height_m": 4.0,
+      "moved_share": 0.0,
+      "deck_m": 0.0,
+      "ground_on_road_m": 0.0,
+      "deck_base_dev_max_m": 0.0,
+      "gap_over_road_m": 0.0,
+      "gaps_m": [],
+      "inside_edge_share": 0.868,
+      "inside_mid_depth_max_m": 6.428,
+      "base_dev_max_m": 0.0,
+      "on_deck_share": 0.115
+     },
+     {
+      "id": "W4",
+      "kind": "soundwall",
+      "length_m": 167.1,
+      "height_m": 5.0,
+      "moved_share": 0.0,
+      "deck_m": 0.0,
+      "ground_on_road_m": 0.0,
+      "deck_base_dev_max_m": 0.0,
+      "gap_over_road_m": 0.0,
+      "gaps_m": [],
+      "inside_edge_share": 0.0,
+      "inside_mid_depth_max_m": 0.0,
+      "base_dev_max_m": 0.0,
+      "on_deck_share": 0.0
+     }
+    ]
+   },
+   "soundwall_r4d": 3,
+   "closing_faces_m": 8096.0
+  },
+  "poles": {
+   "signal_pole": 199,
+   "light_pole": 2137,
+   "tris_per_pole_max": 70
+  },
+  "excluded_zones": [
+   {
+    "reason": "tunnel",
+    "ref": "osm:1006910730:0:0",
+    "name": NaN,
+    "ground_share": 0.0
+   },
+   {
+    "reason": "tunnel",
+    "ref": "osm:1046584819:0:0",
+    "name": NaN,
+    "ground_share": 0.0
+   },
+   {
+    "reason": "underpass_kept",
+    "ref": "osm:1081184897:0:0",
+    "name": NaN,
+    "ground_share": 1.0,
+    "a001_m2": 187.2
+   },
+   {
+    "reason": "underpass_kept",
+    "ref": "osm:1360471427:0:0",
+    "name": "양재천우안로",
+    "ground_share": 0.85,
+    "a001_m2": 667.6
+   },
+   {
+    "reason": "underpass_kept",
+    "ref": "osm:1360471429:0:0",
+    "name": "양재천우안로",
+    "ground_share": 0.86,
+    "a001_m2": 668.5
+   },
+   {
+    "reason": "tunnel",
+    "ref": "osm:1422224630:0:0",
+    "name": NaN,
+    "ground_share": 0.0
+   },
+   {
+    "reason": "underpass_kept",
+    "ref": "osm:1422224640:0:0",
+    "name": "물사랑로",
+    "ground_share": 1.0,
+    "a001_m2": 236.7
+   },
+   {
+    "reason": "underpass_kept",
+    "ref": "osm:1422224647:0:0",
+    "name": "물사랑로",
+    "ground_share": 1.0,
+    "a001_m2": 192.0
+   },
+   {
+    "reason": "tunnel",
+    "ref": "osm:325838436:0:0",
+    "name": "강남순환로",
+    "ground_share": 0.0
+   },
+   {
+    "reason": "tunnel",
+    "ref": "osm:370736544:0:0",
+    "name": "태봉로",
+    "ground_share": 0.0
+   },
+   {
+    "reason": "underpass_kept",
+    "ref": "osm:428769845:0:0",
+    "name": "양재대로",
+    "ground_share": 0.11,
+    "a001_m2": 9732.4
+   },
+   {
+    "reason": "tunnel",
+    "ref": "osm:428769853:0:0",
+    "name": "강남순환로",
+    "ground_share": 0.0
+   },
+   {
+    "reason": "underpass_kept",
+    "ref": "osm:550118879:0:0",
+    "name": "양재대로2길",
+    "ground_share": 0.12,
+    "a001_m2": 615.5
+   },
+   {
+    "reason": "underpass_kept",
+    "ref": "osm:576208622:0:0",
+    "name": "선암지하차도",
+    "ground_share": 0.53,
+    "a001_m2": 2219.6
+   },
+   {
+    "reason": "tunnel",
+    "ref": "osm:71105510:0:0",
+    "name": "우면산로",
+    "ground_share": 0.0
+   },
+   {
+    "reason": "tunnel",
+    "ref": "osm:723914139:0:0",
+    "name": "우면산로",
+    "ground_share": 0.0
+   },
+   {
+    "reason": "underpass_kept",
+    "ref": "osm:886376499:0:0",
+    "name": "양재대로",
+    "ground_share": 0.25,
+    "a001_m2": 19088.4
+   },
+   {
+    "reason": "mountain_tunnel_strip",
+    "ref": "osm:1006910730:0:0,osm:1046584819:0:0,osm:1422224630:0:0,osm:325838436:0:0,osm:370736544:0:0,osm:428769853:0:0,osm:71105510:0:0,osm:723914139:0:0",
+    "strip_m2": 84719.5
+   },
+   {
+    "reason": "landmark_portal",
+    "ref": "우면산터널 남측 갱구(동관, 북행)"
+   },
+   {
+    "reason": "landmark_portal",
+    "ref": "우면산터널 남측 갱구(서관, 남행) + 유리 방음 덮개"
+   },
+   {
+    "reason": "landmark_bridge",
+    "ref": "370139894",
+    "name": "우면교"
+   },
+   {
+    "reason": "landmark_bridge",
+    "ref": "769538138",
+    "name": "매헌다리"
+   }
+  ],
+  "excluded_a001": [
+   {
+    "ufid": "1000377090157A00110000000000000202",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 88.8
+   },
+   {
+    "ufid": "1000377090157A00110000000000000208",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 601.3
+   },
+   {
+    "ufid": "1000377090161A00110000000000000010",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 7809.4
+   },
+   {
+    "ufid": "1000377090161A00110000000000000011",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 8124.9
+   },
+   {
+    "ufid": "1000377090164A00110000000000000036",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 116.1
+   },
+   {
+    "ufid": "1000377090167A00110000000000000131",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 1273.2
+   },
+   {
+    "ufid": "1000377090174A00110000000000000053",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 31661.4
+   },
+   {
+    "ufid": "1000377090174A00110000000000000054",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 30807.7
+   },
+   {
+    "ufid": "1000377090174A00110000000000000060",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 59.0
+   },
+   {
+    "ufid": "1000377090174A00110000000000000079",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 91.4
+   },
+   {
+    "ufid": "1000377090174A00110000000000000082",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 29.8
+   },
+   {
+    "ufid": "1000377090174A00110000000000000083",
+    "layer": "A001",
+    "reason": "tunnel_or_landmark",
+    "area_m2": 95.5
+   },
+   {
+    "ufid": "1000377090174A00110000000000000087",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 80.6
+   },
+   {
+    "ufid": "1000377090174A00110000000000000090",
+    "layer": "A001",
+    "reason": "tunnel_or_landmark",
+    "area_m2": 41.5
+   },
+   {
+    "ufid": "1000377090174A00110000000000000091",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 121.8
+   },
+   {
+    "ufid": "1000377090174A00110000000000000099",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 14.5
+   },
+   {
+    "ufid": "1000377090174A00110000000000000100",
+    "layer": "A001",
+    "reason": "tunnel_or_landmark",
+    "area_m2": 21.4
+   },
+   {
+    "ufid": "1000377090174A00110000000000000109",
+    "layer": "A001",
+    "reason": "tunnel_or_landmark",
+    "area_m2": 105.5
+   },
+   {
+    "ufid": "1000377090175A00110000000000000245",
+    "layer": "A001",
+    "reason": "partial_tunnel_or_landmark",
+    "area_m2": 960.7
+   }
+  ],
+  "low_decks_removed_m2": 10518.7,
+  "bridges": [
+   {
+    "osm_way_id": 37404455,
+    "name": "우면산로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 151.0,
+    "extended_m": 4.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 71105507,
+    "name": "선암교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": true,
+    "len_m": 38.6,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 277756487,
+    "name": "경부고속도로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 40.5,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 277756488,
+    "name": "경부고속도로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 40.1,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 303912109,
+    "name": "서울둘레길",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 12.6,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 303912461,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 15.3,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 369503547,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 30.2,
+    "extended_m": 4.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 370139894,
+    "name": "우면교",
+    "deck_mode": "deck",
+    "landmark": true,
+    "covered": false,
+    "len_m": 63.7,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 370736547,
+    "name": "태봉로",
+    "deck_mode": "at_grade_rule",
+    "landmark": false,
+    "covered": false,
+    "len_m": 14.8,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 428769843,
+    "name": "강남순환로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 407.5,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 428769849,
+    "name": "강남순환로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 214.1,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 438357280,
+    "name": "경부고속도로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 72.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 478139617,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 29.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 478139619,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 44.9,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 550118882,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 320.1,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 550118883,
+    "name": "강남순환로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 401.7,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 550118885,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 212.7,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 550118886,
+    "name": "강남순환로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 212.0,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 701101160,
+    "name": "형촌1길",
+    "deck_mode": "at_grade_rule",
+    "landmark": false,
+    "covered": false,
+    "len_m": 19.6,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 701115062,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 19.7,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 701271870,
+    "name": "경부고속도로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 72.0,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 723914142,
+    "name": "선암교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": true,
+    "len_m": 109.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 723914143,
+    "name": "선암교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": true,
+    "len_m": 109.5,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 723914144,
+    "name": "선암교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": true,
+    "len_m": 38.8,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 723914147,
+    "name": "양재천교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": true,
+    "len_m": 69.6,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 723914148,
+    "name": "양재천교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": true,
+    "len_m": 68.9,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 723914149,
+    "name": "우면산로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 148.0,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 767762442,
+    "name": "경부고속도로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 69.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 767762445,
+    "name": "경부고속도로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 67.8,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 769538134,
+    "name": "양재대로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 65.8,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 769538137,
+    "name": "양재대로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 87.7,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 769538138,
+    "name": "매헌다리",
+    "deck_mode": "deck",
+    "landmark": true,
+    "covered": false,
+    "len_m": 56.8,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 813346472,
+    "name": "양재천우안로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 254.9,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 885780859,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 80.5,
+    "extended_m": 9.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 889571142,
+    "name": "곱돌교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 54.6,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1073516665,
+    "name": "강남순환로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 355.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1073516673,
+    "name": "강남순환로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": true,
+    "len_m": 15.5,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1073516678,
+    "name": "강남순환로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 381.5,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1073516685,
+    "name": "강남순환로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": true,
+    "len_m": 16.1,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1087669369,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 38.6,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1087669371,
+    "name": "양재천우안로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 136.9,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1287404877,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 15.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1287404881,
+    "name": null,
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 18.9,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1324918733,
+    "name": "양재천 우측 자전거도로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 18.0,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1383093133,
+    "name": null,
+    "deck_mode": "at_grade_rule",
+    "landmark": false,
+    "covered": false,
+    "len_m": 4.0,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1383093137,
+    "name": null,
+    "deck_mode": "at_grade_rule",
+    "landmark": false,
+    "covered": false,
+    "len_m": 4.0,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1383093138,
+    "name": null,
+    "deck_mode": "at_grade_rule",
+    "landmark": false,
+    "covered": false,
+    "len_m": 4.0,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1383093143,
+    "name": null,
+    "deck_mode": "at_grade_rule",
+    "landmark": false,
+    "covered": false,
+    "len_m": 5.5,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1383093153,
+    "name": null,
+    "deck_mode": "at_grade_rule",
+    "landmark": false,
+    "covered": false,
+    "len_m": 4.0,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1495048734,
+    "name": "양재대로2길",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 44.2,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1495048740,
+    "name": "양재대로2길",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 45.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1509569964,
+    "name": "양재천우안로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 135.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1509569965,
+    "name": "양재천우안로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 257.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1208755364,
+    "name": "양재천교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 7.7,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 71105494,
+    "name": "선암교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 114.3,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 767762444,
+    "name": "경부고속도로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 13.7,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 723914145,
+    "name": "선암교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 114.1,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1208755363,
+    "name": "양재천교",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 10.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 428769844,
+    "name": "양재대로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 24.6,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   },
+   {
+    "osm_way_id": 1424033408,
+    "name": "양재대로",
+    "deck_mode": "deck",
+    "landmark": false,
+    "covered": false,
+    "len_m": 7.4,
+    "extended_m": 0.0,
+    "ramp_runs": [],
+    "deck_parts": 0
+   }
+  ]
+ },
+ "materials": {
+  "asphalt": {
+   "asset": "Asphalt031",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Asphalt031_1K-JPG.zip",
+   "license": "CC0 1.0 (ambientCG, https://docs.ambientcg.com/license/)",
+   "zip_sha256": "f98114b8fb083fc65925c3b4568b131e37c9a23357d432a16e59676dbc69f964",
+   "files": {
+    "color": {
+     "file": "asphalt_color.jpg",
+     "sha256": "20d71aeed379e67707f4d618b6fdc8d1020d2cf101faef245327d4002af58867"
+    },
+    "normal": {
+     "file": "asphalt_normal.jpg",
+     "sha256": "ee02039c1aeebb9bd95383a74ca8bf29710bc0b0dd32aa951d5cb0a94135a1e4"
+    },
+    "orm": {
+     "file": "asphalt_orm.jpg",
+     "sha256": "6389639b12fea35db6fe19c7735aa8d00d9cecbb60894d58ac76083e89d7f8e7"
+    }
+   },
+   "res": 1024,
+   "tile_m": 4.0,
+   "rough_range": [
+    0.75,
+    0.95
+   ],
+   "mean_linear": [
+    0.2203,
+    0.2202,
+    0.2201
+   ],
+   "mean_lum": 0.2202,
+   "candidates_lum": {
+    "Asphalt025C": 0.0243,
+    "Asphalt026C": 0.0315,
+    "Asphalt031": 0.19
+   },
+   "gain": 1.159,
+   "target_lum": 0.1694,
+   "view_gain": 1.3,
+   "note": "AOI 차도 정사영상 중앙값 p50 0.1694에 가장 가까운 Asphalt031를 그 p50 × 뷰어 조명 보정 1.30 = 0.2202에 맞춰 선형 ×1.159",
+   "mean_linear_saved": [
+    0.2202,
+    0.2202,
+    0.2202
+   ]
+  },
+  "asphalt_red": {
+   "base": "asphalt",
+   "color_lin": [
+    0.2582,
+    0.1981,
+    0.1329
+   ],
+   "file": "asphalt_red_color.jpg",
+   "sha256": "557841146562852a7150912d319694fcce7d7461d11eddc4c3bb2a3d82ff69eb",
+   "from_ortho": true
+  },
+  "gpu_mb": 24.0,
+  "paint": {
+   "pixels": 9814728,
+   "white_pixels": 354846,
+   "yellow_pixels": 977,
+   "paint_white": [
+    0.5333,
+    0.5841,
+    0.5149
+   ],
+   "paint_yellow": [
+    0.2542,
+    0.1878,
+    0.0529
+   ]
+  },
+  "bike": {
+   "pixels": 688157,
+   "used": 216152,
+   "color_lin": [
+    0.2582,
+    0.1981,
+    0.1329
+   ]
+  },
+  "road_color_dist_aoi": {
+   "n": 1470,
+   "lum_p10": 0.039,
+   "lum_p50": 0.1694,
+   "lum_p90": 0.3262,
+   "median_linear": [
+    0.15,
+    0.1779,
+    0.1329
+   ]
+  }
+ },
+ "tiles": {
+  "roadway": {
+   "tileset": "roadway/tileset.json",
+   "cells": 109,
+   "bytes": 5036152,
+   "max_tile_bytes": 255092,
+   "G": 4.3,
+   "cell_m": 250.0
+  },
+  "sidewalk": {
+   "tileset": "sidewalk/tileset.json",
+   "cells": 55,
+   "bytes": 6128296,
+   "max_tile_bytes": 366820,
+   "G": 2.3,
+   "cell_m": 250.0
+  },
+  "markings": {
+   "tileset": "markings/tileset.json",
+   "cells": 129,
+   "bytes": 3364184,
+   "max_tile_bytes": 115768,
+   "G": 0.86,
+   "cell_m": 125.0
+  },
+  "structures": {
+   "tileset": "structures/tileset.json",
+   "cells": 28,
+   "bytes": 4279048,
+   "max_tile_bytes": 690468,
+   "G": 4.3,
+   "cell_m": 250.0
+  },
+  "poles": {
+   "tileset": "poles/tileset.json",
+   "cells": 117,
+   "bytes": 2118220,
+   "max_tile_bytes": 35868,
+   "G": 1.15,
+   "cell_m": 250.0
+  }
+ },
+ "triangles": {
+  "roadway": 88014,
+  "sidewalk": 143092,
+  "markings": 48704,
+  "structures": 98035
+ },
+ "gates": {
+  "validator": {
+   "numErrors": 0,
+   "numWarnings": 0,
+   "numInfos": 5,
+   "exit": 0
+  },
+  "sizes": {
+   "total_mb": 23.45,
+   "glb_files": 438,
+   "max_tile_mb": 0.69,
+   "max_tile": "structures/807_2160.glb",
+   "pass": true
+  },
+  "load_distance": {
+   "groups": {
+    "roadway": {
+     "cell_m": 250.0,
+     "G": 4.3,
+     "load_m_1600x900_sse4": 1490,
+     "vanish_far_m": 1843
+    },
+    "sidewalk": {
+     "cell_m": 250.0,
+     "G": 2.3,
+     "load_m_1600x900_sse4": 797,
+     "vanish_far_m": 1150
+    },
+    "markings": {
+     "cell_m": 125.0,
+     "G": 0.86,
+     "load_m_1600x900_sse4": 298,
+     "vanish_far_m": 475
+    },
+    "structures": {
+     "cell_m": 250.0,
+     "G": 4.3,
+     "load_m_1600x900_sse4": 1490,
+     "vanish_far_m": 1843
+    },
+    "poles": {
+     "cell_m": 250.0,
+     "G": 1.15,
+     "load_m_1600x900_sse4": 398,
+     "vanish_far_m": 752
+    }
+   },
+   "markings_vanish_far_m": 475,
+   "markings_measured_eye_m": 450,
+   "markings_pass": true
+  },
+  "surface_vs_terrain": {
+   "n_points": 471891,
+   "road_minus_terrain": {
+    "p0": 0.0354,
+    "p1": 0.0465,
+    "p50": 0.05,
+    "p99": 0.0538,
+    "p100": 0.0641
+   },
+   "edge_mid_dev_max_m": 0.0146,
+   "pass": true
+  },
+  "steps": {
+   "vertex_groups": 68018,
+   "max_step_same_level_m": 0.9993,
+   "groups_gt_10cm_same_level": 193,
+   "groups_gt_10cm_same_level_closed": 193,
+   "max_step_same_level_open_m": 0.0974,
+   "groups_multi_level_gt_1m": 528,
+   "groups_multi_level_closed": 466,
+   "pass": true
+  },
+  "feature_ids_unique": true,
+  "soundwall_r4d": {
+   "rows": [
+    {
+     "id": "W1b",
+     "kind": "soundwall",
+     "length_m": 370.1,
+     "height_m": 7.0,
+     "moved_share": 0.632,
+     "deck_m": 28.0,
+     "ground_on_road_m": 0.0,
+     "deck_base_dev_max_m": 0.0,
+     "gap_over_road_m": 18.0,
+     "gaps_m": [
+      [
+       128.0,
+       140.0
+      ],
+      [
+       154.0,
+       160.0
+      ]
+     ],
+     "inside_edge_share": 0.009,
+     "inside_mid_depth_max_m": 0.905,
+     "base_dev_max_m": 0.0,
+     "on_deck_share": 0.129
+    },
+    {
+     "id": "W3",
+     "kind": "soundwall_tunnel",
+     "length_m": 73.0,
+     "height_m": 4.0,
+     "moved_share": 0.0,
+     "deck_m": 0.0,
+     "ground_on_road_m": 0.0,
+     "deck_base_dev_max_m": 0.0,
+     "gap_over_road_m": 0.0,
+     "gaps_m": [],
+     "inside_edge_share": 0.868,
+     "inside_mid_depth_max_m": 6.428,
+     "base_dev_max_m": 0.0,
+     "on_deck_share": 0.115
+    },
+    {
+     "id": "W4",
+     "kind": "soundwall",
+     "length_m": 167.1,
+     "height_m": 5.0,
+     "moved_share": 0.0,
+     "deck_m": 0.0,
+     "ground_on_road_m": 0.0,
+     "deck_base_dev_max_m": 0.0,
+     "gap_over_road_m": 0.0,
+     "gaps_m": [],
+     "inside_edge_share": 0.0,
+     "inside_mid_depth_max_m": 0.0,
+     "base_dev_max_m": 0.0,
+     "on_deck_share": 0.0
+    }
+   ],
+   "pass": true
+  },
+  "deck_v2": {
+   "enabled": true,
+   "end_mode": "ramp",
+   "chains": [
+    {
+     "chain": [
+      37404455,
+      723914147
+     ],
+     "names": [
+      "양재천교",
+      "우면산로"
+     ],
+     "length_m": 220.6,
+     "n_ctrl": 1,
+     "n_knots": 3,
+     "ends": {
+      "start": {
+       "to": "road",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "approach_ramp",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [
+      {
+       "end": "end",
+       "osm_way_id": 723914147,
+       "bridge_end": 1,
+       "reason": "meets_road",
+       "lift0_m": 0.44,
+       "step_m": 0.0,
+       "length_m": 7.7,
+       "ways": [
+        1208755364
+       ],
+       "fill_candidate": false,
+       "uid": 72391414791,
+       "ramp_minus_terrain_min_m": 0.05
+      }
+     ],
+     "resid_max_m": 0.245,
+     "grade_max": 0.058,
+     "grade_max_a_road_ends": 0.0625,
+     "kink10_max": 0.0218,
+     "members": [
+      {
+       "osm_way_id": 37404455,
+       "name": "우면산로",
+       "len_m": 151.0,
+       "n_ctrl": 1,
+       "rise_max_m": 4.25,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 12.5,
+       "under10_m": 1.15,
+       "clear_ok": true,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 723914147,
+       "name": "양재천교",
+       "len_m": 69.6,
+       "n_ctrl": 0,
+       "rise_max_m": 4.25,
+       "drop_max_m": -0.44,
+       "deck_minus_terrain_max_m": 4.3,
+       "under10_m": 0.18,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      71105507,
+      723914143
+     ],
+     "names": [
+      "선암교"
+     ],
+     "length_m": 148.1,
+     "n_ctrl": 2,
+     "n_knots": 4,
+     "ends": {
+      "start": {
+       "to": "approach_ramp",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "road",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [
+      {
+       "end": "start",
+       "osm_way_id": 71105507,
+       "bridge_end": 0,
+       "reason": "meets_road",
+       "lift0_m": 6.63,
+       "step_m": 0.0,
+       "length_m": 114.3,
+       "ways": [
+        71105494
+       ],
+       "fill_candidate": false,
+       "uid": 7110550790,
+       "ramp_minus_terrain_min_m": 0.05
+      }
+     ],
+     "resid_max_m": 0.188,
+     "grade_max": 0.058,
+     "grade_max_a_road_ends": 0.2523,
+     "kink10_max": 0.0428,
+     "members": [
+      {
+       "osm_way_id": 71105507,
+       "name": "선암교",
+       "len_m": 38.6,
+       "n_ctrl": 1,
+       "rise_max_m": 7.58,
+       "drop_max_m": -6.63,
+       "deck_minus_terrain_max_m": 8.17,
+       "under10_m": 6.45,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 723914143,
+       "name": "선암교",
+       "len_m": 109.5,
+       "n_ctrl": 1,
+       "rise_max_m": 7.58,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 8.37,
+       "under10_m": 3.72,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      428769849,
+      550118883,
+      1073516685,
+      1073516678
+     ],
+     "names": [
+      "강남순환로"
+     ],
+     "length_m": 1013.3,
+     "n_ctrl": 2,
+     "n_knots": 4,
+     "ends": {
+      "start": {
+       "to": "road",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "road",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [],
+     "resid_max_m": 0.055,
+     "grade_max": 0.0284,
+     "grade_max_a_road_ends": 0.0284,
+     "kink10_max": 0.0049,
+     "members": [
+      {
+       "osm_way_id": 428769849,
+       "name": "강남순환로",
+       "len_m": 214.1,
+       "n_ctrl": 0,
+       "rise_max_m": 7.38,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 12.35,
+       "under10_m": -0.93,
+       "clear_ok": false,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 550118883,
+       "name": "강남순환로",
+       "len_m": 401.7,
+       "n_ctrl": 1,
+       "rise_max_m": 15.59,
+       "drop_max_m": -7.38,
+       "deck_minus_terrain_max_m": 15.64,
+       "under10_m": 6.54,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 1073516685,
+       "name": "강남순환로",
+       "len_m": 16.1,
+       "n_ctrl": 0,
+       "rise_max_m": 15.86,
+       "drop_max_m": -15.59,
+       "deck_minus_terrain_max_m": 15.91,
+       "under10_m": null,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 1073516678,
+       "name": "강남순환로",
+       "len_m": 381.5,
+       "n_ctrl": 1,
+       "rise_max_m": 15.86,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 16.05,
+       "under10_m": 0.22,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      438357280
+     ],
+     "names": [
+      "경부고속도로"
+     ],
+     "length_m": 72.4,
+     "n_ctrl": 1,
+     "n_knots": 3,
+     "ends": {
+      "start": {
+       "to": "approach_ramp",
+       "step_m": 0.23
+      },
+      "end": {
+       "to": "road",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [
+      {
+       "end": "start",
+       "osm_way_id": 438357280,
+       "bridge_end": 0,
+       "reason": "tunnel",
+       "lift0_m": 1.64,
+       "step_m": 0.23,
+       "length_m": 13.7,
+       "ways": [
+        767762444
+       ],
+       "fill_candidate": false,
+       "uid": 43835728090,
+       "ramp_minus_terrain_min_m": 0.28
+      }
+     ],
+     "resid_max_m": 0.25,
+     "grade_max": 0.058,
+     "grade_max_a_road_ends": 0.0981,
+     "kink10_max": 0.0333,
+     "members": [
+      {
+       "osm_way_id": 438357280,
+       "name": "경부고속도로",
+       "len_m": 72.4,
+       "n_ctrl": 1,
+       "rise_max_m": 1.99,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 6.97,
+       "under10_m": 0.9,
+       "clear_ok": true,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      550118882
+     ],
+     "names": [],
+     "length_m": 320.1,
+     "n_ctrl": 0,
+     "n_knots": 2,
+     "ends": {
+      "start": {
+       "to": "road",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "deck 428769849",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [],
+     "resid_max_m": 0.0,
+     "grade_max": 0.019,
+     "grade_max_a_road_ends": 0.019,
+     "kink10_max": 0.0,
+     "members": [
+      {
+       "osm_way_id": 550118882,
+       "name": null,
+       "len_m": 320.1,
+       "n_ctrl": 0,
+       "rise_max_m": 7.38,
+       "drop_max_m": 2.44,
+       "deck_minus_terrain_max_m": 12.47,
+       "under10_m": -1.45,
+       "clear_ok": false,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      550118885,
+      428769843,
+      1073516673,
+      1073516665
+     ],
+     "names": [
+      "강남순환로"
+     ],
+     "length_m": 991.2,
+     "n_ctrl": 3,
+     "n_knots": 5,
+     "ends": {
+      "start": {
+       "to": "road",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "road",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [],
+     "resid_max_m": 0.17,
+     "grade_max": 0.0523,
+     "grade_max_a_road_ends": 0.0523,
+     "kink10_max": 0.0151,
+     "members": [
+      {
+       "osm_way_id": 550118885,
+       "name": null,
+       "len_m": 212.7,
+       "n_ctrl": 0,
+       "rise_max_m": 13.53,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 15.83,
+       "under10_m": -0.7,
+       "clear_ok": false,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 428769843,
+       "name": "강남순환로",
+       "len_m": 407.5,
+       "n_ctrl": 2,
+       "rise_max_m": 15.86,
+       "drop_max_m": -12.0,
+       "deck_minus_terrain_max_m": 15.91,
+       "under10_m": 11.07,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 1073516673,
+       "name": "강남순환로",
+       "len_m": 15.5,
+       "n_ctrl": 0,
+       "rise_max_m": 16.15,
+       "drop_max_m": -15.86,
+       "deck_minus_terrain_max_m": 16.2,
+       "under10_m": null,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 1073516665,
+       "name": "강남순환로",
+       "len_m": 355.4,
+       "n_ctrl": 1,
+       "rise_max_m": 16.15,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 16.26,
+       "under10_m": 0.76,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      550118886
+     ],
+     "names": [
+      "강남순환로"
+     ],
+     "length_m": 212.0,
+     "n_ctrl": 1,
+     "n_knots": 3,
+     "ends": {
+      "start": {
+       "to": "deck 428769843",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "road",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [],
+     "resid_max_m": 0.161,
+     "grade_max": 0.0577,
+     "grade_max_a_road_ends": 0.0577,
+     "kink10_max": 0.0342,
+     "members": [
+      {
+       "osm_way_id": 550118886,
+       "name": "강남순환로",
+       "len_m": 212.0,
+       "n_ctrl": 1,
+       "rise_max_m": 13.53,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 16.78,
+       "under10_m": -0.64,
+       "clear_ok": false,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      723914142,
+      723914144
+     ],
+     "names": [
+      "선암교"
+     ],
+     "length_m": 148.2,
+     "n_ctrl": 2,
+     "n_knots": 4,
+     "ends": {
+      "start": {
+       "to": "road",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "approach_ramp",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [
+      {
+       "end": "end",
+       "osm_way_id": 723914144,
+       "bridge_end": 1,
+       "reason": "meets_road",
+       "lift0_m": 6.62,
+       "step_m": 0.0,
+       "length_m": 114.1,
+       "ways": [
+        723914145
+       ],
+       "fill_candidate": false,
+       "uid": 72391414491,
+       "ramp_minus_terrain_min_m": 0.05
+      }
+     ],
+     "resid_max_m": 0.169,
+     "grade_max": 0.058,
+     "grade_max_a_road_ends": 0.2508,
+     "kink10_max": 0.0373,
+     "members": [
+      {
+       "osm_way_id": 723914142,
+       "name": "선암교",
+       "len_m": 109.4,
+       "n_ctrl": 1,
+       "rise_max_m": 6.89,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 8.38,
+       "under10_m": 4.03,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 723914144,
+       "name": "선암교",
+       "len_m": 38.8,
+       "n_ctrl": 1,
+       "rise_max_m": 6.93,
+       "drop_max_m": -6.58,
+       "deck_minus_terrain_max_m": 8.13,
+       "under10_m": 6.44,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      723914148,
+      723914149
+     ],
+     "names": [
+      "양재천교",
+      "우면산로"
+     ],
+     "length_m": 216.9,
+     "n_ctrl": 1,
+     "n_knots": 3,
+     "ends": {
+      "start": {
+       "to": "approach_ramp",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "road",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [
+      {
+       "end": "start",
+       "osm_way_id": 723914148,
+       "bridge_end": 0,
+       "reason": "meets_road",
+       "lift0_m": 0.6,
+       "step_m": 0.0,
+       "length_m": 10.4,
+       "ways": [
+        1208755363
+       ],
+       "fill_candidate": false,
+       "uid": 72391414890,
+       "ramp_minus_terrain_min_m": 0.05
+      }
+     ],
+     "resid_max_m": 0.25,
+     "grade_max": 0.058,
+     "grade_max_a_road_ends": 0.0643,
+     "kink10_max": 0.0223,
+     "members": [
+      {
+       "osm_way_id": 723914148,
+       "name": "양재천교",
+       "len_m": 68.9,
+       "n_ctrl": 0,
+       "rise_max_m": 4.74,
+       "drop_max_m": -0.6,
+       "deck_minus_terrain_max_m": 4.79,
+       "under10_m": 0.34,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      },
+      {
+       "osm_way_id": 723914149,
+       "name": "우면산로",
+       "len_m": 148.0,
+       "n_ctrl": 1,
+       "rise_max_m": 4.74,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 11.28,
+       "under10_m": 2.25,
+       "clear_ok": true,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      769538134
+     ],
+     "names": [
+      "양재대로"
+     ],
+     "length_m": 65.8,
+     "n_ctrl": 1,
+     "n_knots": 3,
+     "ends": {
+      "start": {
+       "to": "approach_ramp",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "approach_ramp",
+       "step_m": 1.92
+      }
+     },
+     "ramps": [
+      {
+       "end": "start",
+       "osm_way_id": 769538134,
+       "bridge_end": 0,
+       "reason": "meets_road",
+       "lift0_m": 2.08,
+       "step_m": 0.0,
+       "length_m": 24.6,
+       "ways": [
+        428769844
+       ],
+       "fill_candidate": false,
+       "uid": 76953813490,
+       "ramp_minus_terrain_min_m": 0.05
+      },
+      {
+       "end": "end",
+       "osm_way_id": 769538134,
+       "bridge_end": 1,
+       "reason": "intersection",
+       "lift0_m": 2.53,
+       "step_m": 1.92,
+       "length_m": 7.4,
+       "ways": [
+        1424033408
+       ],
+       "fill_candidate": false,
+       "uid": 76953813491,
+       "ramp_minus_terrain_min_m": 1.97
+      }
+     ],
+     "resid_max_m": 0.25,
+     "grade_max": 0.058,
+     "grade_max_a_road_ends": 0.1409,
+     "kink10_max": 0.0673,
+     "members": [
+      {
+       "osm_way_id": 769538134,
+       "name": "양재대로",
+       "len_m": 65.8,
+       "n_ctrl": 1,
+       "rise_max_m": 3.81,
+       "drop_max_m": -1.95,
+       "deck_minus_terrain_max_m": 8.6,
+       "under10_m": 1.93,
+       "clear_ok": true,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      1087669369
+     ],
+     "names": [],
+     "length_m": 38.6,
+     "n_ctrl": 1,
+     "n_knots": 3,
+     "ends": {
+      "start": {
+       "to": "road",
+       "step_m": 1.27
+      },
+      "end": {
+       "to": "road",
+       "step_m": 4.17
+      }
+     },
+     "ramps": [
+      {
+       "end": "start",
+       "osm_way_id": 1087669369,
+       "bridge_end": 0,
+       "reason": "turn",
+       "lift0_m": 1.27,
+       "step_m": 1.27,
+       "length_m": 0.0,
+       "ways": [],
+       "fill_candidate": false
+      },
+      {
+       "end": "end",
+       "osm_way_id": 1087669369,
+       "bridge_end": 1,
+       "reason": "turn",
+       "lift0_m": 4.17,
+       "step_m": 4.17,
+       "length_m": 0.0,
+       "ways": [],
+       "fill_candidate": true
+      }
+     ],
+     "resid_max_m": 0.249,
+     "grade_max": 0.058,
+     "grade_max_a_road_ends": 0.3007,
+     "kink10_max": 0.0675,
+     "members": [
+      {
+       "osm_way_id": 1087669369,
+       "name": null,
+       "len_m": 38.6,
+       "n_ctrl": 1,
+       "rise_max_m": 4.17,
+       "drop_max_m": -1.27,
+       "deck_minus_terrain_max_m": 5.11,
+       "under10_m": 2.09,
+       "clear_ok": null,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      1087669371
+     ],
+     "names": [
+      "양재천우안로"
+     ],
+     "length_m": 136.9,
+     "n_ctrl": 1,
+     "n_knots": 3,
+     "ends": {
+      "start": {
+       "to": "deck 1509569964",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "road",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [],
+     "resid_max_m": 0.181,
+     "grade_max": 0.041,
+     "grade_max_a_road_ends": 0.041,
+     "kink10_max": 0.0161,
+     "members": [
+      {
+       "osm_way_id": 1087669371,
+       "name": "양재천우안로",
+       "len_m": 136.9,
+       "n_ctrl": 1,
+       "rise_max_m": 4.03,
+       "drop_max_m": 0.0,
+       "deck_minus_terrain_max_m": 9.14,
+       "under10_m": -0.61,
+       "clear_ok": false,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    },
+    {
+     "chain": [
+      1509569964
+     ],
+     "names": [
+      "양재천우안로"
+     ],
+     "length_m": 135.4,
+     "n_ctrl": 1,
+     "n_knots": 3,
+     "ends": {
+      "start": {
+       "to": "road",
+       "step_m": 0.0
+      },
+      "end": {
+       "to": "deck 1087669371",
+       "step_m": 0.0
+      }
+     },
+     "ramps": [],
+     "resid_max_m": 0.119,
+     "grade_max": 0.0306,
+     "grade_max_a_road_ends": 0.0315,
+     "kink10_max": 0.0,
+     "members": [
+      {
+       "osm_way_id": 1509569964,
+       "name": "양재천우안로",
+       "len_m": 135.4,
+       "n_ctrl": 1,
+       "rise_max_m": 4.15,
+       "drop_max_m": 0.05,
+       "deck_minus_terrain_max_m": 8.86,
+       "under10_m": -0.72,
+       "clear_ok": false,
+       "deck_mode": "deck"
+      }
+     ],
+     "pass": true
+    }
+   ],
+   "flips": [
+    {
+     "osm_way_id": 428769843,
+     "from": "at_grade_by_ortho",
+     "ctrl_above_terrain_max_m": 13.0
+    },
+    {
+     "osm_way_id": 550118883,
+     "from": "at_grade_by_ortho",
+     "ctrl_above_terrain_max_m": 12.9
+    }
+   ],
+   "derived": [
+    {
+     "onto": 428769843,
+     "from": 550118886,
+     "gap_m": 19.4
+    },
+    {
+     "onto": 1509569964,
+     "from": 1087669371,
+     "gap_m": 32.9
+    }
+   ],
+   "ctrl_resid_max_m": 0.25,
+   "grade_max": 0.058,
+   "ramps": [
+    {
+     "end": "end",
+     "osm_way_id": 723914147,
+     "bridge_end": 1,
+     "reason": "meets_road",
+     "lift0_m": 0.44,
+     "step_m": 0.0,
+     "length_m": 7.7,
+     "ways": [
+      1208755364
+     ],
+     "fill_candidate": false,
+     "uid": 72391414791,
+     "ramp_minus_terrain_min_m": 0.05,
+     "chain": [
+      37404455,
+      723914147
+     ],
+     "names": [
+      "양재천교",
+      "우면산로"
+     ]
+    },
+    {
+     "end": "start",
+     "osm_way_id": 71105507,
+     "bridge_end": 0,
+     "reason": "meets_road",
+     "lift0_m": 6.63,
+     "step_m": 0.0,
+     "length_m": 114.3,
+     "ways": [
+      71105494
+     ],
+     "fill_candidate": false,
+     "uid": 7110550790,
+     "ramp_minus_terrain_min_m": 0.05,
+     "chain": [
+      71105507,
+      723914143
+     ],
+     "names": [
+      "선암교"
+     ]
+    },
+    {
+     "end": "start",
+     "osm_way_id": 438357280,
+     "bridge_end": 0,
+     "reason": "tunnel",
+     "lift0_m": 1.64,
+     "step_m": 0.23,
+     "length_m": 13.7,
+     "ways": [
+      767762444
+     ],
+     "fill_candidate": false,
+     "uid": 43835728090,
+     "ramp_minus_terrain_min_m": 0.28,
+     "chain": [
+      438357280
+     ],
+     "names": [
+      "경부고속도로"
+     ]
+    },
+    {
+     "end": "end",
+     "osm_way_id": 723914144,
+     "bridge_end": 1,
+     "reason": "meets_road",
+     "lift0_m": 6.62,
+     "step_m": 0.0,
+     "length_m": 114.1,
+     "ways": [
+      723914145
+     ],
+     "fill_candidate": false,
+     "uid": 72391414491,
+     "ramp_minus_terrain_min_m": 0.05,
+     "chain": [
+      723914142,
+      723914144
+     ],
+     "names": [
+      "선암교"
+     ]
+    },
+    {
+     "end": "start",
+     "osm_way_id": 723914148,
+     "bridge_end": 0,
+     "reason": "meets_road",
+     "lift0_m": 0.6,
+     "step_m": 0.0,
+     "length_m": 10.4,
+     "ways": [
+      1208755363
+     ],
+     "fill_candidate": false,
+     "uid": 72391414890,
+     "ramp_minus_terrain_min_m": 0.05,
+     "chain": [
+      723914148,
+      723914149
+     ],
+     "names": [
+      "양재천교",
+      "우면산로"
+     ]
+    },
+    {
+     "end": "start",
+     "osm_way_id": 769538134,
+     "bridge_end": 0,
+     "reason": "meets_road",
+     "lift0_m": 2.08,
+     "step_m": 0.0,
+     "length_m": 24.6,
+     "ways": [
+      428769844
+     ],
+     "fill_candidate": false,
+     "uid": 76953813490,
+     "ramp_minus_terrain_min_m": 0.05,
+     "chain": [
+      769538134
+     ],
+     "names": [
+      "양재대로"
+     ]
+    },
+    {
+     "end": "end",
+     "osm_way_id": 769538134,
+     "bridge_end": 1,
+     "reason": "intersection",
+     "lift0_m": 2.53,
+     "step_m": 1.92,
+     "length_m": 7.4,
+     "ways": [
+      1424033408
+     ],
+     "fill_candidate": false,
+     "uid": 76953813491,
+     "ramp_minus_terrain_min_m": 1.97,
+     "chain": [
+      769538134
+     ],
+     "names": [
+      "양재대로"
+     ]
+    },
+    {
+     "end": "start",
+     "osm_way_id": 1087669369,
+     "bridge_end": 0,
+     "reason": "turn",
+     "lift0_m": 1.27,
+     "step_m": 1.27,
+     "length_m": 0.0,
+     "ways": [],
+     "fill_candidate": false,
+     "chain": [
+      1087669369
+     ],
+     "names": []
+    },
+    {
+     "end": "end",
+     "osm_way_id": 1087669369,
+     "bridge_end": 1,
+     "reason": "turn",
+     "lift0_m": 4.17,
+     "step_m": 4.17,
+     "length_m": 0.0,
+     "ways": [],
+     "fill_candidate": true,
+     "chain": [
+      1087669369
+     ],
+     "names": []
+    }
+   ],
+   "ramp_features": 7,
+   "ramp_ground_overlap_m2": 0.0,
+   "fill_candidates_v25": [
+    {
+     "end": "end",
+     "osm_way_id": 1087669369,
+     "bridge_end": 1,
+     "reason": "turn",
+     "lift0_m": 4.17,
+     "step_m": 4.17,
+     "length_m": 0.0,
+     "ways": [],
+     "fill_candidate": true,
+     "chain": [
+      1087669369
+     ],
+     "names": []
+    }
+   ],
+   "pass": true
+  },
+  "crosswalk_alignment": {
+   "n": 10,
+   "candidates": 232,
+   "unmeasurable_before_n": 16,
+   "skipped": [
+    {
+     "ufid": "1000377090143A00410000000000000004",
+     "white_px": 0,
+     "lit_share": 0.717,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090146A00410000000000000002",
+     "white_px": 124,
+     "lit_share": 1.0,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090146A00410000000000000003",
+     "white_px": 124,
+     "lit_share": 1.0,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090146A00410000000000000004",
+     "white_px": 140,
+     "lit_share": 1.0,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090146A00410000000000000005",
+     "white_px": 147,
+     "lit_share": 1.0,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090146A00410000000000000007",
+     "white_px": 0,
+     "lit_share": 0.813,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090146A00410000000000000008",
+     "white_px": 120,
+     "lit_share": 0.835,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090155A00410000000000000001",
+     "white_px": 54,
+     "lit_share": 0.651,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090155A00410000000000000002",
+     "white_px": 58,
+     "lit_share": 0.889,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090155A00410000000000000004",
+     "white_px": 22,
+     "lit_share": 0.6,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090155A00410000000000000005",
+     "white_px": 55,
+     "lit_share": 0.325,
+     "reason": "shadow"
+    },
+    {
+     "ufid": "1000377090155A00410000000000000006",
+     "white_px": 38,
+     "lit_share": 0.867,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090155A00410000000000000007",
+     "white_px": 0,
+     "lit_share": 0.995,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090155A00410000000000000008",
+     "white_px": 9,
+     "lit_share": 0.804,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090155A00410000000000000009",
+     "white_px": 105,
+     "lit_share": 0.844,
+     "reason": "paint_not_visible"
+    },
+    {
+     "ufid": "1000377090156A00410000000000000004",
+     "white_px": 11,
+     "lit_share": 0.975,
+     "reason": "paint_not_visible"
+    }
+   ],
+   "unmeasurable_reasons": {
+    "paint_not_visible": 15,
+    "shadow": 1
+   },
+   "err_max_m": 0.995,
+   "err_median_m": 0.452,
+   "rows": [
+    {
+     "ufid": "1000377090146A00410000000000000001",
+     "white_px": 234,
+     "lit_share": 1.0,
+     "err_walk_m": 0.251,
+     "err_traffic_m": 0.479,
+     "err_m": 0.54,
+     "x": 202407.4,
+     "y": 542184.5
+    },
+    {
+     "ufid": "1000377090146A00410000000000000006",
+     "white_px": 255,
+     "lit_share": 1.0,
+     "err_walk_m": 0.358,
+     "err_traffic_m": 0.045,
+     "err_m": 0.361,
+     "x": 202511.8,
+     "y": 541845.5
+    },
+    {
+     "ufid": "1000377090147A00410000000000000002",
+     "white_px": 296,
+     "lit_share": 0.979,
+     "err_walk_m": -0.213,
+     "err_traffic_m": -0.552,
+     "err_m": 0.592,
+     "x": 203083.5,
+     "y": 541802.8
+    },
+    {
+     "ufid": "1000377090155A00410000000000000010",
+     "white_px": 235,
+     "lit_share": 0.991,
+     "err_walk_m": -0.556,
+     "err_traffic_m": 0.476,
+     "err_m": 0.731,
+     "x": 202202.2,
+     "y": 541275.3
+    },
+    {
+     "ufid": "1000377090156A00410000000000000002",
+     "white_px": 281,
+     "lit_share": 0.983,
+     "err_walk_m": 0.078,
+     "err_traffic_m": -0.092,
+     "err_m": 0.12,
+     "x": 202402.1,
+     "y": 541366.3
+    },
+    {
+     "ufid": "1000377090156A00410000000000000003",
+     "white_px": 283,
+     "lit_share": 0.664,
+     "err_walk_m": 0.362,
+     "err_traffic_m": 0.038,
+     "err_m": 0.364,
+     "x": 202400.9,
+     "y": 541352.9
+    },
+    {
+     "ufid": "1000377090156A00410000000000000005",
+     "white_px": 267,
+     "lit_share": 1.0,
+     "err_walk_m": 0.047,
+     "err_traffic_m": -0.033,
+     "err_m": 0.058,
+     "x": 202230.9,
+     "y": 541190.7
+    },
+    {
+     "ufid": "1000377090156A00410000000000000006",
+     "white_px": 224,
+     "lit_share": 0.755,
+     "err_walk_m": 0.883,
+     "err_traffic_m": -0.397,
+     "err_m": 0.968,
+     "x": 202251.2,
+     "y": 541221.0
+    },
+    {
+     "ufid": "1000377090156A00410000000000000008",
+     "white_px": 505,
+     "lit_share": 0.927,
+     "err_walk_m": 0.995,
+     "err_traffic_m": 0.03,
+     "err_m": 0.995,
+     "x": 202266.3,
+     "y": 541240.0
+    },
+    {
+     "ufid": "1000377090156A00410000000000000009",
+     "white_px": 672,
+     "lit_share": 1.0,
+     "err_walk_m": 0.177,
+     "err_traffic_m": -0.089,
+     "err_m": 0.198,
+     "x": 202250.8,
+     "y": 541237.5
+    }
+   ],
+   "pass": true
+  },
+  "db": {
+   "rows": 6175,
+   "run_id": 14
+  },
+  "db_equals_tiles": true
+ },
+ "pass": true,
+ "seconds": 283.6,
+ "tile_features": 6175
+}

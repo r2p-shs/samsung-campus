@@ -1,0 +1,699 @@
+{
+ "instances": 231649,
+ "input": {
+  "instances_5c": 186928,
+  "street": {
+   "path": "data/interim/trees/street_instances.parquet",
+   "rows": 3309,
+   "columns": [
+    "x",
+    "y",
+    "model",
+    "stratum",
+    "sid",
+    "height_m",
+    "crown_m",
+    "heading_deg",
+    "seed",
+    "ground_z",
+    "lon",
+    "lat",
+    "base_h",
+    "tint",
+    "source",
+    "estimated",
+    "road_name",
+    "spacing_m",
+    "variant",
+    "site",
+    "arterial",
+    "road_width_m",
+    "road_class",
+    "run_id",
+    "row_dir_deg",
+    "site_label",
+    "green_ratio"
+   ]
+  },
+  "ring": {
+   "path": "data/interim/trees/ring_instances.parquet",
+   "rows": 39102
+  },
+  "terrain": "v2",
+  "reground": {
+   "moved": 570,
+   "moved_gt_1m": 300,
+   "max_abs_m": 5.51,
+   "mesh_snap": {
+    "trees": 462,
+    "shift_p50_m": -0.16,
+    "shift_max_abs_m": 2.65
+   }
+  },
+  "tunnel_fill": {
+   "added": 2310,
+   "target_m2": 107724,
+   "parts": 26,
+   "by_stratum": {
+    "forest": 2238,
+    "biotope": 72
+   },
+   "cache": "data/interim/trees_v2/tunnel_fill.parquet"
+  },
+  "young_age": {
+   "trees": 4572,
+   "height_before": [
+    1.78,
+    2.0,
+    2.21
+   ],
+   "height_after": [
+    4.5,
+    5.14,
+    5.94
+   ],
+   "rule": {
+    "ref_year": 2026,
+    "growth_m_per_yr": 0.5,
+    "crown_per_h": 0.6,
+    "age_h00": 2.0,
+    "crown_gain": 1.2,
+    "note_species": {
+     "편백": "korean_pine_forest",
+     "소나무": "pine_open",
+     "벚나무": "cherry_open",
+     "벗나무": "cherry_open",
+     "기타활엽수": "oak_open",
+     "이팝나무": "oak_open"
+    },
+    "leaf_bright": {
+     "points": [
+      [
+       200777.0,
+       541572.0
+      ],
+      [
+       200653.0,
+       541408.0
+      ],
+      [
+       200609.0,
+       541515.0
+      ]
+     ],
+     "cv": [
+      2,
+      3,
+      5,
+      8
+     ]
+    }
+   }
+  }
+ },
+ "models": [
+  "pine_forest",
+  "pine_open",
+  "oak_forest",
+  "oak_open",
+  "korean_pine_forest",
+  "rigida_forest",
+  "locust_forest",
+  "chestnut_forest",
+  "cherry_open",
+  "ginkgo_open",
+  "zelkova_open"
+ ],
+ "levels": [
+  {
+   "cell_m": 4000.0,
+   "lod": null,
+   "switch_m": 100000.0
+  },
+  {
+   "cell_m": 2000.0,
+   "lod": null,
+   "switch_m": 100000.0
+  },
+  {
+   "cell_m": 1000.0,
+   "lod": 2,
+   "switch_m": 700.0
+  },
+  {
+   "cell_m": 500.0,
+   "lod": 2,
+   "switch_m": 450.0
+  },
+  {
+   "cell_m": 250.0,
+   "lod": 2,
+   "switch_m": 320.0
+  },
+  {
+   "cell_m": 125.0,
+   "lod": 2,
+   "switch_m": 260.0
+  },
+  {
+   "cell_m": 62.5,
+   "lod": 2,
+   "switch_m": 220.0
+  },
+  {
+   "cell_m": 31.25,
+   "lod": 1,
+   "switch_m": 45.0
+  }
+ ],
+ "max_features_per_tile": 32768,
+ "bands_effective_m": {
+  "lod0_max": 89.2,
+  "lod1_min": 45.0,
+  "lod1_max": 308.4,
+  "lod2_min": 220.0
+ },
+ "root_enu": {
+  "lon": 127.01563147112941,
+  "lat": 37.46679197644949,
+  "h": 126.48104138415185
+ },
+ "origin_5186": [
+  197800.0,
+  536900.0
+ ],
+ "root_m": 8000.0,
+ "tiles": {
+  "L3_lod2": 54,
+  "L4_lod2": 72,
+  "L5_lod2": 214,
+  "L6_lod2": 736,
+  "L7_lod2": 2571,
+  "L8_lod1": 8871,
+  "L9_lod0": 8754
+ },
+ "ring_leaf_tiles": 331,
+ "bytes_by_level": {
+  "L3_lod2": 14943408,
+  "L4_lod2": 13626560,
+  "L5_lod2": 15211312,
+  "L6_lod2": 20582928,
+  "L7_lod2": 35712956,
+  "L8_lod1": 78465480,
+  "L9_lod0": 77901920
+ },
+ "max_tile_bytes": 1933324,
+ "max_tile_instances": {
+  "L3_lod2": 30845,
+  "L4_lod2": 12347,
+  "L5_lod2": 3854,
+  "L6_lod2": 1074,
+  "L7_lod2": 307,
+  "L8_lod1": 82,
+  "L9_lod0": 82
+ },
+ "shared_bytes": {
+  "lod0.bin": 1973648,
+  "lod1.bin": 504416,
+  "lod2.bin": 8624
+ },
+ "total_bytes": 276179837,
+ "files": 21515,
+ "triangles_per_model": {
+  "pine_forest": {
+   "0": 1568,
+   "1": 600,
+   "2": 10
+  },
+  "pine_open": {
+   "0": 3000,
+   "1": 600,
+   "2": 10
+  },
+  "oak_forest": {
+   "0": 2292,
+   "1": 600,
+   "2": 10
+  },
+  "oak_open": {
+   "0": 3000,
+   "1": 600,
+   "2": 10
+  },
+  "korean_pine_forest": {
+   "0": 1974,
+   "1": 600,
+   "2": 10
+  },
+  "rigida_forest": {
+   "0": 1428,
+   "1": 600,
+   "2": 10
+  },
+  "locust_forest": {
+   "0": 3000,
+   "1": 600,
+   "2": 10
+  },
+  "chestnut_forest": {
+   "0": 2936,
+   "1": 600,
+   "2": 10
+  },
+  "cherry_open": {
+   "0": 2840,
+   "1": 600,
+   "2": 10
+  },
+  "ginkgo_open": {
+   "0": 1388,
+   "1": 600,
+   "2": 10
+  },
+  "zelkova_open": {
+   "0": 3000,
+   "1": 600,
+   "2": 10
+  }
+ },
+ "by_model": {
+  "cherry_open": 12266,
+  "chestnut_forest": 270,
+  "ginkgo_open": 55,
+  "korean_pine_forest": 11968,
+  "locust_forest": 35849,
+  "oak_forest": 104073,
+  "oak_open": 22195,
+  "pine_forest": 23780,
+  "pine_open": 7347,
+  "rigida_forest": 892,
+  "zelkova_open": 12954
+ },
+ "by_stratum": {
+  "forest": 139604,
+  "urban": 45759,
+  "ring": 39102,
+  "biotope": 3875,
+  "green": 2140,
+  "street": 1169
+ },
+ "mapping": [
+  {
+   "rule": "임상도 기타참나무류",
+   "model": "oak_forest",
+   "n": 40395
+  },
+  {
+   "rule": "임상도 아까시나무",
+   "model": "locust_forest",
+   "n": 30530
+  },
+  {
+   "rule": "임상도 상수리나무",
+   "model": "oak_forest",
+   "n": 28390
+  },
+  {
+   "rule": "원경 링 숲(ESA WorldCover 2021, umyeon-data R6)",
+   "model": "oak_forest",
+   "n": 19559
+  },
+  {
+   "rule": "원경 링 숲(ESA WorldCover 2021, umyeon-data R6)",
+   "model": "pine_forest",
+   "n": 19543
+  },
+  {
+   "rule": "도시 5c broadleaf",
+   "model": "oak_open",
+   "n": 11497
+  },
+  {
+   "rule": "도시 5c zelkova",
+   "model": "zelkova_open",
+   "n": 10618
+  },
+  {
+   "rule": "도시 5c zelkova",
+   "model": "cherry_open",
+   "n": 9967
+  },
+  {
+   "rule": "임상도 잣나무",
+   "model": "korean_pine_forest",
+   "n": 7884
+  },
+  {
+   "rule": "도시 5c pine",
+   "model": "pine_open",
+   "n": 6870
+  },
+  {
+   "rule": "도시 5c young",
+   "model": "oak_open",
+   "n": 6807
+  },
+  {
+   "rule": "임상도 기타활엽수 · 5c broadleaf",
+   "model": "oak_forest",
+   "n": 6720
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c oak",
+   "model": "oak_forest",
+   "n": 4678
+  },
+  {
+   "rule": "임상도 기타활엽수 · 5c locust",
+   "model": "locust_forest",
+   "n": 2757
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c korean_pine",
+   "model": "korean_pine_forest",
+   "n": 2717
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c pine",
+   "model": "pine_forest",
+   "n": 2116
+  },
+  {
+   "rule": "비오톱 참나무림",
+   "model": "oak_open",
+   "n": 1832
+  },
+  {
+   "rule": "임상도 낙엽송",
+   "model": "pine_forest",
+   "n": 1584
+  },
+  {
+   "rule": "임상도 신갈나무",
+   "model": "oak_forest",
+   "n": 1454
+  },
+  {
+   "rule": "공원·단지 녹지 절차 배치(umyeon-data)",
+   "model": "zelkova_open",
+   "n": 1212
+  },
+  {
+   "rule": "가로수 절차 배치(umyeon-data)",
+   "model": "zelkova_open",
+   "n": 1124
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c locust",
+   "model": "locust_forest",
+   "n": 1018
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 어린 숲 조림 비고 편백·벚나무·기타활엽수(9b D07)",
+   "model": "cherry_open",
+   "n": 968
+  },
+  {
+   "rule": "비오톱 아까시나무림",
+   "model": "locust_forest",
+   "n": 957
+  },
+  {
+   "rule": "임상도 포플러",
+   "model": "oak_forest",
+   "n": 946
+  },
+  {
+   "rule": "임상도 기타참나무류 · 터널 띠 보강(9b D07)",
+   "model": "oak_forest",
+   "n": 940
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 어린 숲 조림 비고 편백·벚나무·기타활엽수(9b D07)",
+   "model": "korean_pine_forest",
+   "n": 937
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 어린 숲 조림 비고 편백·벚나무·기타활엽수(9b D07)",
+   "model": "oak_open",
+   "n": 934
+  },
+  {
+   "rule": "공원·단지 녹지 절차 배치(umyeon-data)",
+   "model": "cherry_open",
+   "n": 914
+  },
+  {
+   "rule": "임상도 리기다소나무",
+   "model": "rigida_forest",
+   "n": 884
+  },
+  {
+   "rule": "임상도 상수리나무 · 터널 띠 보강(9b D07)",
+   "model": "oak_forest",
+   "n": 448
+  },
+  {
+   "rule": "임상도 아까시나무 · 터널 띠 보강(9b D07)",
+   "model": "locust_forest",
+   "n": 446
+  },
+  {
+   "rule": "임상도 기타활엽수 · 5c young · 어린 숲 임상도 기타활엽수 → 5c 혼합(열린 수형)(9b D07)",
+   "model": "oak_open",
+   "n": 358
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 어린 숲 조림 비고 소나무·벗나무·이팝나무(9b D07)",
+   "model": "pine_open",
+   "n": 348
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 어린 숲 조림 비고 소나무·벗나무·이팝나무(9b D07)",
+   "model": "cherry_open",
+   "n": 334
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 어린 숲 조림 비고 소나무·벗나무·이팝나무(9b D07)",
+   "model": "oak_open",
+   "n": 307
+  },
+  {
+   "rule": "비오톱 잣나무림",
+   "model": "korean_pine_forest",
+   "n": 303
+  },
+  {
+   "rule": "임상도 굴참나무",
+   "model": "oak_forest",
+   "n": 292
+  },
+  {
+   "rule": "비오톱 밤나무림",
+   "model": "chestnut_forest",
+   "n": 270
+  },
+  {
+   "rule": "임상도 소나무",
+   "model": "pine_forest",
+   "n": 228
+  },
+  {
+   "rule": "비오톱 기타산림",
+   "model": "oak_open",
+   "n": 205
+  },
+  {
+   "rule": "임상도 삼나무",
+   "model": "pine_forest",
+   "n": 178
+  },
+  {
+   "rule": "임상도 기타활엽수 · 5c young · 어린 숲 임상도 기타활엽수 → 5c 혼합(열린 수형)(9b D07)",
+   "model": "locust_forest",
+   "n": 127
+  },
+  {
+   "rule": "임상도 기타활엽수 · 5c young · 어린 숲 조림 비고 편백·벚나무·기타활엽수(9b D07)",
+   "model": "korean_pine_forest",
+   "n": 90
+  },
+  {
+   "rule": "임상도 기타활엽수 · 5c young · 어린 숲 조림 비고 편백·벚나무·기타활엽수(9b D07)",
+   "model": "oak_open",
+   "n": 86
+  },
+  {
+   "rule": "임상도 신갈나무 · 터널 띠 보강(9b D07)",
+   "model": "oak_forest",
+   "n": 82
+  },
+  {
+   "rule": "임상도 기타활엽수 · 5c young · 어린 숲 조림 비고 편백·벚나무·기타활엽수(9b D07)",
+   "model": "cherry_open",
+   "n": 77
+  },
+  {
+   "rule": "임상도 낙엽송 · 터널 띠 보강(9b D07)",
+   "model": "pine_forest",
+   "n": 71
+  },
+  {
+   "rule": "비오톱 일본잎갈나무림",
+   "model": "pine_open",
+   "n": 70
+  },
+  {
+   "rule": "임상도 포플러 · 터널 띠 보강(9b D07)",
+   "model": "oak_forest",
+   "n": 56
+  },
+  {
+   "rule": "비오톱 현사시나무림",
+   "model": "oak_open",
+   "n": 55
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c oak · 터널 띠 보강(9b D07)",
+   "model": "oak_forest",
+   "n": 55
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c pine · 터널 띠 보강(9b D07)",
+   "model": "pine_forest",
+   "n": 46
+  },
+  {
+   "rule": "비오톱 참나무림 · 터널 띠 보강(9b D07)",
+   "model": "oak_open",
+   "n": 45
+  },
+  {
+   "rule": "가로수 절차 배치(umyeon-data)",
+   "model": "ginkgo_open",
+   "n": 41
+  },
+  {
+   "rule": "비오톱 소나무림",
+   "model": "pine_open",
+   "n": 36
+  },
+  {
+   "rule": "비오톱 가중나무림",
+   "model": "oak_open",
+   "n": 34
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c korean_pine · 터널 띠 보강(9b D07)",
+   "model": "korean_pine_forest",
+   "n": 32
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 터널 띠 보강(9b D07)",
+   "model": "oak_forest",
+   "n": 29
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young",
+   "model": "oak_forest",
+   "n": 23
+  },
+  {
+   "rule": "비오톱 일본잎갈나무림 · 터널 띠 보강(9b D07)",
+   "model": "pine_open",
+   "n": 23
+  },
+  {
+   "rule": "공원·단지 녹지 절차 배치(umyeon-data)",
+   "model": "ginkgo_open",
+   "n": 14
+  },
+  {
+   "rule": "비오톱 오리나무림",
+   "model": "oak_open",
+   "n": 14
+  },
+  {
+   "rule": "임상도 소나무 · 터널 띠 보강(9b D07)",
+   "model": "pine_forest",
+   "n": 14
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c locust · 터널 띠 보강(9b D07)",
+   "model": "locust_forest",
+   "n": 12
+  },
+  {
+   "rule": "비오톱 물오리나무림",
+   "model": "oak_open",
+   "n": 11
+  },
+  {
+   "rule": "비오톱 물박달나무림",
+   "model": "oak_open",
+   "n": 8
+  },
+  {
+   "rule": "비오톱 리기다소나무림",
+   "model": "rigida_forest",
+   "n": 8
+  },
+  {
+   "rule": "임상도 기타활엽수 · 5c young",
+   "model": "oak_forest",
+   "n": 6
+  },
+  {
+   "rule": "가로수 절차 배치(umyeon-data)",
+   "model": "cherry_open",
+   "n": 4
+  },
+  {
+   "rule": "비오톱 아까시나무림 · 터널 띠 보강(9b D07)",
+   "model": "locust_forest",
+   "n": 2
+  },
+  {
+   "rule": "비오톱 잣나무림 · 터널 띠 보강(9b D07)",
+   "model": "korean_pine_forest",
+   "n": 2
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 터널 띠 보강(9b D07) · 어린 숲 조림 비고 편백·벚나무·기타활엽수(9b D07)",
+   "model": "oak_open",
+   "n": 2
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 터널 띠 보강(9b D07) · 어린 숲 조림 비고 편백·벚나무·기타활엽수(9b D07)",
+   "model": "cherry_open",
+   "n": 2
+  },
+  {
+   "rule": "임상도 침활혼효림 · 5c young · 터널 띠 보강(9b D07) · 어린 숲 조림 비고 편백·벚나무·기타활엽수(9b D07)",
+   "model": "korean_pine_forest",
+   "n": 2
+  },
+  {
+   "rule": "임상도 잣나무 · 터널 띠 보강(9b D07)",
+   "model": "korean_pine_forest",
+   "n": 1
+  }
+ ],
+ "validator": {
+  "numErrors": 0,
+  "numWarnings": 0,
+  "numInfos": 340,
+  "exit": 0
+ },
+ "seconds": 116.3,
+ "root_enu_mean": {
+  "lon": 127.01557552766931,
+  "lat": 37.46681821702844,
+  "h": 127.01270969872525
+ },
+ "root_enu_pinned": {
+  "lon": 127.01563147112941,
+  "lat": 37.46679197644949,
+  "h": 126.48104138415185
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "presets": {
+  "samsung_rnd": {
+   "label": "삼성전자 서울R&D캠퍼스",
+   "lon": 127.023,
+   "lat": 37.4656,
+   "heading": 200,
+   "pitch": -30,
+   "range": 650
+  },
+  "f_eye": {
+   "label": "F동 정면 (눈높이)",
+   "lon": 127.024345,
+   "lat": 37.465705,
+   "heading": 355,
+   "pitch": 12,
+   "eye": 1.6
+  },
+  "campus_sw": {
+   "label": "캠퍼스 남서 조감",
+   "lon": 127.023738,
+   "lat": 37.465722,
+   "heading": 40,
+   "pitch": -28,
+   "range": 700
+  },
+  "f_top": {
+   "label": "F동 상공 (수직)",
+   "lon": 127.0242888,
+   "lat": 37.4662004,
+   "heading": 0,
+   "pitch": -90,
+   "range": 350
+  }
+ },
+ "note": "samsung_rnd = viewer/public/presets.json 그대로. range 프리셋 = 대상점 기준 거리(m), eye 프리셋 = 지면 + eye m 카메라 위치"
+}
