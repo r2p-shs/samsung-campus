@@ -6,7 +6,7 @@ from pathlib import Path
 from mathutils import Matrix
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'viewer/assets/ftower-plans/ftower-with-plans.glb'
+SOURCE = ROOT / 'data/campus-upper-regularized.glb'
 OUT = ROOT / 'data/campus-integration/models/f_tower.glb'
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
@@ -25,12 +25,6 @@ for obj in list(bpy.context.scene.objects):
         removed.append(obj.name)
         bpy.data.objects.remove(obj, do_unlink=True)
         continue
-    if obj.name.startswith('registered_multiview_upper'):
-        bpy.context.view_layer.objects.active=obj
-        mod=obj.modifiers.new('Campus upper-facade LOD','DECIMATE')
-        mod.ratio=.38
-        mod.use_collapse_triangulate=True
-        bpy.ops.object.modifier_apply(modifier=mod.name)
     obj.matrix_world=transform @ obj.matrix_world
 
 # Merge only materially identical definitions, preserving texture references.
@@ -74,7 +68,8 @@ report={'source':str(SOURCE.relative_to(ROOT)),'source_sha256':hashlib.sha256(SO
     'output_sha256':hashlib.sha256(OUT.read_bytes()).hexdigest(),'bytes':OUT.stat().st_size,
     'excluded_external_grade_objects':removed,'origin_epsg5186':[202148.71,540753.09],
     'ground_local_y':0,'placement_ellipsoid_height':53.251,'units':'meters',
-    'axes':'+X grid east, +Y up, -Z grid north','upper_mesh_decimation_ratio':.38,
+    'axes':'+X grid east, +Y up, -Z grid north','upper_mesh_decimation_ratio':1,
+    'upper_facade':'frame-aligned planar color bands; display regularization, not measured blinds',
     'floor_labels':[1,2,3,5,6,7,8,9,10,11],
     'assumptions':['Upper floor layouts repeat floor 3; dimensions are not surveyed.','No height rescaling. Campus terrain and imagery unchanged.']}
 OUT.with_suffix('.manifest.json').write_text(json.dumps(report,indent=2,ensure_ascii=False),encoding='utf8')

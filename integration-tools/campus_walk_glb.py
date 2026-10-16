@@ -3,7 +3,7 @@ import json,struct,copy
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def prepare():
- b=(R/'viewer/assets/ftower-plans/ftower-with-plans.glb').read_bytes()
+ b=(R/'data/campus-upper-regularized.glb').read_bytes()
  n=struct.unpack_from('<I',b,12)[0];g=json.loads(b[20:20+n]);tail=b[20+n:];cache={};count=0
  def clean(x):
   if isinstance(x,dict):return {k:clean(v) for k,v in x.items() if not k.lower().endswith('texture')}

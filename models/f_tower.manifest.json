@@ -1,8 +1,8 @@
 {
-  "source": "viewer\\assets\\ftower-plans\\ftower-with-plans.glb",
-  "source_sha256": "7617e032dcaeec2dbd734678fc644231f1b274ef515dd91985d8a2314c882852",
-  "output_sha256": "8e167a570a19296ee6db4d5cfb01fb417af0cfbee81c295e9268b2dcdad2cd78",
-  "bytes": 16927364,
+  "source": "data\\campus-upper-regularized.glb",
+  "source_sha256": "f32e537de525cac0c310283907686fe62711675a02e2e09155475f172ff927ad",
+  "output_sha256": "40514ea822ae6a7d87c4c69b664e4cf3b4ac7b07515f944205847cc8686beaca",
+  "bytes": 13754272,
   "excluded_external_grade_objects": [
     "accepted_review_front_grade.002",
     "accepted_review_east_grade.002",
@@ -17,7 +17,8 @@
   "placement_ellipsoid_height": 53.251,
   "units": "meters",
   "axes": "+X grid east, +Y up, -Z grid north",
-  "upper_mesh_decimation_ratio": 0.38,
+  "upper_mesh_decimation_ratio": 1,
+  "upper_facade": "frame-aligned planar color bands; display regularization, not measured blinds",
   "floor_labels": [
     1,
     2,
@@ -34,8 +35,6 @@
     "Upper floor layouts repeat floor 3; dimensions are not surveyed.",
     "No height rescaling. Campus terrain and imagery unchanged."
   ],
-  "triangles": 149832,
-  "meshes": 37,
-  "materials": 37,
-  "texture_max_dimension": 2048
+  "triangles": 58350,
+  "original_source_sha256": "7617e032dcaeec2dbd734678fc644231f1b274ef515dd91985d8a2314c882852"
 }
