@@ -118,8 +118,13 @@
   "footprint_area_m2": 2493.6,
   "_source": "exports/campus/campus.json f_building(Tile 세션) — f_site.geojson이 오면 그 값을 우선",
   "hide_ids": [
-   "892b8321-d85d-5bdd-acf4-47fcd984f67d"
-  ]
+   "892b8321-d85d-5bdd-acf4-47fcd984f67d",
+   "25f59f87-5457-5ede-ad00-3e706f95a813",
+   "0b44f831-3cda-5ce2-8910-b2acd0c426e5",
+   "7a60ad04-3709-583b-ae29-7381f167fa9e",
+   "742ca41e-e9bc-5677-86a1-273fbebe2727"
+  ],
+  "_hide_ids": "철거 후에만 숨김: F동 + 부속 구조물 4피처(① 25f59f87 북쪽 끝 작은 상자, ② 0b44f831 · 7a60ad04 남서쪽 저층 상자, ③ 742ca41e 남동쪽 변 가는 구조물). 잔디 = f_site.geojson role=grass"
  },
  "time": {
   "date": "2026-10-15",

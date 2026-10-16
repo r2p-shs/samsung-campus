@@ -82,9 +82,20 @@
   },
   "covers": [],
   "hide_when_removed": [
-   "892b8321-d85d-5bdd-acf4-47fcd984f67d"
+   "892b8321-d85d-5bdd-acf4-47fcd984f67d",
+   "25f59f87-5457-5ede-ad00-3e706f95a813",
+   "0b44f831-3cda-5ce2-8910-b2acd0c426e5",
+   "7a60ad04-3709-583b-ae29-7381f167fa9e",
+   "742ca41e-e9bc-5677-86a1-273fbebe2727"
   ],
-  "note": "철거 후 = landmarks_f 끄기 + buildings_lod2b/buildings 의 같은 entity_id 숨김(hide_when_removed)"
+  "note": "철거 후 = landmarks_f 끄기 + buildings_lod2b/buildings 의 같은 entity_id 숨김(hide_when_removed)",
+  "hide_when_removed_note": {
+   "25f59f87-5457-5ede-ad00-3e706f95a813": "① F동 북쪽 끝 작은 상자(5.5 m²)",
+   "0b44f831-3cda-5ce2-8910-b2acd0c426e5": "② F동 남서쪽 저층 상자(111.7 m²)",
+   "7a60ad04-3709-583b-ae29-7381f167fa9e": "② F동 남서쪽 저층 상자에 붙은 부분(32.5 m²)",
+   "742ca41e-e9bc-5677-86a1-273fbebe2727": "③ F동 남동쪽 변을 따라 난 가는 구조물(41.2 m²)",
+   "_by": "viewer 2026-10-16(마스터 지시, Tile 산출 직접 수정)"
+  }
  },
  "layers": "/tiles/layers.json",
  "presets": "/tiles/presets.json",
