@@ -40,3 +40,7 @@ python -m http.server 8080
 cd viewer_campus && npm run dev     # http://127.0.0.1:5175
 npm run build                        # → dist/ (tsc + vite)
 ```
+
+## 출처·라이선스
+- 정사영상 국토지리정보원(2025) · 건물 국토교통부 GIS건물통합정보/건축물대장(CC BY) · 지형 서울시 등고선(공공누리 1유형)+Copernicus GLO-30 · 도로·수목·소품 © OpenStreetMap contributors(ODbL) · 재질 ambientCG(CC0) · CesiumJS(Apache-2.0). 자세한 내용과 이용 조건은 SOURCES.md.
+- 철거 후 화면과 새 F타워 상자는 검토용 가정이며 실제 계획이 아닙니다.
