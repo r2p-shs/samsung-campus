@@ -14,11 +14,12 @@ for ident,gender,outname in [('Male_Adult_09','m','casual-male'),('Female_Adult_
   mat.use_backface_culling=False
  bpy.context.scene.frame_set(1);bpy.context.view_layer.update();scale=1.76/body.dimensions.z
  poses=[]
- for kind,path in [('Idle','all_animations_max_motextr_static/'+gender+'_idle_neutral_01.max.fbx'),('Walk','all_animations_max_motextr_xy/'+gender+'_walk_neutral.max.fbx')]:
+ for kind,path in [('Idle','all_animations_max_motextr_static/'+gender+'_idle_neutral_01.max.fbx'),('Walk','all_animations_max_motextr_xy/'+gender+'_walk_neutral.max.fbx'),('Run','all_animations_max_motextr_xy/'+gender+'_run_neutral.max.fbx')]:
   before=set(bpy.context.scene.objects);bpy.ops.import_scene.fbx(filepath=str(SRC/'Assets/Animations'/path));added=set(bpy.context.scene.objects)-before;source=next(o for o in added if o.type=='ARMATURE');action=source.animation_data.action;rig.animation_data_clear()
   start,end=action.frame_range
-  for i in range(1 if kind=='Idle' else 24):
-   frame=start if kind=='Idle' else start+(end-start)*i/24;bpy.context.scene.frame_set(int(frame),subframe=frame-int(frame));bpy.context.view_layer.update()
+  count=1 if kind=='Idle' else (10 if kind=='Run' else 24)
+  for i in range(count):
+   frame=start if kind=='Idle' else start+(end-start)*i/count;bpy.context.scene.frame_set(int(frame),subframe=frame-int(frame));bpy.context.view_layer.update()
    alignment=rig.matrix_world.to_quaternion().inverted()@source.matrix_world.to_quaternion();desired={}
    for bone in rig.pose.bones:
     src=source.pose.bones.get(bone.name)
@@ -28,7 +29,7 @@ for ident,gender,outname in [('Male_Adult_09','m','casual-male'),('Female_Adult_
     bone.rotation_mode='QUATERNION';bone.rotation_quaternion=localrest.to_quaternion().inverted()@(parent.inverted()@q if parent else q);bone.location=(0,0,0);bone.scale=(1,1,1);desired[bone.name]=q
    bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get();ev=body.evaluated_get(deps);mesh=bpy.data.meshes.new_from_object(ev,depsgraph=deps);world=ev.matrix_world.copy();center=rig.matrix_world@rig.pose.bones['Bip01 Pelvis'].matrix.translation
    for v in mesh.vertices:v.co=world@v.co;v.co.x-=center.x;v.co.y-=center.y;v.co*=scale
-   obj=bpy.data.objects.new(kind if kind=='Idle' else 'Walk_'+str(i),mesh);bpy.context.collection.objects.link(obj);poses.append(obj)
+   obj=bpy.data.objects.new(kind if kind=='Idle' else kind+'_'+str(i),mesh);bpy.context.collection.objects.link(obj);poses.append(obj)
   for o in added:bpy.data.objects.remove(o,do_unlink=True)
  zmin=min(v.co.z for o in poses for v in o.data.vertices)
  for o in poses:
