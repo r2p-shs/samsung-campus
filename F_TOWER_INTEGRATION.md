@@ -70,3 +70,6 @@ WASD/방향키 이동, 드래그 및 R/F 상하 보기, E 가까운 문 열기/�
 ## 상부 외벽 정리
 
 원본 상부 복원 레이어는 평면이지만 정점 색상에 왜곡된 창틀·블라인드 윤곽이 남아 있었다. 해당 레이어만 35개 기존 창틀 구간과 수평 색상 띠로 대체했다. 창별 중앙 색상을 사용한 시각적 정리이며 실제 블라인드 높이 측정으로 해석하지 않는다. 전체 경량 모델은 58,350 triangles / 13.75 MB. 저층·출입문·계단 형상은 그대로 유지한다.
+
+## Campus third-person walking
+V or the view button toggles first/third person. The textured visitor uses 24 baked walk poses and one idle pose in assets/visitor/campus-visitor.glb, rendered in the campus depth buffer. Source asset attribution is in assets/visitor/SOURCE.md. integration-tools/export_campus_visitor.py reproduces the asset against the SWM local viewer on port 8000 (with its visitor preview). Collision uses a 2m spatial grid; the input overlay no longer allocates another WebGL context. Physical key codes support Korean IME, focus/capture loss clears input, and the recovery button restarts the Cesium render loop. Existing stairs/escalators and terrain are unchanged.
