@@ -11,3 +11,12 @@ Adobe permits characters and animations in personal/commercial/non-profit projec
 Changes: runtime height normalization to 1.76 m, Z-up / forward-axis conversion, material roughness, crossfaded Idle/Walk/Run based on collision-resolved movement. Original character geometry and textures retained. World-space rotational retargeting aligns the two hip reference frames and preserves the destination limb lengths. Original capsule visitor is used only if loading fails.
 
 Campus derivative: campus-visitor.glb bakes the same textured character into Idle plus 24 Walk poses. It uses the same source permissions, is not a new independently licensed character, and is rendered with normal campus depth testing.
+
+
+## Casual character choices
+Source: https://github.com/microsoft/Microsoft-Rocketbox (MIT; complete notice in ROCKETBOX-LICENSE.md).
+- casual-male.glb: Assets/Avatars/Adults/Male_Adult_09 (m017), T-shirt and jeans.
+- casual-female.glb: Assets/Avatars/Adults/Female_Adult_05 (f005), shirt and jeans.
+- Native Rocketbox motion: m/f_walk_neutral.max.fbx and m/f_idle_neutral_01.max.fbx, in Assets/Animations/all_animations_max_motextr_xy and all_animations_max_motextr_static.
+Changes: native rig rest-pose alignment, 1.76m nominal scale, in-place movement, Z-up/+Y facing, 1024px base-color textures, 1 idle and 24 walk poses. Source geometry, UV and clothing retained; normal/specular texture layers omitted for the web derivative. No Mixamo motions are used in these two derivatives.
+Rebuild: Blender background --python integration-tools/bake_casual_visitors.py -- <downloaded Rocketbox root> <assets/visitor output>. Preserve the source directory hierarchy.

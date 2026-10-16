@@ -77,3 +77,5 @@ V or the view button toggles first/third person. The textured visitor uses 24 ba
 2F escalator landing opening: local x=-21.6..-18.0, z=5.69..9.1; cuts gallery glass and rear lobby wall, removes intersecting mullions, preserves walls below 2F. Reapply integration-tools/open_campus_escalator_landing.py after regenerating f_tower_walk.glb. Tested walking from (-20.8,-8.25) to the interior.
 
 Interior glazing: left/right/rear vertical exterior triangles retain outward-only photo materials and reverse-facing low-opacity glass. Floors, stone bands, window frames and collision remain. Reapply glaze_campus_interior.py to a freshly regenerated walk GLB after the landing patch. Entrance action reaches 6m from the door leaf center, works from the start position, is restricted to 1F and reports open/closed/out-of-range feedback.
+
+Character selector: male/female casual Rocketbox visitors plus existing Michelle. Only the chosen model is loaded; replacement destroys the prior Cesium primitive. Selection persists locally; position, camera mode and navigation remain unchanged. Failed loads keep the previous character. Shift continues at 3.2m/s versus normal 1.6m/s.

@@ -17543,7 +17543,7 @@ void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
  d9.screenSpaceCameraController.enableInputs=false;u9.camera.frustum.near=.05;
  return {model,async attachVisitor(url){
  const avatar=await gM.fromGltfAsync({url,modelMatrix:matrix,upAxis:ay.Z,forwardAxis:ay.X,shadows:zm.DISABLED});avatar.show=false;d9.primitives.add(avatar);
- return {model:avatar,update(elements,poses,visible){avatar.modelMatrix=F.multiply(matrix,F.fromArray(elements),new F());avatar.show=visible;for(const name of ["Idle",...Array.from({length:24},(_,i)=>"Walk_"+i)]){const node=avatar.getNode(name);if(node)node.show=name===poses}f9()}};
+ return {model:avatar,dispose(){d9.primitives.remove(avatar)},update(elements,poses,visible){avatar.modelMatrix=F.multiply(matrix,F.fromArray(elements),new F());avatar.show=visible;for(const name of ["Idle",...Array.from({length:24},(_,i)=>"Walk_"+i)]){const node=avatar.getNode(name);if(node)node.show=name===poses}f9()}};
  },point:p=>F.multiplyByPoint(matrix,new c(...p),new c()),vector:p=>F.multiplyByPointAsVector(matrix,new c(...p),new c()),
  setNode:(name,elements)=>{const node=model.getNode(name);if(node)node.matrix=F.fromArray(elements)},
  setCamera(position,direction,up,fov,aspect){u9.camera.frustum.fov=aspect>1?2*Math.atan(Math.tan(fov/2)*aspect):fov;u9.camera.setView({destination:this.point(position),orientation:{direction:this.vector(direction),up:this.vector(up)}});f9()}};
