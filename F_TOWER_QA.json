@@ -1,0 +1,81 @@
+{
+  "states": [
+    {
+      "replacement": true,
+      "modelReady": true,
+      "modelVisible": false,
+      "originalFVisible": true,
+      "beforeImagery": true,
+      "afterImagery": false,
+      "grass": false,
+      "after": false,
+      "towerOn": false,
+      "towerKind": "glb",
+      "fCenter": {
+        "lon": 127.0242888,
+        "lat": 37.4662004,
+        "h": 53.251000000000005,
+        "yaw": 0.014
+      },
+      "footprint": 13
+    },
+    {
+      "replacement": true,
+      "modelReady": true,
+      "modelVisible": true,
+      "originalFVisible": false,
+      "beforeImagery": true,
+      "afterImagery": false,
+      "grass": false,
+      "after": false,
+      "towerOn": true,
+      "towerKind": "glb",
+      "fCenter": {
+        "lon": 127.0242888,
+        "lat": 37.4662004,
+        "h": 53.251000000000005,
+        "yaw": 0.014
+      },
+      "footprint": 13
+    }
+  ],
+  "heroes": [
+    {
+      "loaded": [
+        "892b8321-d85d-5bdd-acf4-47fcd984f67d",
+        "9365318d-4c18-5657-b939-15ead996e88d",
+        "9f148463-846d-55e8-9ad7-34cd35cf1e94",
+        "d5062342-4fcd-5518-b375-70ecab203ebd",
+        "f868d015-4349-5be1-83ff-c6dff66dbabe"
+      ],
+      "failed": [],
+      "layers": []
+    },
+    {
+      "loaded": [
+        "892b8321-d85d-5bdd-acf4-47fcd984f67d",
+        "9365318d-4c18-5657-b939-15ead996e88d",
+        "9f148463-846d-55e8-9ad7-34cd35cf1e94",
+        "d5062342-4fcd-5518-b375-70ecab203ebd",
+        "f868d015-4349-5be1-83ff-c6dff66dbabe"
+      ],
+      "failed": [],
+      "layers": []
+    }
+  ],
+  "status": "드래그·휠로 양쪽 시점을 함께 조작할 수 있습니다.",
+  "errors": [],
+  "failure_test": "PASS: missing GLB keeps original F and before imagery",
+  "upstream_base": "a0afeddc75d2e415106cad978df199c686530c06",
+  "runtime_sha256": {
+    "index.html": "c919d2250284601a2ea33465dfac51106122b905efb11cfd36358ae3c900f9ea",
+    "assets/index-LuUZAC8N.js": "39c22a52a009ed836c562b0893ba5d67d10cab81fd759a0143db5c623ce47eaa",
+    "compare-ftower.html": "1580369bd8d8bac2ecb4804f68fd7f9c151ee91c01a4e777069fb54c90760059",
+    "ftower-compare.js": "165886443a5405ace3006c78b2ee875a4f309a725506b7824e4c1f69a1a8d046",
+    "models/f_tower.glb": "8e167a570a19296ee6db4d5cfb01fb417af0cfbee81c295e9268b2dcdad2cd78",
+    "models/f_tower.manifest.json": "9b3eeff23a1b8a52db7e37a4b6bd14ec756756b29092af4df586b63a25d4f6b4",
+    "F_TOWER_INTEGRATION.md": "621f6eaf36ce5e59b3583fb6e021181b252c58a53f1d26c9db817228cbc82bc0",
+    "integration-tools/export_ftower_campus.py": "b0e0a4bcba5504a51d63e2044abc7700794ae6e79bb12622541defbbc421a82b",
+    "integration-tools/patch_campus_comparison.py": "de8b08dae65d03e1a7cafd34aad87ec7e5b412b857bcf360fe89d21f7fd06763"
+  }
+}

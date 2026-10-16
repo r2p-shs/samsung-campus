@@ -1,0 +1,41 @@
+{
+  "source": "viewer\\assets\\ftower-plans\\ftower-with-plans.glb",
+  "source_sha256": "7617e032dcaeec2dbd734678fc644231f1b274ef515dd91985d8a2314c882852",
+  "output_sha256": "8e167a570a19296ee6db4d5cfb01fb417af0cfbee81c295e9268b2dcdad2cd78",
+  "bytes": 16927364,
+  "excluded_external_grade_objects": [
+    "accepted_review_front_grade.002",
+    "accepted_review_east_grade.002",
+    "accepted_review_rear_grade.002",
+    "accepted_review_west_grade.002"
+  ],
+  "origin_epsg5186": [
+    202148.71,
+    540753.09
+  ],
+  "ground_local_y": 0,
+  "placement_ellipsoid_height": 53.251,
+  "units": "meters",
+  "axes": "+X grid east, +Y up, -Z grid north",
+  "upper_mesh_decimation_ratio": 0.38,
+  "floor_labels": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "assumptions": [
+    "Upper floor layouts repeat floor 3; dimensions are not surveyed.",
+    "No height rescaling. Campus terrain and imagery unchanged."
+  ],
+  "triangles": 149832,
+  "meshes": 37,
+  "materials": 37,
+  "texture_max_dimension": 2048
+}
