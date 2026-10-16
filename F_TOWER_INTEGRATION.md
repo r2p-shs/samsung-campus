@@ -73,3 +73,5 @@ WASD/방향키 이동, 드래그 및 R/F 상하 보기, E 가까운 문 열기/�
 
 ## Campus third-person walking
 V or the view button toggles first/third person. The textured visitor uses 24 baked walk poses and one idle pose in assets/visitor/campus-visitor.glb, rendered in the campus depth buffer. Source asset attribution is in assets/visitor/SOURCE.md. integration-tools/export_campus_visitor.py reproduces the asset against the SWM local viewer on port 8000 (with its visitor preview). Collision uses a 2m spatial grid; the input overlay no longer allocates another WebGL context. Physical key codes support Korean IME, focus/capture loss clears input, and the recovery button restarts the Cesium render loop. Existing stairs/escalators and terrain are unchanged.
+
+2F escalator landing opening: local x=-21.6..-18.0, z=5.69..9.1; cuts gallery glass and rear lobby wall, removes intersecting mullions, preserves walls below 2F. Reapply integration-tools/open_campus_escalator_landing.py after regenerating f_tower_walk.glb. Tested walking from (-20.8,-8.25) to the interior.
