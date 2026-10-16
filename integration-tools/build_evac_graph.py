@@ -10,11 +10,11 @@ scene=trimesh.load(ROOT/'models/f_tower_walk.glb',force='scene')
 doors=[d['id'] for d in building['walk']['doors']]
 meshes=[]
 for name in scene.graph.nodes_geometry:
-    if name.startswith('stairs_') or any(name.startswith('accepted_'+d+'_') for d in doors):continue
+    if name.startswith(('stairs_','accepted_camera_rotor_leaf_','accepted_camera_rotor_stile_')) or any(name.startswith('accepted_'+d+'_') for d in doors):continue
     transform,geom=scene.graph[name]
     m=scene.geometry[geom].copy();m.apply_transform(transform);meshes.append(m)
 mesh=trimesh.util.concatenate(meshes)
-nodes=[];edges=[];floor_nodes={};spacing=.8;radius=.24
+nodes=[];edges=[];routes=[];floor_nodes={};spacing=.8;radius=.24
 
 def inside(x,y,poly):
     yes=False
@@ -74,13 +74,54 @@ for lower,upper in zip(data['floors'],data['floors'][1:]):
     for wi,w in enumerate(data['stairwells']):
         c=w['center'];z0=lower['z'];z1=upper['z'];zm=(z0+z1)/2
         points=[[c+.8,-6.7,z1],[c+.8,-5.9,z1],[c+.8,-1.1,zm],[c+.8,-.4,zm],[c-.8,-.4,zm],[c-.8,-1.1,zm],[c-.8,-5.9,z0],[c-.8,-6.7,z0]]
-        previous=entries[upper['level'],wi,1]
+        previous=entries[upper['level'],wi,1];route_nodes=[previous]
         for k,(p,q) in enumerate(zip(points,points[1:])):
             count=max(1,round(math.dist(p,q)/.8))
             for j in range(1,count+1):
                 last=k==len(points)-2 and j==count
                 b=entries[lower['level'],wi,-1] if last else add([p[t]+(q[t]-p[t])*j/count for t in range(3)],upper['level'],'stairs',wi)
-                edge(previous,b);previous=b
+                edge(previous,b);previous=b;route_nodes.append(b)
+        routes.append({'id':f"stairs_{wi}_{upper['level']}",'kind':'stairs','well':wi,'fromFloor':upper['level'],'toFloor':lower['level'],'nodes':route_nodes})
+# Both existing escalators stopped, walked downward. Connect exact landings only
+# through mesh-checked floor space; never connect the sloped run to floor grid.
+for lane,x in enumerate([-20.8,-18.8]):
+    endpoints=[]
+    for f,obs,_ in floor_info[:2]:
+        y=-16.3 if f['level']==1 else -8.25
+        a=add([x,y,f['z']],f['level'],'entry',-1);endpoints.append(a)
+        attached=0
+        for b in floor_nodes[f['level']]:
+            q=nodes[b]['p'];p=nodes[a]['p']
+            if math.dist(p,q)<1.5 and all(floor_clear(p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t,f,obs) for t in np.linspace(0,1,20)):
+                edge(a,b);attached+=1
+        assert attached, f'Escalator landing {lane}/{f["level"]} has no verified floor connection'
+    z0=data['floors'][0]['z'];z1=data['floors'][1]['z']
+    points=[[x,-8.25,z1],[x,-8.9,z1],[x,-15.5,z0],[x,-16.3,z0]]
+    previous=endpoints[1];route_nodes=[previous]
+    for k,(p,q) in enumerate(zip(points,points[1:])):
+        count=max(1,round(math.dist(p,q)/.8))
+        for j in range(1,count+1):
+            last=k==2 and j==count
+            b=endpoints[0] if last else add([p[t]+(q[t]-p[t])*j/count for t in range(3)],2,'escalator',lane)
+            edge(previous,b);previous=b;route_nodes.append(b)
+    routes.append({'id':f'escalator_{lane}','kind':'escalator','well':lane,'fromFloor':2,'toFloor':1,'nodes':route_nodes})
+# Explicit door corridors. Keep enclosure, fixed glass and central spindle.
+from collections import deque
+local_adj={i:[] for i in floor_nodes[1]}
+for a,b,d in edges:
+    if a in local_adj and b in local_adj:local_adj[a].append(b);local_adj[b].append(a)
+for key,x,band in [('left',-13.8,(-14.7,-12.9)),('center',-10.4,(-10.7,-8.4)),('right',-5.3,(-6.2,-4.4))]:
+    allowed={i for i in floor_nodes[1] if band[0]<=nodes[i]['p'][0]<=band[1] and -25<=nodes[i]['p'][1]<=-19}
+    start=min(allowed,key=lambda i:math.dist(nodes[i]['p'][:2],[x,-20.4]));end=min(allowed,key=lambda i:math.dist(nodes[i]['p'][:2],[x,-24.4]))
+    todo=deque([start]);parents={start:None}
+    while todo:
+        a=todo.popleft()
+        for b in local_adj[a]:
+            if b in allowed and b not in parents:parents[b]=a;todo.append(b)
+    assert end in parents, f'{key} door not connected; do not infer a glass opening'
+    route_nodes=[];a=end
+    while a is not None:route_nodes.append(a);a=parents[a]
+    route_nodes.reverse();routes.append({'id':'door_'+key,'kind':'exit','well':-1,'fromFloor':1,'toFloor':1,'nodes':route_nodes})
 # Exterior endpoint, not an assumed refuge safety zone.
 exits=[i for i in floor_nodes[1] if nodes[i]['p'][1]<-35 and -16<nodes[i]['p'][0]<-3]
 assert exits,'No exterior exit nodes'
@@ -93,5 +134,5 @@ while todo:
 counts={str(f['level']):sum(i in seen for i in floor_nodes[f['level']]) for f in data['floors']}
 print('EXIT CONNECTIVITY',counts, 'entries',[(k,a in seen,len(adj[a])) for k,a in entries.items()],flush=True)
 assert all(v>20 for v in counts.values()),'Missing floor-to-exterior route; do not invent connection'
-result={'version':1,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
+result={'version':2,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
 (ROOT/'models/evac-graph.json').write_text(json.dumps(result,separators=(',',':')),encoding='utf8')
