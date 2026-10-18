@@ -9,6 +9,396 @@
       "zMin": 0,
       "zMax": 2.5,
       "basis": "User-described direct 1F right stair to lobby connection; exact opening dimensions assumed"
+    },
+    {
+      "id": "stair-apron-3-0--23",
+      "prefix": "partition_F3_-7.5_-23",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 11.447666433577472,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-3-0--15",
+      "prefix": "partition_F3_-7.5_-15",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 11.447666433577472,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-3-1-0",
+      "prefix": "partition_F3_-7.5_0",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 11.447666433577472,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-3-1-20.5",
+      "prefix": "partition_F3_-7.5_20.5",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 11.447666433577472,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-5-0--23",
+      "prefix": "partition_F5_-7.5_-23",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 16.24766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-5-0--15",
+      "prefix": "partition_F5_-7.5_-15",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 16.24766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-5-1-0",
+      "prefix": "partition_F5_-7.5_0",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 16.24766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-5-1-20.5",
+      "prefix": "partition_F5_-7.5_20.5",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 16.24766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-6-0--23",
+      "prefix": "partition_F6_-7.5_-23",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 21.047666433577472,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-6-0--15",
+      "prefix": "partition_F6_-7.5_-15",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 21.047666433577472,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-6-1-0",
+      "prefix": "partition_F6_-7.5_0",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 21.047666433577472,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-6-1-20.5",
+      "prefix": "partition_F6_-7.5_20.5",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 21.047666433577472,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-7-0--23",
+      "prefix": "partition_F7_-7.5_-23",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 25.847666433577473,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-7-0--15",
+      "prefix": "partition_F7_-7.5_-15",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 25.847666433577473,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-7-1-0",
+      "prefix": "partition_F7_-7.5_0",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 25.847666433577473,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-7-1-20.5",
+      "prefix": "partition_F7_-7.5_20.5",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 25.847666433577473,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-8-0--23",
+      "prefix": "partition_F8_-7.5_-23",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 30.64766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-8-0--15",
+      "prefix": "partition_F8_-7.5_-15",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 30.64766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-8-1-0",
+      "prefix": "partition_F8_-7.5_0",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 30.64766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-8-1-20.5",
+      "prefix": "partition_F8_-7.5_20.5",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 30.64766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-9-0--23",
+      "prefix": "partition_F9_-7.5_-23",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 35.447666433577474,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-9-0--15",
+      "prefix": "partition_F9_-7.5_-15",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 35.447666433577474,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-9-1-0",
+      "prefix": "partition_F9_-7.5_0",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 35.447666433577474,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-9-1-20.5",
+      "prefix": "partition_F9_-7.5_20.5",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 35.447666433577474,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-10-0--23",
+      "prefix": "partition_F10_-7.5_-23",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 40.24766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-10-0--15",
+      "prefix": "partition_F10_-7.5_-15",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 40.24766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-10-1-0",
+      "prefix": "partition_F10_-7.5_0",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 40.24766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-10-1-20.5",
+      "prefix": "partition_F10_-7.5_20.5",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 40.24766643357747,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-11-0--23",
+      "prefix": "partition_F11_-7.5_-23",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 45.047666433577476,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-11-0--15",
+      "prefix": "partition_F11_-7.5_-15",
+      "exact": true,
+      "axis": "x",
+      "min": -18.1,
+      "max": -13.9,
+      "zMax": 45.047666433577476,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-11-1-0",
+      "prefix": "partition_F11_-7.5_0",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 45.047666433577476,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-apron-11-1-20.5",
+      "prefix": "partition_F11_-7.5_20.5",
+      "exact": true,
+      "axis": "x",
+      "min": 17.4,
+      "max": 21.6,
+      "zMax": 45.047666433577476,
+      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+    },
+    {
+      "id": "stair-left-gallery",
+      "prefix": "accepted_camera_gallery_glass.015",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            -18.1,
+            -8,
+            5.65
+          ],
+          "max": [
+            -13.9,
+            -7,
+            8.3
+          ]
+        }
+      ],
+      "basis": "Two-lane stair approach; preserve the existing escalator opening"
+    },
+    {
+      "id": "stair-left-back",
+      "prefix": "accepted_camera_lobby_back.015",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            -18.1,
+            -6.2,
+            -0.1
+          ],
+          "max": [
+            -13.9,
+            -5.7,
+            2.8
+          ]
+        },
+        {
+          "min": [
+            -18.1,
+            -6.2,
+            5.65
+          ],
+          "max": [
+            -13.9,
+            -5.7,
+            8.3
+          ]
+        }
+      ],
+      "basis": "Independent two-lane stair entry/exit openings at 1F and 2F"
+    },
+    {
+      "id": "stair-gallery-posts",
+      "prefix": "accepted_camera_gallery_post_",
+      "cuts": [
+        {
+          "min": [
+            -18.1,
+            -8,
+            5.65
+          ],
+          "max": [
+            -13.9,
+            -7,
+            8.3
+          ]
+        }
+      ]
     }
   ]
 }

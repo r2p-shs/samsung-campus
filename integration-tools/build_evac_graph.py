@@ -9,18 +9,36 @@ building=json.loads((ROOT/'models/building-walk.json').read_text(encoding='utf8'
 scene=trimesh.load(ROOT/'models/f_tower_walk.glb',force='scene')
 doors=[d['id'] for d in building['walk']['doors']]
 openings=json.loads((ROOT/'models/evac-openings.json').read_text(encoding='utf8'))['openings']
-meshes=[]
+def subtract_box(mesh, cut):
+    # Keep original triangles outside the cut, including pre-existing openings.
+    remaining=mesh;parts=[]
+    for axis in range(3):
+        for boundary,sign in [(cut['min'][axis],1),(cut['max'][axis],-1)]:
+            if remaining is None or len(remaining.faces)==0:break
+            origin=np.zeros(3);origin[axis]=boundary;normal=np.zeros(3);normal[axis]=sign
+            outside=remaining.slice_plane(origin,-normal)
+            if outside is not None and len(outside.faces):parts.append(outside)
+            remaining=remaining.slice_plane(origin,normal)
+    return trimesh.util.concatenate(parts) if parts else trimesh.Trimesh()
+
+meshes=[];replacements=[]
 for name in scene.graph.nodes_geometry:
     if name.startswith(('stairs_','accepted_camera_rotor_leaf_','accepted_camera_rotor_stile_')) or any(name.startswith('accepted_'+d+'_') for d in doors):continue
     transform,geom=scene.graph[name]
     m=scene.geometry[geom].copy();m.apply_transform(transform)
-    opening=next((o for o in openings if name.startswith(o['prefix'])),None)
+    opening=next((o for o in openings if (name==o['prefix'] if o.get('exact') else name.startswith(o['prefix']))),None)
     if opening:
         lo,hi=m.bounds
-        for ymin,ymax,zmin,zmax in [(lo[1],opening['yMin'],lo[2],hi[2]),(opening['yMax'],hi[1],lo[2],hi[2]),(opening['yMin'],opening['yMax'],opening['zMax'],hi[2])]:
-            if ymax>ymin and zmax>zmin:
-                part=trimesh.creation.box(extents=[hi[0]-lo[0],ymax-ymin,zmax-zmin]);part.apply_translation([(lo[0]+hi[0])/2,(ymin+ymax)/2,(zmin+zmax)/2]);meshes.append(part)
-    else:meshes.append(m)
+        if 'cuts' in opening:cuts=opening['cuts']
+        else:
+            lower=lo.copy()-1;upper=hi.copy()+1
+            axis=0 if opening.get('axis')=='x' else 1
+            lower[axis]=opening.get('min',opening.get('yMin'));upper[axis]=opening.get('max',opening.get('yMax'));upper[2]=opening['zMax']
+            cuts=[{'min':lower.tolist(),'max':upper.tolist()}]
+        for cut in cuts:m=subtract_box(m,cut)
+        replacements.append({'name':name,'positions':np.round(m.vertices[m.faces].reshape(-1),6).tolist()})
+    if len(m.faces):meshes.append(m)
+(ROOT/'models/evac-geometry.json').write_text(json.dumps({'version':1,'basis':'User-authorized widened stair approaches; original openings retained','meshes':replacements},separators=(',',':')),encoding='utf8')
 mesh=trimesh.util.concatenate(meshes)
 nodes=[];edges=[];routes=[];floor_nodes={};spacing=.8;radius=.24
 
@@ -59,6 +77,7 @@ for f in data['floors']:
     for ix in range(77):
         for iy in range(74):
             x=-31.2+ix*spacing;y=-38+iy*spacing
+            if any(abs(x-w['center'])<2.1 and -9.2+1e-5<y<-5.9 for w in data['stairwells']):continue
             if clear(x,y):grid[ix,iy]=add([x,y,z],f['level'])
     for (ix,iy),a in grid.items():
         for dx,dy in [(1,0),(0,1)]:
@@ -75,17 +94,19 @@ for f,obs,_ in floor_info:
     for wi,w in enumerate(data['stairwells']):
         for lane,offset in enumerate([.5,1.1]):
             for side in [-1,1]:
-                p=[w['center']+side*offset,-6.7,f['z']];a=add(p,f['level'],'entry',wi);entries[f['level'],wi,side,lane]=a
-                attached=0
-                for b in floor_nodes[f['level']]:
-                    q=nodes[b]['p']
-                    if math.dist(p,q)<1.4 and all(floor_clear(p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t,f,obs) for t in np.linspace(0,1,15)):edge(a,b);attached+=1
-                assert attached, f'Stair lane entry not connected: {f["level"]}/{wi}/{side}/{lane}'
+                # Separate floor-grid portals, never two lanes feeding the same cell.
+                candidates=[n for n in floor_nodes[f['level']] if abs(nodes[n]['p'][1]+9.2)<1e-4 and .25<side*(nodes[n]['p'][0]-w['center'])<2.1]
+                candidates.sort(key=lambda n:side*(nodes[n]['p'][0]-w['center']))
+                assert len(candidates)>=2, f'Missing apron portals {f["level"]}/{wi}/{side}'
+                a=candidates[lane];entries[f['level'],wi,side,lane]=a
+                p=nodes[a]['p'];q=[w['center']+side*offset,-5.9,f['z']]
+                mid=[q[0],-8.4,f['z']]
+                assert all(floor_clear(a0[0]+(b0[0]-a0[0])*t,a0[1]+(b0[1]-a0[1])*t,f,obs,shaft=False) for a0,b0 in [(p,mid),(mid,q)] for t in np.linspace(0,1,30)),f'Blocked widened apron {f["level"]}/{wi}/{side}/{lane}'
 for lower,upper in zip(data['floors'],data['floors'][1:]):
     for wi,w in enumerate(data['stairwells']):
       for lane,offset in enumerate([.5,1.1]):
         c=w['center'];z0=lower['z'];z1=upper['z'];zm=(z0+z1)/2;turn=-.7 if lane==0 else -.1
-        points=[[c+offset,-6.7,z1],[c+offset,-5.9,z1],[c+offset,-1.1,zm],[c+offset,turn,zm],[c-offset,turn,zm],[c-offset,-1.1,zm],[c-offset,-5.9,z0],[c-offset,-6.7,z0]]
+        points=[nodes[entries[upper['level'],wi,1,lane]]['p'],[c+offset,-8.4,z1],[c+offset,-5.9,z1],[c+offset,-1.1,zm],[c+offset,turn,zm],[c-offset,turn,zm],[c-offset,-1.1,zm],[c-offset,-5.9,z0],[c-offset,-8.4,z0],nodes[entries[lower['level'],wi,-1,lane]]['p']]
         previous=entries[upper['level'],wi,1,lane];route_nodes=[previous]
         for k,(p,q) in enumerate(zip(points,points[1:])):
             count=max(1,round(math.dist(p,q)/.8))
@@ -94,7 +115,7 @@ for lower,upper in zip(data['floors'],data['floors'][1:]):
                 b=entries[lower['level'],wi,-1,lane] if last else add([p[t]+(q[t]-p[t])*j/count for t in range(3)],upper['level'],'stairs',wi)
                 nodes[b]['lane']=lane;edge(previous,b);previous=b;route_nodes.append(b)
         family=f"stairs_{wi}_{upper['level']}"
-        routes.append({'id':family+('_lane1' if lane else ''),'family':family,'lane':lane,'kind':'stairs','well':wi,'fromFloor':upper['level'],'toFloor':lower['level'],'nodes':route_nodes})
+        routes.append({'id':family+('_lane1' if lane else ''),'family':family,'center':c,'flightOffset':offset,'lane':lane,'kind':'stairs','well':wi,'fromFloor':upper['level'],'toFloor':lower['level'],'nodes':route_nodes})
 # Both existing escalators stopped, walked downward. Connect exact landings only
 # through mesh-checked floor space; never connect the sloped run to floor grid.
 for lane,x in enumerate([-20.8,-18.8]):
@@ -147,5 +168,5 @@ while todo:
 counts={str(f['level']):sum(i in seen for i in floor_nodes[f['level']]) for f in data['floors']}
 print('EXIT CONNECTIVITY',counts, 'entries',[(k,a in seen,len(adj[a])) for k,a in entries.items()],flush=True)
 assert all(v>20 for v in counts.values()),'Missing floor-to-exterior route; do not invent connection'
-result={'version':4,'stairLaneCount':2,'stairLaneSpacing':0.6,'openings':openings,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
+result={'version':6,'geometryFile':'models/evac-geometry.json','descentConnections2F':['stairs_0_2','stairs_1_2','escalator_0','escalator_1'],'stairApronWidth':4.2,'stairLaneCount':2,'stairLaneSpacing':0.6,'openings':openings,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
 (ROOT/'models/evac-graph.json').write_text(json.dumps(result,separators=(',',':')),encoding='utf8')
