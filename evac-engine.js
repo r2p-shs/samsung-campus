@@ -17,6 +17,11 @@ export class Evacuation {
   graph.nodes.forEach((n,i)=>{const k=key(n.p).join(',');if(!buckets.has(k))buckets.set(k,[]);buckets.get(k).push(i)});
   for(const r of this.routes.filter(r=>r.kind==='stairs'))for(const i of r.nodes){const p=graph.nodes[i].p,[x,y,z]=key(p);for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++)for(let dz=-1;dz<=1;dz++)for(const j of buckets.get([x+dx,y+dy,z+dz].join(','))||[]){if(i===j)continue;const q=graph.nodes[j].p;if(Math.abs(p[2]-q[2])<1.6&&Math.hypot(p[0]-q[0],p[1]-q[1])<.48-1e-6){this.conflicts[i].push(j);this.conflicts[j].push(i)}}}
   this.conflicts=this.conflicts.map(ids=>[...new Set(ids)]);
+  for(const r of this.routes.filter(r=>r.kind==='stairs')){const p=graph.nodes[r.nodes[1]].p,q=graph.nodes[r.nodes.at(-2)].p,c=(p[0]+q[0])/2,z=(p[2]+q[2])/2,radius=.2+.6*(r.lane||0);const points=[p,[p[0],-1.1,z],[p[0],-.9,z]];
+   for(let i=1;i<=16;i++){const t=i*Math.PI/32;points.push([c+.3+radius*Math.cos(t),-.9+radius*Math.sin(t),z])}points.push([c-.3,-.9+radius,z]);
+   for(let i=1;i<=16;i++){const t=Math.PI/2+i*Math.PI/32;points.push([c-.3+radius*Math.cos(t),-.9+radius*Math.sin(t),z])}points.push([q[0],-1.1,z],q);
+   const lengths=[0];for(let i=1;i<points.length;i++)lengths.push(lengths.at(-1)+Math.hypot(...points[i].map((v,k)=>v-points[i-1][k])));r.path={points,lengths,total:lengths.at(-1)};
+  }
   this.initial=this.people.length;this.stepCount=0;
  }
  field(sources,allowed=()=>true){const dist=new Float64Array(this.g.nodes.length);dist.fill(Infinity);const heap=[];
@@ -24,11 +29,23 @@ export class Evacuation {
   const pop=()=>{const top=heap[0],v=heap.pop();if(heap.length){let i=0;while(i*2+1<heap.length){let c=i*2+1;if(c+1<heap.length&&heap[c+1][0]<heap[c][0])c++;if(heap[c][0]>=v[0])break;heap[i]=heap[c];i=c}heap[i]=v}return top};
   for(const i of sources){dist[i]=0;push([0,i])}while(heap.length){const[d,i]=pop();if(d!==dist[i])continue;for(const e of this.adj[i]){if(!allowed(this.g.nodes[e.to]))continue;const nd=d+e.length/(e.stairs?this.options.stairSpeed:this.options.flatSpeed);if(nd<dist[e.to]){dist[e.to]=nd;push([nd,e.to])}}}return dist;
  }
- canEnter(node,a){return [node,...this.conflicts[node]].every(i=>(!this.occupancy.has(i)||this.occupancy.get(i)===a.id)&&(!this.reserved.has(i)||this.reserved.get(i)===a.id))}
+ pathPoint(r,d){const{points,lengths,total}=r.path;d=Math.max(0,Math.min(total,d));let i=1;while(i<lengths.length-1&&lengths[i]<d)i++;const t=(d-lengths[i-1])/(lengths[i]-lengths[i-1]);return points[i-1].map((v,k)=>v+(points[i][k]-v)*t)}
+ clearAt(p,a){return this.people.every(b=>{if(b===a||b.status==='exited')return true;let q=this.position(b);if(!b.stairMotion&&b.target!==null){const end=this.g.nodes[b.target].p,dx=end[0]-q[0],dy=end[1]-q[1],t=Math.max(0,Math.min(1,((p[0]-q[0])*dx+(p[1]-q[1])*dy)/(dx*dx+dy*dy||1)));q=q.map((v,k)=>v+(end[k]-v)*t)}return Math.abs(p[2]-q[2])>=1.6||Math.hypot(p[0]-q[0],p[1]-q[1])>=.48-1e-7})}
+ canEnter(node,a){return [node,...this.conflicts[node]].every(i=>(!this.occupancy.has(i)||this.occupancy.get(i)===a.id)&&(!this.reserved.has(i)||this.reserved.get(i)===a.id))&&this.people.every(b=>!b.stairMotion||b===a||Math.abs(this.g.nodes[node].p[2]-this.position(b)[2])>=1.6||Math.hypot(this.g.nodes[node].p[0]-this.position(b)[0],this.g.nodes[node].p[1]-this.position(b)[1])>=.55)}
+ moveStair(a,dt){const m=a.stairMotion,r=a.route;let limit=r.path.total;for(const b of this.people)if(b!==a&&b.stairMotion&&b.route===r&&b.stairMotion.s>m.s)limit=Math.min(limit,b.stairMotion.s-.62);
+  const free=this.options.stairSpeed*a.factor,gap=Math.max(0,limit-m.s),desired=limit<r.path.total?Math.min(free,gap/.6):free;m.speed=Math.min(desired,m.speed+.8*dt);let delta=Math.min(gap,m.speed*dt);
+  // Check continuous body clearance, including the other lane and floor merges.
+  if(!this.clearAt(this.pathPoint(r,m.s+delta),a)){let lo=0,hi=delta;for(let i=0;i<12;i++){const mid=(lo+hi)/2;if(this.clearAt(this.pathPoint(r,m.s+mid),a))lo=mid;else hi=mid}delta=lo}
+  const end=r.nodes.at(-2);if(m.s+delta>=r.path.total-1e-6&&!this.canEnter(end,a))delta=Math.max(0,r.path.total-m.s-.001);
+  m.s+=delta;m.speed=delta/dt;a.distance+=delta;a.status=delta>.0001?'moving':'waiting';if(a.status==='waiting'){a.wait+=dt;a.stuck+=dt}else a.stuck=0;
+  const p=this.pathPoint(r,m.s),q=this.pathPoint(r,Math.min(r.path.total,m.s+.08));if(Math.hypot(q[0]-p[0],q[1]-p[1])>.00001){const angle=Math.atan2(-(q[0]-p[0]),q[1]-p[1]),diff=Math.atan2(Math.sin(angle-a.facing),Math.cos(angle-a.facing));a.facing+=Math.max(-2.5*dt,Math.min(2.5*dt,diff))}
+  if(m.s>=r.path.total-1e-6&&this.canEnter(end,a)){a.node=end;this.occupancy.set(end,a.id);a.stairMotion=null}
+ }
+
  choices(a){const n=this.g.nodes[a.node];return this.routes.filter(r=>r.fromFloor===n.floor&&Number.isFinite(r.field[a.node])&&Number.isFinite(this.dist[r.nodes.at(-1)]))}
  travelTime(r,a){return (r.field[a.node]+r.transitSeconds+(r.kind==='exit'?0:this.dist[r.nodes.at(-1)]))/a.factor}
  expectedWait(r,a){if(!this.options.balanced)return 0;const ahead=this.people.filter(p=>p!==a&&p.route===r&&p.status==='waiting'&&(p.routeIndex>=0||r.field[p.node]<=Math.min(8,r.field[a.node]))).length;
-  const speed=(r.kind==='exit'?this.options.flatSpeed:this.options.stairSpeed)*a.factor,headway=2*this.g.spacing/speed+.2;
+  const speed=(r.kind==='exit'?this.options.flatSpeed:this.options.stairSpeed)*a.factor,headway=(r.kind==='stairs'?.62:2*this.g.spacing)/speed+.2;
   const entryOccupied=this.occupancy.has(r.nodes[0])&&this.occupancy.get(r.nodes[0])!==a.id;
   return ahead*headway+(entryOccupied?headway:0)+(a.route===r?Math.min(30,a.stuck):0);
  }
@@ -41,19 +58,23 @@ export class Evacuation {
  }
  routeStats(){return this.routes.map(r=>({id:r.id,kind:r.kind,well:r.well,lane:r.lane??null,floor:r.fromFloor,assigned:r.assigned,entered:r.entered,completed:r.completed,waiting:this.people.filter(a=>a.route===r&&a.status==='waiting').length}))}
  step(){if(this.finished)return;const dt=.1;this.time=+(this.time+dt).toFixed(6);this.stepCount++;let waiting=0;
+  for(const a of this.people){a.previousPosition=[...this.position(a)];a.previousFacing=a.facing;a.previousDistance=a.distance}
+  // Leaders advance first; followers respond to distance rather than vacant cells.
+  const stairPeople=this.people.filter(a=>a.stairMotion).sort((a,b)=>b.stairMotion.s-a.stairMotion.s);const moved=new Set(stairPeople.map(a=>a.id));for(const a of stairPeople){this.moveStair(a,dt);if(a.status==='waiting')waiting++}
   // Rotate priority deterministically to avoid a persistent agent-ID advantage.
-  for(let k=0;k<this.people.length;k++){const a=this.people[(k+this.stepCount)%this.people.length];if(a.status==='exited')continue;
-   if(a.target!==null){const delta=Math.min(dt*a.speed,a.length*(1-a.progress));a.distance+=delta;a.progress+=delta/a.length;if(a.progress>=1){this.occupancy.delete(a.node);this.reserved.delete(a.target);a.node=a.target;a.target=null;a.progress=0;this.occupancy.set(a.node,a.id);if(a.route&&a.node===a.route.nodes.at(-1)){a.route.assigned--;a.route.completed++;if(a.route.kind==='exit')a.passedDoor=a.route.id;a.lastWell=a.route.kind==='stairs'?a.route.well:null;a.route=null;a.routeIndex=-1}if(this.exit.has(a.node)){a.status='exited';a.exitTime=this.time;this.done++;this.occupancy.delete(a.node)}}continue}
+  for(let k=0;k<this.people.length;k++){const a=this.people[(k+this.stepCount)%this.people.length];if(a.status==='exited'||moved.has(a.id))continue;
+   if(a.target!==null){let delta=Math.min(dt*a.speed,a.length*(1-a.progress));const p=this.g.nodes[a.node].p,q=this.g.nodes[a.target].p,clear=d=>this.people.every(b=>{if(!b.stairMotion||b===a)return true;const v=this.position(b),t=a.progress+d/a.length;return Math.abs(p[2]+(q[2]-p[2])*t-v[2])>=1.6||Math.hypot(p[0]+(q[0]-p[0])*t-v[0],p[1]+(q[1]-p[1])*t-v[1])>=.48-1e-7});if(!clear(delta)){let lo=0,hi=delta;for(let i=0;i<12;i++){const mid=(lo+hi)/2;if(clear(mid))lo=mid;else hi=mid}delta=lo}a.status=delta>.0001?'moving':'waiting';a.distance+=delta;a.progress+=delta/a.length;if(a.progress>=1){this.occupancy.delete(a.node);this.reserved.delete(a.target);a.node=a.target;a.target=null;a.progress=0;this.occupancy.set(a.node,a.id);if(a.route&&a.node===a.route.nodes.at(-1)){a.route.assigned--;a.route.completed++;if(a.route.kind==='exit')a.passedDoor=a.route.id;a.lastWell=a.route.kind==='stairs'?a.route.well:null;a.route=null;a.routeIndex=-1}if(this.exit.has(a.node)){a.status='exited';a.exitTime=this.time;this.done++;this.occupancy.delete(a.node)}}continue}
    if(this.time<a.delay)continue;if(!Number.isFinite(this.dist[a.node])){a.status='unreachable';continue}
    if(!a.route)this.chooseRoute(a);else if(a.routeIndex<0&&this.options.balanced&&a.stuck>=2)this.chooseRoute(a,true);
    let candidates;
    if(a.route&&a.node===a.route.nodes[0]&&a.routeIndex<0){a.routeIndex=0;a.route.entered++}
+   if(a.route?.kind==='stairs'&&a.node===a.route.nodes[1]){this.occupancy.delete(a.node);a.stairMotion={s:0,speed:this.options.stairSpeed*a.factor};continue}
    if(a.route&&a.routeIndex>=0){const index=a.route.nodes.indexOf(a.node);const target=a.route.nodes[index+1];candidates=this.adj[a.node].filter(e=>e.to===target)}
    else{const field=a.route?a.route.field:this.dist;candidates=this.adj[a.node].filter(e=>field[e.to]<field[a.node]-1e-7).sort((x,y)=>(field[x.to]+x.length/this.options.flatSpeed)-(field[y.to]+y.length/this.options.flatSpeed));}
    const next=candidates.find(e=>this.canEnter(e.to,a));if(next){a.stuck=0;const p=this.g.nodes[a.node].p,q=this.g.nodes[next.to].p;if(Math.hypot(q[0]-p[0],q[1]-p[1])>.01)a.facing=Math.atan2(-(q[0]-p[0]),q[1]-p[1]);a.target=next.to;a.length=next.length;a.progress=0;a.speed=(next.stairs?this.options.stairSpeed:this.options.flatSpeed)*a.factor;a.status='moving';this.reserved.set(next.to,a.id)}else{a.status='waiting';a.wait+=dt;a.stuck+=dt;waiting++}
   }
   this.maxWait=Math.max(this.maxWait,waiting);if(this.done===this.initial||this.time>=this.maxSeconds||this.people.every(a=>['exited','unreachable'].includes(a.status)))this.finished=true;
  }
- position(a){const p=this.g.nodes[a.node].p;if(a.target===null)return p;const q=this.g.nodes[a.target].p;return p.map((v,i)=>v+(q[i]-v)*a.progress)}
- report(){const exited=this.people.filter(a=>a.exitTime!==null).map(a=>a.exitTime).sort((a,b)=>a-b);return {schema:4,behavior:'shortest-path-first; observed-queue-delay alternative; 10s cooldown and 3s/10% improvement threshold',routeChanges:this.people.reduce((sum,a)=>sum+a.switches,0),routes:this.routeStats(),options:this.options,elapsed:this.time,total:this.initial,exited:this.done,remaining:this.initial-this.done,unreachable:this.people.filter(a=>a.status==='unreachable').length,maxWaiting:this.maxWait,completionSeconds:this.done===this.initial?this.time:null,p95Seconds:this.done>=Math.ceil(this.initial*.95)?exited[Math.ceil(this.initial*.95)-1]:null,coverage:this.coverage,floors:this.g.floors.map(f=>({floor:f.level,total:this.people.filter(a=>a.fromFloor===f.level).length,exited:this.people.filter(a=>a.fromFloor===f.level&&a.status==='exited').length})),limitations:['Assumed occupancy, speeds and reaction delay; no fire/smoke physics','One-person graph cell with target reservation; two non-crossing stair lanes with landing clearance; stopped escalators assumed walkable downward in both lanes','Only model-connected floor cells sampled; disconnected rooms are not populated','Exterior endpoint is not a verified safe assembly point','Upper floors and stair dimensions are assumed; not a safety certification']}}
+ position(a){if(a.stairMotion)return this.pathPoint(a.route,a.stairMotion.s);const p=this.g.nodes[a.node].p;if(a.target===null)return p;const q=this.g.nodes[a.target].p;return p.map((v,i)=>v+(q[i]-v)*a.progress)}
+ report(){const exited=this.people.filter(a=>a.exitTime!==null).map(a=>a.exitTime).sort((a,b)=>a-b);return {schema:5,behavior:'shortest-path-first; observed-queue-delay alternative; 10s cooldown and 3s/10% improvement threshold',routeChanges:this.people.reduce((sum,a)=>sum+a.switches,0),routes:this.routeStats(),options:this.options,elapsed:this.time,total:this.initial,exited:this.done,remaining:this.initial-this.done,unreachable:this.people.filter(a=>a.status==='unreachable').length,maxWaiting:this.maxWait,completionSeconds:this.done===this.initial?this.time:null,p95Seconds:this.done>=Math.ceil(this.initial*.95)?exited[Math.ceil(this.initial*.95)-1]:null,coverage:this.coverage,floors:this.g.floors.map(f=>({floor:f.level,total:this.people.filter(a=>a.fromFloor===f.level).length,exited:this.people.filter(a=>a.fromFloor===f.level&&a.status==='exited').length})),limitations:['Assumed occupancy, speeds and reaction delay; no fire/smoke physics','Floor graph occupancy; continuous distance-following stair lanes with rounded landings and body clearance; stopped escalators assumed walkable downward in both lanes','Only model-connected floor cells sampled; disconnected rooms are not populated','Exterior endpoint is not a verified safe assembly point','Upper floors and stair dimensions are assumed; not a safety certification']}}
 }
