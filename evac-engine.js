@@ -73,7 +73,7 @@ export class Evacuation {
  congestionDelay(r,a){
   if(!this.options.balanced)return 0;
   const arrival=r.field[a.node]/a.factor;
-  let delay=Math.max(this.expectedWait(r,a),this.queueDelay(r,arrival));
+  let delay=Math.max(this.expectedWait(r,a),this.queueDelay(r,arrival))+this.slowTransit(r);
   // Look ahead down the selected well. Discount queues by the time needed to
   // reach them, and use the worst residual bottleneck rather than counting
   // the same backed-up stream repeatedly on successive floors.
@@ -86,20 +86,31 @@ export class Evacuation {
     const next=options.reduce((best,x)=>x.field[node]+x.transitSeconds<best.field[node]+best.transitSeconds?x:best);
     elapsed+=next.field[node]/a.factor;
     downstream=Math.max(downstream,this.queueDelay(next,elapsed));
+    delay+=Math.min(...options.map(x=>this.slowTransit(x)));
     elapsed+=next.transitSeconds/a.factor;node=next.nodes.at(-1);floor=next.toFloor;
    }
    delay+=downstream;
   }
   return delay;
  }
+ // Measure motion including stop-and-go inside each flight. Counting only
+ // people marked waiting misses dense streams that creep continuously.
+ slowTransit(r){if(r.kind!=='stairs'||!r.observedSeconds)return 0;const speed=Math.max(.12,Math.min(this.options.stairSpeed,r.observedSpeed));return Math.max(0,r.path.total/speed-r.path.total/this.options.stairSpeed);}
+ observeFlow(dt){for(const r of this.routes.filter(r=>r.kind==='stairs')){
+  const movers=this.people.filter(a=>a.route===r&&a.stairMotion);
+  const crowded=movers.length>=3;
+  const speed=crowded?movers.reduce((n,a)=>n+a.stairMotion.speed,0)/movers.length:this.options.stairSpeed;
+  const alpha=1-Math.exp(-dt/6);r.observedSpeed=(r.observedSpeed??this.options.stairSpeed)*(1-alpha)+speed*alpha;
+  if(crowded)r.observedSeconds=(r.observedSeconds||0)+dt;
+ }}
  routeCost(r,a){return this.travelTime(r,a)+this.congestionDelay(r,a)}
- chooseRoute(a,reconsider=false){if(this.g.nodes[a.node].floor===1&&a.passedDoor)return;if(a.routeIndex>=0)return;
+ chooseRoute(a,reconsider=false){if(this.g.nodes[a.node].floor===1&&a.passedDoor)return;if(a.routeIndex>=0&&a.node!==a.route?.nodes[0])return;
   const choices=this.choices(a).sort((x,y)=>this.routeCost(x,a)-this.routeCost(y,a));if(!choices.length)return;const best=choices[0],current=a.route;
   if(reconsider){if(this.time-a.lastDecision<10)return;a.lastDecision=this.time;if(!current||best===current||this.routeCost(current,a)-this.routeCost(best,a)<Math.max(3,Math.min(8,current.field[a.node]/a.factor*.1)))return;}
-  if(current===best)return;const previous=current?.id;const previousCost=current?this.routeCost(current,a):null;if(current?.kind==='stairs'&&best.kind==='stairs'&&current.well!==best.well)this.wellChanges++;if(current){current.assigned--;a.switches++}a.route=best;a.detour=null;best.assigned++;a.routeIndex=-1;a.lastDecision=this.time;
+  if(current===best)return;const previous=current?.id;const previousCost=current?this.routeCost(current,a):null;if(current?.kind==='stairs'&&best.kind==='stairs'&&current.well!==best.well)this.wellChanges++;if(current){current.assigned--;if(a.routeIndex===0)current.entered--;a.switches++}a.route=best;a.detour=null;best.assigned++;a.routeIndex=-1;a.lastDecision=this.time;
   a.decision={time:this.time,from:previous||null,to:best.id,reason:current?'queue-delay-exceeds-detour':'shortest-available-path',travelSeconds:this.travelTime(best,a),expectedWaitSeconds:this.congestionDelay(best,a),estimatedSeconds:this.routeCost(best,a),previousEstimatedSeconds:previousCost};if(current)this.lastReroute={person:a.id,...a.decision};
  }
- routeStats(){return this.routes.map(r=>({id:r.id,kind:r.kind,well:r.well,lane:r.lane??null,floor:r.fromFloor,assigned:r.assigned,entered:r.entered,completed:r.completed,waiting:this.people.filter(a=>a.route===r&&a.status==='waiting').length}))}
+ routeStats(){return this.routes.map(r=>({id:r.id,kind:r.kind,well:r.well,lane:r.lane??null,floor:r.fromFloor,assigned:r.assigned,entered:r.entered,completed:r.completed,slowdownSeconds:+this.slowTransit(r).toFixed(1),waiting:this.people.filter(a=>a.route===r&&a.status==='waiting').length}))}
  step(){if(this.finished)return;const dt=.1;this.time=+(this.time+dt).toFixed(6);this.stepCount++;let waiting=0;
   for(const a of this.people){a.previousPosition=[...this.position(a)];a.previousFacing=a.facing;a.previousDistance=a.distance;a.clearanceTarget=null;if(!a.stairMotion&&a.status!=='exited'&&a.target===null){if(a.routeIndex>=0&&a.route){a.clearanceTarget=a.route.nodes[a.route.nodes.indexOf(a.node)+1]??null}else{const field=a.route?.field||this.dist;const best=this.adj[a.node].filter(e=>field[e.to]<field[a.node]-1e-7).sort((x,y)=>(field[x.to]+x.length/this.options.flatSpeed)-(field[y.to]+y.length/this.options.flatSpeed))[0];a.clearanceTarget=best?.to??null}}}
   // Leaders advance first; followers respond to distance rather than vacant cells.
@@ -108,7 +119,7 @@ export class Evacuation {
   for(let k=0;k<this.people.length;k++){const a=this.people[(k+this.stepCount)%this.people.length];if(a.status==='exited'||moved.has(a.id))continue;
    if(a.target!==null){let delta=Math.min(dt*a.speed,a.length*(1-a.progress));const p=this.g.nodes[a.node].p,q=this.g.nodes[a.target].p,clear=d=>this.people.every(b=>{if(!b.stairMotion||b===a)return true;const v=this.position(b),t=a.progress+d/a.length;return Math.abs(p[2]+(q[2]-p[2])*t-v[2])>=1.6||Math.hypot(p[0]+(q[0]-p[0])*t-v[0],p[1]+(q[1]-p[1])*t-v[1])>=.48-1e-7});if(!clear(delta)){let lo=0,hi=delta;for(let i=0;i<12;i++){const mid=(lo+hi)/2;if(clear(mid))lo=mid;else hi=mid}delta=lo}a.status=delta>.0001?'moving':'waiting';a.distance+=delta;a.progress+=delta/a.length;if(a.progress>=1){this.occupancy.delete(a.node);this.reserved.delete(a.target);a.node=a.target;a.target=null;a.progress=0;this.occupancy.set(a.node,a.id);if(a.route&&a.node===a.route.nodes.at(-1)){a.route.assigned--;a.route.completed++;if(a.route.kind==='exit')a.passedDoor=a.route.id;a.lastWell=a.route.kind==='stairs'?a.route.well:null;a.route=null;a.routeIndex=-1}if(this.exit.has(a.node)){a.status='exited';a.exitTime=this.time;this.done++;this.occupancy.delete(a.node)}}continue}
    if(this.time<a.delay)continue;if(!Number.isFinite(this.dist[a.node])){a.status='unreachable';continue}
-   if(!a.route)this.chooseRoute(a);else if(a.routeIndex<0&&this.options.balanced&&this.time-a.lastDecision>=10)this.chooseRoute(a,true);
+   if(!a.route)this.chooseRoute(a);else if((a.routeIndex<0||a.node===a.route.nodes[0])&&this.options.balanced&&this.time-a.lastDecision>=10)this.chooseRoute(a,true);
    // Commit to the lane portal actually reached; do not cross another queue to
    // reach the neighboring portal of the same stairwell.
    if(a.route?.kind==='stairs'&&a.routeIndex<0){const here=this.routes.find(r=>r.family===a.route.family&&r.nodes[0]===a.node);if(here&&here!==a.route&&this.expectedWait(here,a)<=this.expectedWait(a.route,a)){a.route.assigned--;here.assigned++;a.route=here;a.detour=null;a.switches++}}
@@ -119,8 +130,8 @@ export class Evacuation {
    else{if(a.stuck>=2&&this.time-(a.lastLocalPlan??-100)>=1){a.lastLocalPlan=this.time;a.detour=this.localDetour(a)}const field=a.detour&&a.detour.route===a.route&&a.detour.until>this.time?a.detour.field:(a.route?a.route.field:this.dist);candidates=this.adj[a.node].filter(e=>field[e.to]<field[a.node]-1e-7).sort((x,y)=>(field[x.to]+x.length/this.options.flatSpeed)-(field[y.to]+y.length/this.options.flatSpeed));}
    const next=candidates.find(e=>this.canEnter(e.to,a)&&this.people.every(b=>{if(!b.stairMotion||b===a)return true;const p=this.g.nodes[a.node].p,q=this.g.nodes[e.to].p,v=this.position(b),dx=q[0]-p[0],dy=q[1]-p[1],t=Math.max(0,Math.min(1,((v[0]-p[0])*dx+(v[1]-p[1])*dy)/(dx*dx+dy*dy||1)));return Math.abs(p[2]+(q[2]-p[2])*t-v[2])>=1.6||Math.hypot(p[0]+dx*t-v[0],p[1]+dy*t-v[1])>=.48-1e-7}));if(next){a.stuck=0;const p=this.g.nodes[a.node].p,q=this.g.nodes[next.to].p;if(Math.hypot(q[0]-p[0],q[1]-p[1])>.01)a.facing=Math.atan2(-(q[0]-p[0]),q[1]-p[1]);a.target=next.to;a.length=next.length;a.progress=0;a.speed=(next.stairs?this.options.stairSpeed:this.options.flatSpeed)*a.factor;a.status='moving';this.reserved.set(next.to,a.id)}else{a.status='waiting';a.wait+=dt;a.stuck+=dt;waiting++}
   }
-  this.maxWait=Math.max(this.maxWait,waiting);if(this.done===this.initial||this.time>=this.maxSeconds||this.people.every(a=>['exited','unreachable'].includes(a.status)))this.finished=true;
+  this.observeFlow(dt);this.maxWait=Math.max(this.maxWait,waiting);if(this.done===this.initial||this.time>=this.maxSeconds||this.people.every(a=>['exited','unreachable'].includes(a.status)))this.finished=true;
  }
  position(a){if(a.stairMotion)return this.pathPoint(a.route,a.stairMotion.s);const p=this.g.nodes[a.node].p;if(a.target===null)return p;const q=this.g.nodes[a.target].p;return p.map((v,i)=>v+(q[i]-v)*a.progress)}
- report(){const exited=this.people.filter(a=>a.exitTime!==null).map(a=>a.exitTime).sort((a,b)=>a-b);return {schema:7,wellChanges:this.wellChanges,lastReroute:this.lastReroute,behavior:'shortest-path-first; shared-well queue and downstream residual delay; reconsider every 10s on floors even while progressing; 3-8s improvement threshold; no in-flight switching',routeChanges:this.people.reduce((sum,a)=>sum+a.switches,0),routes:this.routeStats(),options:this.options,elapsed:this.time,total:this.initial,exited:this.done,remaining:this.initial-this.done,unreachable:this.people.filter(a=>a.status==='unreachable').length,maxWaiting:this.maxWait,completionSeconds:this.done===this.initial?this.time:null,p95Seconds:this.done>=Math.ceil(this.initial*.95)?exited[Math.ceil(this.initial*.95)-1]:null,coverage:this.coverage,floors:this.g.floors.map(f=>({floor:f.level,total:this.people.filter(a=>a.fromFloor===f.level).length,exited:this.people.filter(a=>a.fromFloor===f.level&&a.status==='exited').length})),limitations:['Assumed occupancy, speeds and reaction delay; no fire/smoke physics','Floor graph occupancy; continuous distance-following stair lanes with rounded landings and body clearance; stopped escalators assumed walkable downward in both lanes','Only model-connected floor cells sampled; disconnected rooms are not populated','Exterior endpoint is not a verified safe assembly point','Upper floors and stair dimensions are assumed; not a safety certification']}}
+ report(){const exited=this.people.filter(a=>a.exitTime!==null).map(a=>a.exitTime).sort((a,b)=>a-b);return {schema:8,wellChanges:this.wellChanges,lastReroute:this.lastReroute,behavior:'shortest-path-first; observed slow stair transit plus shared-well queue and downstream residual delay; reconsider every 10s on floors even while progressing; 3-8s improvement threshold; no in-flight switching',routeChanges:this.people.reduce((sum,a)=>sum+a.switches,0),routes:this.routeStats(),options:this.options,elapsed:this.time,total:this.initial,exited:this.done,remaining:this.initial-this.done,unreachable:this.people.filter(a=>a.status==='unreachable').length,maxWaiting:this.maxWait,completionSeconds:this.done===this.initial?this.time:null,p95Seconds:this.done>=Math.ceil(this.initial*.95)?exited[Math.ceil(this.initial*.95)-1]:null,coverage:this.coverage,floors:this.g.floors.map(f=>({floor:f.level,total:this.people.filter(a=>a.fromFloor===f.level).length,exited:this.people.filter(a=>a.fromFloor===f.level&&a.status==='exited').length})),limitations:['Assumed occupancy, speeds and reaction delay; no fire/smoke physics','Floor graph occupancy; continuous distance-following stair lanes with rounded landings and body clearance; stopped escalators assumed walkable downward in both lanes','Only model-connected floor cells sampled; disconnected rooms are not populated','Exterior endpoint is not a verified safe assembly point','Upper floors and stair dimensions are assumed; not a safety certification']}}
 }

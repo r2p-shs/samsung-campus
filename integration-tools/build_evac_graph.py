@@ -139,23 +139,22 @@ for lane,x in enumerate([-20.8,-18.8]):
             b=endpoints[0] if last else add([p[t]+(q[t]-p[t])*j/count for t in range(3)],2,'escalator',lane)
             edge(previous,b);previous=b;route_nodes.append(b)
     routes.append({'id':f'escalator_{lane}','kind':'escalator','well':lane,'fromFloor':2,'toFloor':1,'nodes':route_nodes})
-# Explicit door corridors. Keep enclosure, fixed glass and central spindle.
-from collections import deque
-local_adj={i:[] for i in floor_nodes[1]}
-for a,b,d in edges:
-    if a in local_adj and b in local_adj:local_adj[a].append(b);local_adj[b].append(a)
-for key,x,band in [('left',-13.8,(-14.7,-12.9)),('center',-10.4,(-10.7,-8.4)),('right',-5.3,(-6.2,-4.4))]:
-    allowed={i for i in floor_nodes[1] if band[0]<=nodes[i]['p'][0]<=band[1] and -25<=nodes[i]['p'][1]<=-19}
-    start=min(allowed,key=lambda i:math.dist(nodes[i]['p'][:2],[x,-20.4]));end=min(allowed,key=lambda i:math.dist(nodes[i]['p'][:2],[x,-24.4]))
-    todo=deque([start]);parents={start:None}
-    while todo:
-        a=todo.popleft()
-        for b in local_adj[a]:
-            if b in allowed and b not in parents:parents[b]=a;todo.append(b)
-    assert end in parents, f'{key} door not connected; do not infer a glass opening'
-    route_nodes=[];a=end
-    while a is not None:route_nodes.append(a);a=parents[a]
-    route_nodes.reverse();routes.append({'id':'door_'+key,'kind':'exit','well':-1,'fromFloor':1,'toFloor':1,'nodes':route_nodes})
+# Full-front evacuation opening: independent mesh-checked straight lanes.
+# Fixed glazing/rotor surround are opened only in the evacuation override.
+f,obs,_=floor_info[0]
+lookup={(round(nodes[i]['p'][0],4),round(nodes[i]['p'][1],4)):i for i in floor_nodes[1]}
+exit_lanes=[]
+for ix in range(13):
+    x=round(-14.4+ix*.8,4)
+    points=[(x,round(-20.4-j*.8,4)) for j in range(6)]
+    assert all(p in lookup for p in points), f'Blocked full-width exit lane {x}'
+    ids=[lookup[p] for p in points]
+    assert all(floor_clear(x,p[1]+(q[1]-p[1])*t,f,obs) for p,q in zip(points,points[1:]) for t in np.linspace(0,1,20)),f'Exit lane crosses geometry {x}'
+    key='left' if ix<4 else 'center' if ix<9 else 'right'
+    route_id={0:'door_left',6:'door_center',12:'door_right'}.get(ix,'door_'+key+'_lane'+str(ix))
+    routes.append({'id':route_id,'family':'door_'+key,'lane':ix,'kind':'exit','well':-1,'fromFloor':1,'toFloor':1,'nodes':ids})
+    exit_lanes.append(route_id)
+assert len(exit_lanes)>=10
 # Exterior endpoint, not an assumed refuge safety zone.
 exits=[i for i in floor_nodes[1] if nodes[i]['p'][1]<-35 and -16<nodes[i]['p'][0]<-3]
 assert exits,'No exterior exit nodes'
@@ -168,5 +167,5 @@ while todo:
 counts={str(f['level']):sum(i in seen for i in floor_nodes[f['level']]) for f in data['floors']}
 print('EXIT CONNECTIVITY',counts, 'entries',[(k,a in seen,len(adj[a])) for k,a in entries.items()],flush=True)
 assert all(v>20 for v in counts.values()),'Missing floor-to-exterior route; do not invent connection'
-result={'version':6,'geometryFile':'models/evac-geometry.json','descentConnections2F':['stairs_0_2','stairs_1_2','escalator_0','escalator_1'],'stairApronWidth':4.2,'stairLaneCount':2,'stairLaneSpacing':0.6,'openings':openings,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
+result={'version':8,'exitLaneCount':len(exit_lanes),'exitLanes':exit_lanes,'geometryFile':'models/evac-geometry.json','descentConnections2F':['stairs_0_2','stairs_1_2','escalator_0','escalator_1'],'stairApronWidth':4.2,'stairLaneCount':2,'stairLaneSpacing':0.6,'openings':openings,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
 (ROOT/'models/evac-graph.json').write_text(json.dumps(result,separators=(',',':')),encoding='utf8')
