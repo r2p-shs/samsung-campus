@@ -116,29 +116,41 @@ for lower,upper in zip(data['floors'],data['floors'][1:]):
                 nodes[b]['lane']=lane;edge(previous,b);previous=b;route_nodes.append(b)
         family=f"stairs_{wi}_{upper['level']}"
         routes.append({'id':family+('_lane1' if lane else ''),'family':family,'center':c,'flightOffset':offset,'lane':lane,'kind':'stairs','well':wi,'fromFloor':upper['level'],'toFloor':lower['level'],'nodes':route_nodes})
-# Both existing escalators stopped, walked downward. Connect exact landings only
-# through mesh-checked floor space; never connect the sloped run to floor grid.
-for lane,x in enumerate([-20.8,-18.8]):
-    endpoints=[]
+# Two independent downward walking lanes per stopped escalator, within rails.
+escalator_top=[]
+for well,center in enumerate([-20.8,-18.8]):
+ for lane,offset in enumerate([-.3,.3]):
+    x=center+offset;endpoints=[]
     for f,obs,_ in floor_info[:2]:
-        y=-16.3 if f['level']==1 else -8.25
-        a=add([x,y,f['z']],f['level'],'entry',-1);endpoints.append(a)
+        y=-16.5 if f['level']==1 else -8.1
+        a=add([x,y,f['z']],f['level'],'entry',well);endpoints.append(a)
         attached=0
         for b in floor_nodes[f['level']]:
             q=nodes[b]['p'];p=nodes[a]['p']
             if math.dist(p,q)<1.5 and all(floor_clear(p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t,f,obs) for t in np.linspace(0,1,20)):
                 edge(a,b);attached+=1
-        assert attached, f'Escalator landing {lane}/{f["level"]} has no verified floor connection'
+        assert attached, f'Escalator landing {well}/{lane}/{f["level"]} has no verified floor connection'
+    escalator_top.append(endpoints[1])
     z0=data['floors'][0]['z'];z1=data['floors'][1]['z']
-    points=[[x,-8.25,z1],[x,-8.9,z1],[x,-15.5,z0],[x,-16.3,z0]]
+    points=[[x,-8.1,z1],[x,-8.9,z1],[x,-15.5,z0],[x,-16.5,z0]]
     previous=endpoints[1];route_nodes=[previous]
     for k,(p,q) in enumerate(zip(points,points[1:])):
         count=max(1,round(math.dist(p,q)/.8))
         for j in range(1,count+1):
             last=k==2 and j==count
-            b=endpoints[0] if last else add([p[t]+(q[t]-p[t])*j/count for t in range(3)],2,'escalator',lane)
-            edge(previous,b);previous=b;route_nodes.append(b)
-    routes.append({'id':f'escalator_{lane}','kind':'escalator','well':lane,'fromFloor':2,'toFloor':1,'nodes':route_nodes})
+            b=endpoints[0] if last else add([p[t]+(q[t]-p[t])*j/count for t in range(3)],2,'escalator',well)
+            nodes[b]['lane']=lane;edge(previous,b);previous=b;route_nodes.append(b)
+    family=f'escalator_{well}'
+    routes.append({'id':family+('_lane1' if lane else ''),'family':family,'lane':lane,'kind':'escalator','well':well,'fromFloor':2,'toFloor':1,'nodes':route_nodes})
+# Floor-only connector around the top of the handrail. The coarse apron
+# exclusion previously disconnected stair arrivals from escalator landings.
+f,obs,_=floor_info[1];bridge=add([-17.8,-7.9,f['z']],2,'entry')
+portal=entries[2,0,-1,1]
+approach_chain=[bridge]+sorted(escalator_top,key=lambda n:-nodes[n]['p'][0])
+for a,b in [(portal,bridge)]+list(zip(approach_chain,approach_chain[1:])):
+    p=nodes[a]['p'];q=nodes[b]['p']
+    assert all(floor_clear(p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t,f,obs) for t in np.linspace(0,1,80)), 'Blocked stair-to-escalator floor connector'
+    edge(a,b)
 # Full-front evacuation opening: independent mesh-checked straight lanes.
 # Fixed glazing/rotor surround are opened only in the evacuation override.
 f,obs,_=floor_info[0]
@@ -167,5 +179,5 @@ while todo:
 counts={str(f['level']):sum(i in seen for i in floor_nodes[f['level']]) for f in data['floors']}
 print('EXIT CONNECTIVITY',counts, 'entries',[(k,a in seen,len(adj[a])) for k,a in entries.items()],flush=True)
 assert all(v>20 for v in counts.values()),'Missing floor-to-exterior route; do not invent connection'
-result={'version':10,'rightRearAccess':{'floors':[f['level'] for f in data['floors'][2:]],'sideCorridorX':[21.4,23.6],'basis':'F3 plan-informed right core circulation; dimensions assumed'},'exitLaneCount':len(exit_lanes),'exitLanes':exit_lanes,'geometryFile':'models/evac-geometry.json','descentConnections2F':['stairs_0_2','stairs_1_2','escalator_0','escalator_1'],'stairApronWidth':4.2,'stairLaneCount':2,'stairLaneSpacing':0.6,'openings':openings,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
+result={'version':11,'escalatorLaneCount':2,'rightRearAccess':{'floors':[f['level'] for f in data['floors'][2:]],'sideCorridorX':[21.4,23.6],'basis':'F3 plan-informed right core circulation; dimensions assumed'},'exitLaneCount':len(exit_lanes),'exitLanes':exit_lanes,'geometryFile':'models/evac-geometry.json','descentConnections2F':['stairs_0_2','stairs_1_2','escalator_0','escalator_1'],'stairApronWidth':4.2,'stairLaneCount':2,'stairLaneSpacing':0.6,'openings':openings,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
 (ROOT/'models/evac-graph.json').write_text(json.dumps(result,separators=(',',':')),encoding='utf8')
