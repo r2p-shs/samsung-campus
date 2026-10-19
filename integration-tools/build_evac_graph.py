@@ -80,11 +80,13 @@ for f in data['floors']:
             if any(abs(x-w['center'])<2.1 and -9.2+1e-5<y<-5.9 for w in data['stairwells']):continue
             if clear(x,y):grid[ix,iy]=add([x,y,z],f['level'])
     for (ix,iy),a in grid.items():
-        for dx,dy in [(1,0),(0,1)]:
+        for dx,dy in [(1,0),(0,1),(1,1),(1,-1)]:
+            # Both orthogonal cells must exist: never cut a blocked corner.
+            if dx and dy and ((ix+dx,iy) not in grid or (ix,iy+dy) not in grid):continue
             b=grid.get((ix+dx,iy+dy))
             if b is not None:
                 p=nodes[a]['p'];q=nodes[b]['p']
-                if all(clear(p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t) for t in [.25,.5,.75]):edge(a,b)
+                if all(clear(p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t) for t in np.linspace(0,1,17)):edge(a,b)
     floor_nodes[f['level']]=list(grid.values());floor_info.append((f,obs,clear))
     print('floor',f['level'],'nodes',len(grid),flush=True)
 # Two nested, non-crossing lanes within each 1.4m-wide stair flight.
@@ -179,5 +181,5 @@ while todo:
 counts={str(f['level']):sum(i in seen for i in floor_nodes[f['level']]) for f in data['floors']}
 print('EXIT CONNECTIVITY',counts, 'entries',[(k,a in seen,len(adj[a])) for k,a in entries.items()],flush=True)
 assert all(v>20 for v in counts.values()),'Missing floor-to-exterior route; do not invent connection'
-result={'version':11,'escalatorLaneCount':2,'rightRearAccess':{'floors':[f['level'] for f in data['floors'][2:]],'sideCorridorX':[21.4,23.6],'basis':'F3 plan-informed right core circulation; dimensions assumed'},'exitLaneCount':len(exit_lanes),'exitLanes':exit_lanes,'geometryFile':'models/evac-geometry.json','descentConnections2F':['stairs_0_2','stairs_1_2','escalator_0','escalator_1'],'stairApronWidth':4.2,'stairLaneCount':2,'stairLaneSpacing':0.6,'openings':openings,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
+result={'version':12,'floorDirections':8,'diagonalCornerCutting':False,'escalatorLaneCount':2,'rightRearAccess':{'floors':[f['level'] for f in data['floors'][2:]],'sideCorridorX':[21.4,23.6],'basis':'F3 plan-informed right core circulation; dimensions assumed'},'exitLaneCount':len(exit_lanes),'exitLanes':exit_lanes,'geometryFile':'models/evac-geometry.json','descentConnections2F':['stairs_0_2','stairs_1_2','escalator_0','escalator_1'],'stairApronWidth':4.2,'stairLaneCount':2,'stairLaneSpacing':0.6,'openings':openings,'routes':routes,'modelSha256':hashlib.sha256((ROOT/'models/f_tower_walk.glb').read_bytes()).hexdigest(),'floors':[{'level':f['level'],'z':f['z']} for f in data['floors']],'nodes':nodes,'edges':edges,'exits':exits,'reachable':sorted(seen),'coverage':counts,'radius':radius,'spacing':spacing,'assumptions':['Mesh sections at 0.35, 1.0 and 1.6 m with 0.24 m clearance; explicit entry doors held open','Generic two stairwells and repeated upper floors','Exterior endpoint only; no smoke/heat/toxicity simulation']}
 (ROOT/'models/evac-graph.json').write_text(json.dumps(result,separators=(',',':')),encoding='utf8')

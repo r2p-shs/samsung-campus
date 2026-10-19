@@ -36,7 +36,12 @@ export class Evacuation {
    // An uncommitted follower must not reserve the leader's current position.
    return b.target===null&&d>=distance(this.position(a))-1e-8;
   })}
- canEnter(node,a){return [node,...this.conflicts[node]].every(i=>(!this.occupancy.has(i)||this.occupancy.get(i)===a.id)&&(!this.reserved.has(i)||this.reserved.get(i)===a.id))&&this.people.every(b=>!b.stairMotion||b===a||Math.abs(this.g.nodes[node].p[2]-this.position(b)[2])>=1.6||Math.hypot(this.g.nodes[node].p[0]-this.position(b)[0],this.g.nodes[node].p[1]-this.position(b)[1])>=.48-1e-7)}
+ crossingReserved(node,a){const p=this.g.nodes[a.node],q=this.g.nodes[node];if(p.kind!=='floor'||q.kind!=='floor')return false;
+  return this.people.some(b=>{if(b===a||b.target==null)return false;const u=this.g.nodes[b.node],v=this.g.nodes[b.target];if(u.kind!=='floor'||v.kind!=='floor'||u.floor!==p.floor)return false;
+   const cross=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);return cross(p.p,q.p,u.p)*cross(p.p,q.p,v.p)<-1e-8&&cross(u.p,v.p,p.p)*cross(u.p,v.p,q.p)<-1e-8;
+  });
+ }
+ canEnter(node,a){if(this.crossingReserved(node,a))return false;return [node,...this.conflicts[node]].every(i=>(!this.occupancy.has(i)||this.occupancy.get(i)===a.id)&&(!this.reserved.has(i)||this.reserved.get(i)===a.id))&&this.people.every(b=>!b.stairMotion||b===a||Math.abs(this.g.nodes[node].p[2]-this.position(b)[2])>=1.6||Math.hypot(this.g.nodes[node].p[0]-this.position(b)[0],this.g.nodes[node].p[1]-this.position(b)[1])>=.48-1e-7)}
  moveStair(a,dt){const m=a.stairMotion,r=a.route;let limit=r.path.total;for(const b of this.people)if(b!==a&&b.stairMotion&&b.route===r&&b.stairMotion.s>m.s)limit=Math.min(limit,b.stairMotion.s-.62);
   const free=this.options.stairSpeed*a.factor,gap=Math.max(0,limit-m.s),desired=limit<r.path.total?Math.min(free,gap/.6):free;m.speed=Math.min(desired,m.speed+.8*dt);let delta=Math.min(gap,m.speed*dt);
   // Check continuous body clearance, including the other lane and floor merges.
