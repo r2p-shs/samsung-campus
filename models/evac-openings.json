@@ -46,9 +46,9 @@
       "exact": true,
       "axis": "x",
       "min": 17.4,
-      "max": 21.6,
+      "max": 23.6,
       "zMax": 11.447666433577472,
-      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+      "basis": "Right stair side access from rear corridor, plan-informed topology; assumed 2.2m side corridor outside shaft"
     },
     {
       "id": "stair-apron-5-0--23",
@@ -86,9 +86,9 @@
       "exact": true,
       "axis": "x",
       "min": 17.4,
-      "max": 21.6,
+      "max": 23.6,
       "zMax": 16.24766643357747,
-      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+      "basis": "Right stair side access from rear corridor, plan-informed topology; assumed 2.2m side corridor outside shaft"
     },
     {
       "id": "stair-apron-6-0--23",
@@ -126,9 +126,9 @@
       "exact": true,
       "axis": "x",
       "min": 17.4,
-      "max": 21.6,
+      "max": 23.6,
       "zMax": 21.047666433577472,
-      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+      "basis": "Right stair side access from rear corridor, plan-informed topology; assumed 2.2m side corridor outside shaft"
     },
     {
       "id": "stair-apron-7-0--23",
@@ -166,9 +166,9 @@
       "exact": true,
       "axis": "x",
       "min": 17.4,
-      "max": 21.6,
+      "max": 23.6,
       "zMax": 25.847666433577473,
-      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+      "basis": "Right stair side access from rear corridor, plan-informed topology; assumed 2.2m side corridor outside shaft"
     },
     {
       "id": "stair-apron-8-0--23",
@@ -206,9 +206,9 @@
       "exact": true,
       "axis": "x",
       "min": 17.4,
-      "max": 21.6,
+      "max": 23.6,
       "zMax": 30.64766643357747,
-      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+      "basis": "Right stair side access from rear corridor, plan-informed topology; assumed 2.2m side corridor outside shaft"
     },
     {
       "id": "stair-apron-9-0--23",
@@ -246,9 +246,9 @@
       "exact": true,
       "axis": "x",
       "min": 17.4,
-      "max": 21.6,
+      "max": 23.6,
       "zMax": 35.447666433577474,
-      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+      "basis": "Right stair side access from rear corridor, plan-informed topology; assumed 2.2m side corridor outside shaft"
     },
     {
       "id": "stair-apron-10-0--23",
@@ -286,9 +286,9 @@
       "exact": true,
       "axis": "x",
       "min": 17.4,
-      "max": 21.6,
+      "max": 23.6,
       "zMax": 40.24766643357747,
-      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+      "basis": "Right stair side access from rear corridor, plan-informed topology; assumed 2.2m side corridor outside shaft"
     },
     {
       "id": "stair-apron-11-0--23",
@@ -326,9 +326,9 @@
       "exact": true,
       "axis": "x",
       "min": 17.4,
-      "max": 21.6,
+      "max": 23.6,
       "zMax": 45.047666433577476,
-      "basis": "User-authorized simulation geometry widening: 4.2m common stair approach, independent entry and exit lanes; assumed dimensions"
+      "basis": "Right stair side access from rear corridor, plan-informed topology; assumed 2.2m side corridor outside shaft"
     },
     {
       "id": "stair-left-gallery",
@@ -494,6 +494,166 @@
         }
       ],
       "basis": "User requested 10+ simultaneous exits: evacuation-only full frontage opening, including fixed glazing and rotor surround; proposed opening, not existing certified door capacity"
+    },
+    {
+      "id": "right-rear-access-3",
+      "prefix": "partition_F3_5.5_20.5",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            20.45,
+            5.3,
+            8.847666433577473
+          ],
+          "max": [
+            23.6,
+            5.7,
+            11.447666433577472
+          ]
+        }
+      ],
+      "basis": "F3 plan right core circulation; widen rear opening into side corridor outside stair shaft. Repeated upper floors assumed."
+    },
+    {
+      "id": "right-rear-access-5",
+      "prefix": "partition_F5_5.5_20.5",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            20.45,
+            5.3,
+            13.647666433577472
+          ],
+          "max": [
+            23.6,
+            5.7,
+            16.24766643357747
+          ]
+        }
+      ],
+      "basis": "F3 plan right core circulation; widen rear opening into side corridor outside stair shaft. Repeated upper floors assumed."
+    },
+    {
+      "id": "right-rear-access-6",
+      "prefix": "partition_F6_5.5_20.5",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            20.45,
+            5.3,
+            18.44766643357747
+          ],
+          "max": [
+            23.6,
+            5.7,
+            21.047666433577472
+          ]
+        }
+      ],
+      "basis": "F3 plan right core circulation; widen rear opening into side corridor outside stair shaft. Repeated upper floors assumed."
+    },
+    {
+      "id": "right-rear-access-7",
+      "prefix": "partition_F7_5.5_20.5",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            20.45,
+            5.3,
+            23.24766643357747
+          ],
+          "max": [
+            23.6,
+            5.7,
+            25.847666433577473
+          ]
+        }
+      ],
+      "basis": "F3 plan right core circulation; widen rear opening into side corridor outside stair shaft. Repeated upper floors assumed."
+    },
+    {
+      "id": "right-rear-access-8",
+      "prefix": "partition_F8_5.5_20.5",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            20.45,
+            5.3,
+            28.04766643357747
+          ],
+          "max": [
+            23.6,
+            5.7,
+            30.64766643357747
+          ]
+        }
+      ],
+      "basis": "F3 plan right core circulation; widen rear opening into side corridor outside stair shaft. Repeated upper floors assumed."
+    },
+    {
+      "id": "right-rear-access-9",
+      "prefix": "partition_F9_5.5_20.5",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            20.45,
+            5.3,
+            32.84766643357747
+          ],
+          "max": [
+            23.6,
+            5.7,
+            35.447666433577474
+          ]
+        }
+      ],
+      "basis": "F3 plan right core circulation; widen rear opening into side corridor outside stair shaft. Repeated upper floors assumed."
+    },
+    {
+      "id": "right-rear-access-10",
+      "prefix": "partition_F10_5.5_20.5",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            20.45,
+            5.3,
+            37.64766643357747
+          ],
+          "max": [
+            23.6,
+            5.7,
+            40.24766643357747
+          ]
+        }
+      ],
+      "basis": "F3 plan right core circulation; widen rear opening into side corridor outside stair shaft. Repeated upper floors assumed."
+    },
+    {
+      "id": "right-rear-access-11",
+      "prefix": "partition_F11_5.5_20.5",
+      "exact": true,
+      "cuts": [
+        {
+          "min": [
+            20.45,
+            5.3,
+            42.447666433577474
+          ],
+          "max": [
+            23.6,
+            5.7,
+            45.047666433577476
+          ]
+        }
+      ],
+      "basis": "F3 plan right core circulation; widen rear opening into side corridor outside stair shaft. Repeated upper floors assumed."
     }
   ]
 }
