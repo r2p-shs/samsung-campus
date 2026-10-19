@@ -47,7 +47,29 @@
 정지 에스컬레이터 두 대를 각각 두 줄로 내려간다. 상층에서 2층 계단으로 내려온 사람도 상부 난간 끝을 돌아 에스컬레이터 진입점에 접근한다. 통로는 모델 충돌과 썬큰 경계를 검사했다. 1층의 국소 우회는 6초 만료로 되돌리지 않고, 같은 목적지로 진행하는 동안 유지한다. 새 장애물로 막히면 다시 계획하며, 목적지가 바뀌면 이전 계획은 폐기한다.
 
 
-## Floor guide communication
-One visible guide per physical floor (10 total), excluded from evacuation population and collision occupancy. Every 2 simulation seconds guides broadcast left/right stair waiting, nearby approaching, in-flight occupancy, closure and estimated delay. With guides and congestion response enabled, route cost adds downstream delay for the selected stairwell to the current-floor approach and local delay. A lower closed flight adds a finite 30-second diversion estimate; it does not prohibit a reachable stairwell. These are model assumptions, not measured radio/operator behavior. Decisions retain a 10-second reconsideration interval, 3–8-second improvement threshold and no flight switching. Disable guides to retain local-only routing. Shared messages and decision penalties are exported in schema 12.
+## V13 층간 도착 시점 예측 안내
 
-Validation: test_guides.mjs verifies broadcast cadence, side-specific downstream penalties, disable behavior and 200-person completion with no/left/right closure (450.4/520.4/515.4 simulation seconds).
+각 실제 층에 안내자 1명을 표시하며 대피 인원·충돌 점유와 별도로 취급한다. 2초마다 양쪽 계단의 대기, 접근, 계단 내 인원과 지연을 공유한다.
+
+### 지연 원인과 수정
+- 종전 방식은 아래층의 현재 지연을 단순 합산했다. 위층 사람이 도착하기 전에 해소될 대기도 비용으로 계산하고 연속된 층의 같은 정체를 중복 반영했다.
+- 현재 층에서도 순간적인 입구 점유와 줄별 부하 차이가 우회 비용을 부풀렸다. 기본 200명에서 거리 우선은 총 대기 1392.3인·초/완료 435.4초, 기존 안내는 대기 1054.1인·초/완료 450.4초였다. 대기 감소가 마지막 사람의 완료 단축으로 이어지지는 않았다. 층내 혼잡만 사용하면 444.7초였다.
+- 개인별 접근 시간과 계단 하행 시간으로 아래층 도착 시간을 계산하고, 그때 남을 지연만 반영한다. 연속된 계단 구간은 최대 잔여 지연을 사용한다. 혼잡 전파를 정확히 푸는 모델이 아니라 중복 비용을 줄이는 근사이다.
+- 현재 층 대기도 도착 시간까지 소진될 양을 제외한다. 3초 이상 실제로 정지하면 기존의 관측 대기/진행 지연을 우선해 예측 실패를 보정한다.
+- 차단 조건에 새 예측을 그대로 적용한 후보는 대피 미완료 회귀가 있었다. 따라서 계단 차단 시 기존에 검증된 차단 대응을 유지한다. 이 분기는 화면과 JSON에 명시한다.
+- 1층 출구 선택은 기존 혼잡 대응을 유지한다. 국소 우회 재계획은 최근 30초 이내 지나온 노드(현재 위치와 목표 제외)를 임시 제외해 왕복을 줄인다. 가능한 새 우회가 없으면 기존 계획을 유지하며, 유예 시간이 지나면 다시 후보가 된다.
+- 10초 재검토, 3–8초 개선 문턱, 계단 도중 전환 금지는 유지한다. 안내자를 끄면 기존 층내 혼잡 대응, 대기 우회를 끄면 거리 우선이다.
+
+### 동일 조건 결과
+시드 42, 기본 속도·반응시간, 동일 모델/인원으로 비교했다. 수정 전은 캠퍼스 커밋 365c28c이다.
+
+|조건|기존 안내|수정 안내|결과|
+|---|---:|---:|---|
+|200명, 차단 없음|450.4초|433.4초|3.8% 단축|
+|400명, 차단 없음|578.5초|478.1초|17.4% 단축|
+|200명, 좌측 차단|520.4초|515.5초|차단 정책 유지·국소 우회 보정|
+|200명, 우측 차단|515.4초|515.4초|기존 대응 유지|
+
+400명 거리 우선은 1800초 제한에서 262명만 대피했다. 완료 시간으로 비교하지 않는다. 초기 예측 후보는 시드 7/123에서도 200명 전원이 대피했으나, 최종 우회 보정의 성능 표는 시드 42 검증만 기재한다. 이 결과는 특정 모델 입력의 회귀 검증이며 실제 대피시간이나 모든 배치에 대한 성능 보장이 아니다.
+
+검증: test_guides.mjs는 도착 전 해소 대기 무시, 지속 하층 정체가 위층의 반대편 계단 선택에 반영됨, 공유 주기, 해제, 차단별 전원 대피를 확인한다. 화면은 거리 우선/층내 혼잡/층간 예측을 같은 입력으로 각각 계산한다. 결과 JSON schema 13에 적용 모드와 공유 데이터를 기록한다.
