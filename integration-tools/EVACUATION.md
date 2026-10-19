@@ -70,3 +70,6 @@ New 400-person diagnostic: 25 well switches, left/right active 89/169 at t=200s 
 Default200 scenarios no/left/right closure:445.6s/474.7s/476.6s. Existing continuous following, independent discharge, four descent connections and body-clearance tests remain required.
 
 Matched 400-person comparison on the same V8 geometry: distance-only804.0s versus congestion-aware624.6s; at200s left/right active248/12 versus89/169. test_dense_routing.mjs checks completion, actual cross-well switches and right-well use under this fixed congestion case.
+
+## V9: nearest current-floor portal
+Supersedes full-route scoring and downstream queue prediction. travelTime now equals floor approach field / personal speed; no transit free-time or static outdoor distance is added. congestionDelay includes only the selected passage queue and measured slowdown. Dist-to-exterior remains a reachability filter, not a ranking term. On landing, agents select a new local portal. test_local_portal_choice.mjs checks every initial free-flow choice, the right-near 3F example and independence from finite downstream exit costs. The existing portal/flight lock, congestion reconsideration and thirteen exit lanes remain.

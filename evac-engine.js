@@ -48,7 +48,8 @@ export class Evacuation {
  }
 
  choices(a){const n=this.g.nodes[a.node];return this.routes.filter(r=>r.fromFloor===n.floor&&Number.isFinite(r.field[a.node])&&Number.isFinite(this.dist[r.nodes.at(-1)]))}
- travelTime(r,a){return (r.field[a.node]+r.transitSeconds+(r.kind==='exit'?0:this.dist[r.nodes.at(-1)]))/a.factor}
+ // Choose the next accessible portal on this floor, not the final outdoor exit.
+ travelTime(r,a){return r.field[a.node]/a.factor}
  expectedWait(r,a){if(!this.options.balanced)return 0;const ahead=this.people.filter(p=>p!==a&&p.route===r&&p.status==='waiting'&&(p.routeIndex>=0||r.field[p.node]<=Math.min(8,r.field[a.node]))).length;
   const speed=(r.kind==='exit'?this.options.flatSpeed:this.options.stairSpeed)*a.factor,headway=(r.kind==='stairs'?.62:2*this.g.spacing)/speed+.2;
   const entryOccupied=this.occupancy.has(r.nodes[0])&&this.occupancy.get(r.nodes[0])!==a.id;
@@ -73,25 +74,7 @@ export class Evacuation {
  congestionDelay(r,a){
   if(!this.options.balanced)return 0;
   const arrival=r.field[a.node]/a.factor;
-  let delay=Math.max(this.expectedWait(r,a),this.queueDelay(r,arrival))+this.slowTransit(r);
-  // Look ahead down the selected well. Discount queues by the time needed to
-  // reach them, and use the worst residual bottleneck rather than counting
-  // the same backed-up stream repeatedly on successive floors.
-  if(r.kind==='stairs'){
-   let elapsed=arrival+r.transitSeconds/a.factor,node=r.nodes.at(-1),floor=r.toFloor;
-   const visited=new Set();let downstream=0;
-   while(floor>1&&!visited.has(floor)){
-    visited.add(floor);const options=this.routes.filter(x=>x.kind==='stairs'&&x.well===r.well&&x.fromFloor===floor&&Number.isFinite(x.field[node]));
-    if(!options.length)break;
-    const next=options.reduce((best,x)=>x.field[node]+x.transitSeconds<best.field[node]+best.transitSeconds?x:best);
-    elapsed+=next.field[node]/a.factor;
-    downstream=Math.max(downstream,this.queueDelay(next,elapsed));
-    delay+=Math.min(...options.map(x=>this.slowTransit(x)));
-    elapsed+=next.transitSeconds/a.factor;node=next.nodes.at(-1);floor=next.toFloor;
-   }
-   delay+=downstream;
-  }
-  return delay;
+  return Math.max(this.expectedWait(r,a),this.queueDelay(r,arrival))+this.slowTransit(r);
  }
  // Measure motion including stop-and-go inside each flight. Counting only
  // people marked waiting misses dense streams that creep continuously.
@@ -133,5 +116,5 @@ export class Evacuation {
   this.observeFlow(dt);this.maxWait=Math.max(this.maxWait,waiting);if(this.done===this.initial||this.time>=this.maxSeconds||this.people.every(a=>['exited','unreachable'].includes(a.status)))this.finished=true;
  }
  position(a){if(a.stairMotion)return this.pathPoint(a.route,a.stairMotion.s);const p=this.g.nodes[a.node].p;if(a.target===null)return p;const q=this.g.nodes[a.target].p;return p.map((v,i)=>v+(q[i]-v)*a.progress)}
- report(){const exited=this.people.filter(a=>a.exitTime!==null).map(a=>a.exitTime).sort((a,b)=>a-b);return {schema:8,wellChanges:this.wellChanges,lastReroute:this.lastReroute,behavior:'shortest-path-first; observed slow stair transit plus shared-well queue and downstream residual delay; reconsider every 10s on floors even while progressing; 3-8s improvement threshold; no in-flight switching',routeChanges:this.people.reduce((sum,a)=>sum+a.switches,0),routes:this.routeStats(),options:this.options,elapsed:this.time,total:this.initial,exited:this.done,remaining:this.initial-this.done,unreachable:this.people.filter(a=>a.status==='unreachable').length,maxWaiting:this.maxWait,completionSeconds:this.done===this.initial?this.time:null,p95Seconds:this.done>=Math.ceil(this.initial*.95)?exited[Math.ceil(this.initial*.95)-1]:null,coverage:this.coverage,floors:this.g.floors.map(f=>({floor:f.level,total:this.people.filter(a=>a.fromFloor===f.level).length,exited:this.people.filter(a=>a.fromFloor===f.level&&a.status==='exited').length})),limitations:['Assumed occupancy, speeds and reaction delay; no fire/smoke physics','Floor graph occupancy; continuous distance-following stair lanes with rounded landings and body clearance; stopped escalators assumed walkable downward in both lanes','Only model-connected floor cells sampled; disconnected rooms are not populated','Exterior endpoint is not a verified safe assembly point','Upper floors and stair dimensions are assumed; not a safety certification']}}
+ report(){const exited=this.people.filter(a=>a.exitTime!==null).map(a=>a.exitTime).sort((a,b)=>a-b);return {schema:9,wellChanges:this.wellChanges,lastReroute:this.lastReroute,behavior:'nearest-current-floor-portal-first; current-passage queue and observed slow transit only; reconsider every 10s on floors even while progressing; 3-8s improvement threshold; no in-flight switching',routeChanges:this.people.reduce((sum,a)=>sum+a.switches,0),routes:this.routeStats(),options:this.options,elapsed:this.time,total:this.initial,exited:this.done,remaining:this.initial-this.done,unreachable:this.people.filter(a=>a.status==='unreachable').length,maxWaiting:this.maxWait,completionSeconds:this.done===this.initial?this.time:null,p95Seconds:this.done>=Math.ceil(this.initial*.95)?exited[Math.ceil(this.initial*.95)-1]:null,coverage:this.coverage,floors:this.g.floors.map(f=>({floor:f.level,total:this.people.filter(a=>a.fromFloor===f.level).length,exited:this.people.filter(a=>a.fromFloor===f.level&&a.status==='exited').length})),limitations:['Assumed occupancy, speeds and reaction delay; no fire/smoke physics','Floor graph occupancy; continuous distance-following stair lanes with rounded landings and body clearance; stopped escalators assumed walkable downward in both lanes','Only model-connected floor cells sampled; disconnected rooms are not populated','Exterior endpoint is not a verified safe assembly point','Upper floors and stair dimensions are assumed; not a safety certification']}}
 }

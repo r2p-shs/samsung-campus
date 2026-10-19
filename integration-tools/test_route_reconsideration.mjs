@@ -13,12 +13,11 @@ const costs=s.choices(a).map(r=>({id:r.id,travel:s.travelTime(r,a),delay:s.conge
 s.time=112;s.chooseRoute(a,true);assert.equal(a.route.well,1,'equal congestion in both left lanes must cause beneficial right-well detour');assert(a.decision.previousEstimatedSeconds>a.decision.estimatedSeconds+3);assert.equal(s.wellChanges,1);
 const kept=a.route;s.people=[];s.time=113;s.chooseRoute(a,true);assert.equal(a.route,kept,'cooldown');
 a.routeIndex=1;s.time=140;s.chooseRoute(a,true);assert.equal(a.route,kept,'no in-flight switch');
-// Lower-floor queues are discounted by travel time, but severe residual
-// congestion still changes the upstream cost.
+// Later-floor queues must not affect current-floor portal ranking.
 s.people=[];const upper=s.routes.find(r=>r.id==='stairs_0_5');
 const upstream={...actor(),node:upper.nodes[0]};
 const freeCost=s.routeCost(upper,upstream);s.people=queue(160);
-assert(s.routeCost(upper,upstream)>freeCost+20,'downstream backlog ignored');
+assert.equal(s.routeCost(upper,upstream),freeCost,'later-floor backlog must not bias the current portal');
 assert(s.queueDelay(left[0],10000)===0,'queue cannot drain while approaching');
 // Exercise the step scheduler: a moving queue follower with stuck=0 must reconsider.
 const b=actor();s.people=[];s.chooseRoute(b);b.lastDecision=0;s.people=[...queue(80),b];
