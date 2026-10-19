@@ -45,3 +45,9 @@
 
 ## V11 에스컬레이터와 1층 우회
 정지 에스컬레이터 두 대를 각각 두 줄로 내려간다. 상층에서 2층 계단으로 내려온 사람도 상부 난간 끝을 돌아 에스컬레이터 진입점에 접근한다. 통로는 모델 충돌과 썬큰 경계를 검사했다. 1층의 국소 우회는 6초 만료로 되돌리지 않고, 같은 목적지로 진행하는 동안 유지한다. 새 장애물로 막히면 다시 계획하며, 목적지가 바뀌면 이전 계획은 폐기한다.
+
+
+## Floor guide communication
+One visible guide per physical floor (10 total), excluded from evacuation population and collision occupancy. Every 2 simulation seconds guides broadcast left/right stair waiting, nearby approaching, in-flight occupancy, closure and estimated delay. With guides and congestion response enabled, route cost adds downstream delay for the selected stairwell to the current-floor approach and local delay. A lower closed flight adds a finite 30-second diversion estimate; it does not prohibit a reachable stairwell. These are model assumptions, not measured radio/operator behavior. Decisions retain a 10-second reconsideration interval, 3–8-second improvement threshold and no flight switching. Disable guides to retain local-only routing. Shared messages and decision penalties are exported in schema 12.
+
+Validation: test_guides.mjs verifies broadcast cadence, side-specific downstream penalties, disable behavior and 200-person completion with no/left/right closure (450.4/520.4/515.4 simulation seconds).

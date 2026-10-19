@@ -1,7 +1,7 @@
 // Deterministic graph occupancy model. Seconds/metres, fixed 0.1-second steps.
 export class Evacuation {
  constructor(graph,options={}) {
-  this.g=graph;this.options={perFloor:20,seed:42,fireFloor:3,blockedWell:-1,flatSpeed:1.2,stairSpeed:.65,delayMin:5,delayMax:30,balanced:true,stoppedEscalators:true,stairLanes:2,...options};this.time=0;this.maxWait=0;this.done=0;this.finished=false;this.maxSeconds=1800;
+  this.g=graph;this.options={perFloor:20,seed:42,fireFloor:3,blockedWell:-1,flatSpeed:1.2,stairSpeed:.65,delayMin:5,delayMax:30,balanced:true,guides:true,stoppedEscalators:true,stairLanes:2,...options};this.time=0;this.maxWait=0;this.done=0;this.finished=false;this.maxSeconds=1800;
   const o=this.options;this.adj=graph.nodes.map(()=>[]);this.exit=new Set(graph.exits);
   this.closed=new Set(graph.nodes.flatMap((n,i)=>n.kind==='stairs'&&(n.floor===o.fireFloor||(o.fireFloor===1&&n.floor===2))&&n.well===o.blockedWell?[i]:[]));
   for(const[a,b,length]of graph.edges){if([a,b].some(i=>graph.nodes[i].kind==='stairs'&&(graph.nodes[i].lane||0)>=o.stairLanes))continue;if(this.closed.has(a)||this.closed.has(b))continue;if(!o.stoppedEscalators&&[a,b].some(i=>graph.nodes[i].kind==='escalator'))continue;const stairs=[a,b].some(i=>['stairs','escalator'].includes(graph.nodes[i].kind));const e={length,stairs};this.adj[a].push({to:b,...e});this.adj[b].push({to:a,...e})}
@@ -22,7 +22,7 @@ export class Evacuation {
    for(let i=1;i<=16;i++){const t=Math.PI/2+i*Math.PI/32;points.push([c-.3+radius*Math.cos(t),-.9+radius*Math.sin(t),z])}points.push([c-offset,-1.1,z],[c-offset,-5.9,q[2]],q);
    const lengths=[0];for(let i=1;i<points.length;i++)lengths.push(lengths.at(-1)+Math.hypot(...points[i].map((v,k)=>v-points[i-1][k])));r.path={points,lengths,total:lengths.at(-1)};
   }
-  this.initial=this.people.length;this.stepCount=0;this.wellChanges=0;this.lastReroute=null;
+  this.guideMessages=[];this.lastGuideBroadcast=-100;this.initial=this.people.length;this.stepCount=0;this.wellChanges=0;this.lastReroute=null;
  }
  field(sources,allowed=()=>true){const dist=new Float64Array(this.g.nodes.length);dist.fill(Infinity);const heap=[];
   const push=v=>{heap.push(v);let i=heap.length-1;while(i){const p=(i-1)>>1;if(heap[p][0]<=v[0])break;heap[i]=heap[p];i=p}heap[i]=v};
@@ -86,12 +86,30 @@ export class Evacuation {
   const alpha=1-Math.exp(-dt/6);r.observedSpeed=(r.observedSpeed??this.options.stairSpeed)*(1-alpha)+speed*alpha;
   if(crowded)r.observedSeconds=(r.observedSeconds||0)+dt;
  }}
- routeCost(r,a){return this.travelTime(r,a)+this.congestionDelay(r,a)}
+ // Guides broadcast measured conditions every two simulation seconds. Only
+ // downstream congestion is added, never total distance to the outdoor exit.
+ broadcastGuides(){if(this.time-this.lastGuideBroadcast<2)return;this.lastGuideBroadcast=this.time;
+  this.guideMessages=this.g.floors.filter(f=>f.level>1).flatMap(f=>[0,1].map(well=>{
+   const lanes=this.routes.filter(r=>r.kind==='stairs'&&r.fromFloor===f.level&&r.well===well);
+   const people=this.people.filter(a=>a.status!=='exited'&&lanes.includes(a.route));
+   const waiting=people.filter(a=>a.status==='waiting').length;
+   const approaching=people.filter(a=>a.routeIndex<0&&a.route.field[a.node]/a.factor<=12&&this.time>=a.delay).length;
+   const delay=lanes.length?Math.min(90,Math.max(...lanes.map(r=>this.queueDelay(r,0)+this.slowTransit(r)),approaching*(.62/this.options.stairSpeed+.2)/lanes.length)):0;
+   return {floor:f.level,well,time:this.time,waiting,approaching,occupants:people.filter(a=>a.routeIndex>=0).length,closed:!lanes.length,delay};
+  }));
+ }
+ sharedGuideDelay(r){if(!this.options.guides||!this.options.balanced||r.kind!=='stairs')return 0;this.broadcastGuides();
+  const below=this.guideMessages.filter(m=>m.well===r.well&&m.floor<r.fromFloor);
+  // A closed lower flight can be bypassed on its floor: finite advisory penalty,
+  // not a declaration that the entire stairwell is unreachable.
+  return below.reduce((sum,m)=>sum+(m.closed?30:m.delay),0);
+ }
+ routeCost(r,a){return this.travelTime(r,a)+this.congestionDelay(r,a)+this.sharedGuideDelay(r)}
  chooseRoute(a,reconsider=false){if(this.g.nodes[a.node].floor===1&&a.passedDoor)return;if(a.routeIndex>=0&&a.node!==a.route?.nodes[0])return;
   const choices=this.choices(a).sort((x,y)=>this.routeCost(x,a)-this.routeCost(y,a));if(!choices.length)return;const best=choices[0],current=a.route;
   if(reconsider){if(this.time-a.lastDecision<10)return;a.lastDecision=this.time;if(!current||best===current||this.routeCost(current,a)-this.routeCost(best,a)<Math.max(3,Math.min(8,current.field[a.node]/a.factor*.1)))return;}
   if(current===best)return;const previous=current?.id;const previousCost=current?this.routeCost(current,a):null;if(current?.kind==='stairs'&&best.kind==='stairs'&&current.well!==best.well)this.wellChanges++;if(current){current.assigned--;if(a.routeIndex===0)current.entered--;a.switches++}a.route=best;a.detour=null;best.assigned++;a.routeIndex=-1;a.lastDecision=this.time;
-  a.decision={time:this.time,from:previous||null,to:best.id,reason:current?'queue-delay-exceeds-detour':'shortest-available-path',travelSeconds:this.travelTime(best,a),expectedWaitSeconds:this.congestionDelay(best,a),estimatedSeconds:this.routeCost(best,a),previousEstimatedSeconds:previousCost};if(current)this.lastReroute={person:a.id,...a.decision};
+  a.decision={guideAssisted:this.options.guides&&this.options.balanced,sharedDownstreamDelaySeconds:this.sharedGuideDelay(best),time:this.time,from:previous||null,to:best.id,reason:current?'queue-delay-exceeds-detour':'shortest-available-path',travelSeconds:this.travelTime(best,a),expectedWaitSeconds:this.congestionDelay(best,a),estimatedSeconds:this.routeCost(best,a),previousEstimatedSeconds:previousCost};if(current)this.lastReroute={person:a.id,...a.decision};
  }
  routeStats(){return this.routes.map(r=>({id:r.id,kind:r.kind,well:r.well,lane:r.lane??null,floor:r.fromFloor,assigned:r.assigned,entered:r.entered,completed:r.completed,slowdownSeconds:+this.slowTransit(r).toFixed(1),waiting:this.people.filter(a=>a.route===r&&a.status==='waiting').length}))}
  step(){if(this.finished)return;const dt=.1;this.time=+(this.time+dt).toFixed(6);this.stepCount++;let waiting=0;
@@ -116,5 +134,5 @@ export class Evacuation {
   this.observeFlow(dt);this.maxWait=Math.max(this.maxWait,waiting);if(this.done===this.initial||this.time>=this.maxSeconds||this.people.every(a=>['exited','unreachable'].includes(a.status)))this.finished=true;
  }
  position(a){if(a.stairMotion)return this.pathPoint(a.route,a.stairMotion.s);const p=this.g.nodes[a.node].p;if(a.target===null)return p;const q=this.g.nodes[a.target].p;return p.map((v,i)=>v+(q[i]-v)*a.progress)}
- report(){const exited=this.people.filter(a=>a.exitTime!==null).map(a=>a.exitTime).sort((a,b)=>a-b);return {schema:11,wellChanges:this.wellChanges,lastReroute:this.lastReroute,behavior:'nearest-current-floor-portal-first; current-passage queue and observed slow transit only; reconsider every 10s on floors even while progressing; 3-8s improvement threshold; no in-flight switching',routeChanges:this.people.reduce((sum,a)=>sum+a.switches,0),routes:this.routeStats(),options:this.options,elapsed:this.time,total:this.initial,exited:this.done,remaining:this.initial-this.done,unreachable:this.people.filter(a=>a.status==='unreachable').length,maxWaiting:this.maxWait,completionSeconds:this.done===this.initial?this.time:null,p95Seconds:this.done>=Math.ceil(this.initial*.95)?exited[Math.ceil(this.initial*.95)-1]:null,coverage:this.coverage,floors:this.g.floors.map(f=>({floor:f.level,total:this.people.filter(a=>a.fromFloor===f.level).length,exited:this.people.filter(a=>a.fromFloor===f.level&&a.status==='exited').length})),limitations:['Assumed occupancy, speeds and reaction delay; no fire/smoke physics','Floor graph occupancy; continuous distance-following stair lanes with rounded landings and body clearance; stopped escalators assumed walkable downward in both lanes','Only model-connected floor cells sampled; disconnected rooms are not populated','Exterior endpoint is not a verified safe assembly point','Upper floors and stair dimensions are assumed; not a safety certification']}}
+ report(){this.broadcastGuides();const exited=this.people.filter(a=>a.exitTime!==null).map(a=>a.exitTime).sort((a,b)=>a-b);return {schema:12,guideMessages:this.guideMessages,guideCommunication:{enabled:this.options.guides&&this.options.balanced,intervalSeconds:2},wellChanges:this.wellChanges,lastReroute:this.lastReroute,behavior:'nearest-current-floor-portal-first; current-passage queue and observed slow transit; optional guides share downstream delays every 2s; reconsider every 10s on floors even while progressing; 3-8s improvement threshold; no in-flight switching',routeChanges:this.people.reduce((sum,a)=>sum+a.switches,0),routes:this.routeStats(),options:this.options,elapsed:this.time,total:this.initial,exited:this.done,remaining:this.initial-this.done,unreachable:this.people.filter(a=>a.status==='unreachable').length,maxWaiting:this.maxWait,completionSeconds:this.done===this.initial?this.time:null,p95Seconds:this.done>=Math.ceil(this.initial*.95)?exited[Math.ceil(this.initial*.95)-1]:null,coverage:this.coverage,floors:this.g.floors.map(f=>({floor:f.level,total:this.people.filter(a=>a.fromFloor===f.level).length,exited:this.people.filter(a=>a.fromFloor===f.level&&a.status==='exited').length})),limitations:['Assumed occupancy, speeds and reaction delay; no fire/smoke physics','Floor graph occupancy; continuous distance-following stair lanes with rounded landings and body clearance; stopped escalators assumed walkable downward in both lanes','Only model-connected floor cells sampled; disconnected rooms are not populated','Exterior endpoint is not a verified safe assembly point','Upper floors and stair dimensions are assumed; not a safety certification']}}
 }
