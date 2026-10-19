@@ -92,3 +92,10 @@
 검증: test_continuous_walk.mjs의 임의 각도 직선, 막힌 영역 가로지르기 금지, 정면에서 마주 오는 두 사람의 회피(최소 간격 0.483m)를 통과했다. test_guides.mjs는 20개 층·방향 메시지, 아래층 지연 전달 및 같은 층 접근 인원 혼잡 시 반대 계단 안내를 검사한다. 400명 완료 및 1층 반복 방문 없음도 확인했다. 이전 버전의 대피 시간은 격자 이동 모델 결과이므로 연속 보행 결과와 같은 운동 가정으로 보지 않는다. 결과 JSON schema 14.
 
 최종 연속 보행 검증(시드 42): 200명 차단 없음 427.1초, 좌측 차단 617.3초, 우측 차단 515.0초; 400명 차단 없음 552.1초, 반복 방문 없음. 이는 모든 조건의 속도 개선을 뜻하지 않으며 충돌 회피와 양보가 포함된 새 운동 모델 결과이다.
+
+
+## Guide withdrawal (2026-10-19)
+
+Two guides per floor now join the pedestrian population after completing guidance. The station remains staffed until all active people on that floor or above have passed below it and no upper station remains staffed. After a two-second clear check (right station waits one additional second), a guide enters a collision-free starting position and follows the same pedestrian routing and stair model. Lower guides therefore wait for upper withdrawing guides. All 20 guides are included in the total and must reach an outdoor endpoint before completion; resident and guide counts are also reported separately. Their walking avatars replace the stationary station avatars. This is a conservative simulation withdrawal policy, not an operational fire procedure.
+
+Guide broadcasts run on fixed simulation steps. Reading reports or changing rendering frequency cannot trigger a fresh broadcast. Regression: `node integration-tools/test_guide_withdrawal.mjs` verifies upper-floor clearance at every release and all 200 residents plus 20 guides exiting.
